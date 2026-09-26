@@ -1,102 +1,67 @@
 /* ==========================================================================
-   Syntax English - 各大学別 テーマカラー定義 (themes.css)
+   Syntax English - 大学別テーマカラー定義（武田塾UI版）
    ========================================================================== */
 
-/* 1. 総合ハブ / デフォルト (Prestige Navy & Gold) */
-body.theme-hub {
-  --theme-primary: #1e3a8a;
-  --theme-secondary: #0f172a;
-  --theme-accent: #f59e0b;
-  --theme-glow: rgba(59, 130, 246, 0.35);
-  --theme-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-  --theme-text-gradient: linear-gradient(90deg, #ffffff 0%, #fbbf24 100%);
-  --theme-border: rgba(245, 158, 11, 0.3);
-}
-
-/* 2. 慶應義塾大学 SFC 特化 (SFC Blue & Clean Slate) */
+/* 1. 慶應SFC特化 (SFC Blue) */
 body.theme-sfc {
-  --theme-primary: #0077b6;
-  --theme-secondary: #03045e;
-  --theme-accent: #38bdf8;
-  --theme-glow: rgba(0, 119, 182, 0.45);
-  --theme-gradient: linear-gradient(135deg, #023e8a 0%, #0077b6 50%, #0096c7 100%);
-  --theme-text-gradient: linear-gradient(90deg, #ffffff 0%, #38bdf8 100%);
-  --theme-border: rgba(56, 189, 248, 0.4);
+  --theme-color-primary: #006aa6;
+  --theme-banner-bg: linear-gradient(135deg, #004d7a 0%, #0077b6 55%, #0096c7 100%);
+  --theme-ribbon-bg: #002e49;
+  --theme-banner-border: #001f33;
 }
 
-/* 3. 慶應義塾大学 文系・理系 特化 (Keio Tricolor: Navy & Crimson) */
+/* 2. 慶應義塾大学 文系・理系 特化 (Keio Tricolor: Navy & Crimson) */
 body.theme-keio {
-  --theme-primary: #001e43;
-  --theme-secondary: #8c1d40;
-  --theme-accent: #d4af37;
-  --theme-glow: rgba(140, 29, 64, 0.45);
-  --theme-gradient: linear-gradient(135deg, #001e43 0%, #8c1d40 100%);
-  --theme-text-gradient: linear-gradient(90deg, #ffffff 0%, #d4af37 60%, #ff8da1 100%);
-  --theme-border: rgba(212, 175, 55, 0.4);
+  --theme-color-primary: #8c1d40;
+  --theme-banner-bg: linear-gradient(135deg, #001833 0%, #00234a 45%, #8c1d40 100%);
+  --theme-ribbon-bg: #001226;
+  --theme-banner-border: #570e24;
 }
 
-/* 4. MARCH 総合特化 (Noble Purple & Gold) */
+/* 3. MARCH総合 特化 (Noble Purple) */
 body.theme-march {
-  --theme-primary: #4c1d95;
-  --theme-secondary: #1e1b4b;
-  --theme-accent: #fbbf24;
-  --theme-glow: rgba(124, 58, 237, 0.4);
-  --theme-gradient: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%);
-  --theme-text-gradient: linear-gradient(90deg, #ffffff 0%, #fbbf24 100%);
-  --theme-border: rgba(251, 191, 36, 0.35);
+  --theme-color-primary: #5b21b6;
+  --theme-banner-bg: linear-gradient(135deg, #2e0854 0%, #581c87 50%, #7e22ce 100%);
+  --theme-ribbon-bg: #20043d;
+  --theme-banner-border: #150229;
 }
 
-/* 5. 明治大学 特化 (Liberty Purple - 明治紫) */
+/* 4. 明治大学 特化 (Liberty Purple - 明治紫) */
 body.theme-meiji {
-  --theme-primary: #552583;
-  --theme-secondary: #270e42;
-  --theme-accent: #facc15;
-  --theme-glow: rgba(85, 37, 131, 0.5);
-  --theme-gradient: linear-gradient(135deg, #3d1561 0%, #552583 60%, #7539ad 100%);
-  --theme-text-gradient: linear-gradient(90deg, #ffffff 0%, #facc15 100%);
-  --theme-border: rgba(250, 204, 21, 0.35);
+  --theme-color-primary: #552583;
+  --theme-banner-bg: linear-gradient(135deg, #270c45 0%, #552583 60%, #7334b0 100%);
+  --theme-ribbon-bg: #1a0630;
+  --theme-banner-border: #0f021f;
 }
 
-/* 6. 青山学院大学 特化 (Aoyama Ivy Green - 深緑 & シャンパン) */
+/* 5. 青山学院大学 特化 (Aoyama Ivy Green - 深緑) */
 body.theme-aoyama {
-  --theme-primary: #004d25;
-  --theme-secondary: #022c15;
-  --theme-accent: #fbbf24;
-  --theme-glow: rgba(0, 77, 37, 0.55);
-  --theme-gradient: linear-gradient(135deg, #022c15 0%, #004d25 60%, #057a3d 100%);
-  --theme-text-gradient: linear-gradient(90deg, #ffffff 0%, #fbbf24 100%);
-  --theme-border: rgba(251, 191, 36, 0.4);
+  --theme-color-primary: #00592e;
+  --theme-banner-bg: linear-gradient(135deg, #022915 0%, #00592e 55%, #057a41 100%);
+  --theme-ribbon-bg: #011c0e;
+  --theme-banner-border: #001207;
 }
 
-/* 7. 立教大学 特化 (St. Paul Purple & White - 立教紫) */
+/* 6. 立教大学 特化 (St. Paul Purple - 立教紫) */
 body.theme-rikkyo {
-  --theme-primary: #522888;
-  --theme-secondary: #1a0833;
-  --theme-accent: #cbd5e1;
-  --theme-glow: rgba(82, 40, 136, 0.5);
-  --theme-gradient: linear-gradient(135deg, #1a0833 0%, #522888 70%, #6d34b3 100%);
-  --theme-text-gradient: linear-gradient(90deg, #ffffff 0%, #e2e8f0 70%, #a78bfa 100%);
-  --theme-border: rgba(226, 232, 240, 0.4);
+  --theme-color-primary: #522888;
+  --theme-banner-bg: linear-gradient(135deg, #1b0936 0%, #522888 65%, #6d35b5 100%);
+  --theme-ribbon-bg: #140529;
+  --theme-banner-border: #0d021c;
 }
 
-/* 8. 中央大学 特化 (Chuo Red - 中央紅 & ホワイト) */
+/* 7. 中央大学 特化 (Chuo Red - 中央紅) */
 body.theme-chuo {
-  --theme-primary: #b81c22;
-  --theme-secondary: #57070b;
-  --theme-accent: #fbbf24;
-  --theme-glow: rgba(184, 28, 34, 0.5);
-  --theme-gradient: linear-gradient(135deg, #57070b 0%, #b81c22 65%, #dc2626 100%);
-  --theme-text-gradient: linear-gradient(90deg, #ffffff 0%, #fbbf24 60%, #fca5a5 100%);
-  --theme-border: rgba(251, 191, 36, 0.4);
+  --theme-color-primary: #b81c22;
+  --theme-banner-bg: linear-gradient(135deg, #57060a 0%, #b81c22 60%, #dc2626 100%);
+  --theme-ribbon-bg: #3d0306;
+  --theme-banner-border: #260103;
 }
 
-/* 9. 法政大学 特化 (Hosei Orange & Blue - 法政オレンジ × ブルー) */
+/* 8. 法政大学 特化 (Hosei Orange & Blue) */
 body.theme-hosei {
-  --theme-primary: #eb6100;
-  --theme-secondary: #003366;
-  --theme-accent: #38bdf8;
-  --theme-glow: rgba(235, 97, 0, 0.45);
-  --theme-gradient: linear-gradient(135deg, #003366 0%, #c44d00 50%, #eb6100 100%);
-  --theme-text-gradient: linear-gradient(90deg, #ffffff 0%, #fed7aa 50%, #38bdf8 100%);
-  --theme-border: rgba(235, 97, 0, 0.4);
+  --theme-color-primary: #eb6100;
+  --theme-banner-bg: linear-gradient(135deg, #00284d 0%, #003366 45%, #eb6100 100%);
+  --theme-ribbon-bg: #001830;
+  --theme-banner-border: #ba4a00;
 }

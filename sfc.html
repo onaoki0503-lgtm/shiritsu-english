@@ -3,262 +3,344 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>慶應SFC英語特化 個別指導｜Syntax English</title>
-  <meta name="description" content="慶應SFC入試英語満点・英検1級講師が直伝。日本一長い超長文（1,000語超×2本）を情報構造で解き明かす「Syntax Method」。1年で偏差値50からSFC合格へ導く完全個別指導。">
+  <title>慶應SFCのための英語塾｜慶應SFC英語特化 完全個別指導</title>
+  <meta name="description" content="慶應SFC英語満点・英検1級講師が直伝。日本一長い超長文（1,000語超×2本）をA4・1枚の「Syntax Method」で速読即解。慶應SFC合格のための完全個別英語塾。">
   <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/themes.css">
 </head>
-<body class="theme-sfc" data-current-campus="慶應SFC特化コース">
+<body class="theme-sfc" data-current-campus="慶應SFC">
 
-  <!-- Campus Ticker Bar -->
-  <aside class="campus-ticker-bar">
-    <div class="campus-ticker-inner">
-      <span class="campus-ticker-label">🎯 大学別特化LP:</span>
-      <a href="index.html" class="campus-link-pill">🏛️ 総合トップ</a>
-      <a href="sfc.html" class="campus-link-pill active">慶應SFC特化</a>
-      <a href="keio.html" class="campus-link-pill">慶應文理特化</a>
-      <a href="march.html" class="campus-link-pill">MARCH総合特化</a>
-      <a href="meiji.html" class="campus-link-pill">明治大学特化</a>
-      <a href="aoyama.html" class="campus-link-pill">青山学院大特化</a>
-      <a href="rikkyo.html" class="campus-link-pill">立教大学特化</a>
-      <a href="chuo.html" class="campus-link-pill">中央大学特化</a>
-      <a href="hosei.html" class="campus-link-pill">法政大学特化</a>
-    </div>
-  </aside>
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container nav-container">
-      <a href="index.html" class="brand-logo">
-        <span class="brand-badge">KEIO SFC SPECIAL</span>
-        <span class="brand-title">慶應SFC英語特化塾</span>
-      </a>
-      <div class="nav-links">
-        <a href="#strategy" class="nav-link">SFC攻略の壁</a>
-        <a href="#method" class="nav-link">Syntax解法</a>
-        <a href="#system" class="nav-link">指導管理</a>
-        <a href="#capacity" class="nav-link">募集要項</a>
-        <button class="btn btn-primary js-open-modal" data-campus="慶應SFC特化コース">SFC無料体験授業を予約</button>
+  <!-- 1. Header (White Top Bar) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-brand">
+        <span class="header-catch">日本初！授業をしない慶應SFC英語特化塾</span>
+        <div class="header-logo-group">
+          <div class="header-logo-title">
+            慶應SFC英語特化塾
+          </div>
+          <div class="stamp-badge">
+            逆転<br>合格
+          </div>
+        </div>
       </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="container">
-      <div class="hero-campus-badge">
-        ✦ KEIO UNIVERSITY SFC ENGLISH SPECIAL COURSE ✦
-      </div>
-      <h1 class="hero-title">
-        慶應SFC英語満点講師が直伝。<br>
-        1,000語超の学術長文を、<br>
-        <span class="highlight">「A4・1枚の構文設計」</span>で速読即解せよ。
-      </h1>
-      <p class="hero-subtitle">
-        日本最難関と称される総合政策・環境情報の超弩級長文。単語帳を暗記しても読めない理由は「情報構造の解読力」にあります。A4用紙1枚のSyntax Methodで英文の骨格を浮き彫りにし、時間内に余裕で満点・合格点を奪取するSFC特化の完全個別指導。
-      </p>
-
-      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <button class="btn btn-primary js-open-modal" data-campus="慶應SFC特化コース">
-          🎯 SFC英語 特化個別相談・無料体験授業
+      <div class="header-cta-group">
+        <button class="btn-header-red js-open-modal" data-campus="慶應SFC">
+          無料受験相談
         </button>
-        <a href="#strategy" class="btn btn-outline">
-          SFC特化の分析を見る ↓
-        </a>
-      </div>
-
-      <div class="hero-stat-cards">
-        <div class="stat-card">
-          <div class="stat-num">SFC満点</div>
-          <div class="stat-label">講師が慶應SFC英語で満点を叩き出した直伝解法</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">1,000語超×2</div>
-          <div class="stat-label">膨大な英文量を2時間以内で処理しきる速読構造把握</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">2ヶ月習得</div>
-          <div class="stat-label">Syntax Methodで複雑な学術複文を瞬時に見抜く</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">10名限定</div>
-          <div class="stat-label">SFC合格率100%を目指す徹底マンツーマン管理</div>
-        </div>
+        <button class="btn-header-navy js-open-modal" data-campus="慶應SFC">
+          無料体験授業
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- SFC Strategy Section -->
-  <section class="section" id="strategy">
+  <!-- 2. Global Dark Nav Bar -->
+  <nav class="global-nav">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">SFC Analysis</span>
-        <h2 class="section-title">慶應SFC英語が「日本一難しい」と言われる3つの理由</h2>
-        <p class="section-desc">
-          総合政策学部・環境情報学部の英語は、他のどの大学とも異なる特殊な試験です。大手予備校の汎用授業ではSFCに太刀打ちできません。
+      <ul class="nav-menu-list">
+        <li class="nav-menu-item"><a href="#about" class="nav-menu-link">SFC特化塾とは？ ▼</a></li>
+        <li class="nav-menu-item"><a href="#strategy" class="nav-link nav-menu-link">SFC英語攻略 ▼</a></li>
+        <li class="nav-menu-item"><a href="#method" class="nav-menu-link">Syntax Method ▼</a></li>
+        <li class="nav-menu-item"><a href="#system" class="nav-menu-link">個別管理体制 ▼</a></li>
+        <li class="nav-menu-item"><a href="#capacity" class="nav-menu-link">料金・定員 ▼</a></li>
+        <li class="nav-menu-item"><a href="#faq" class="nav-menu-link">よくある質問</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 3. Hero Section (武田塾スタイル・大迫力メインバナー) -->
+  <section class="hero-takeda">
+    <div class="container hero-takeda-inner">
+      <div class="hero-text-block">
+        <div class="hero-tags">
+          <span class="hero-tag">慶應SFC入試英語 満点講師直伝</span>
+          <span class="hero-tag">定員10名限定</span>
+        </div>
+        <h1 class="hero-main-title">
+          慶應SFCの<br>ための英語塾
+        </h1>
+        <p class="hero-sub-catch">
+          1,000語超×2本の超弩級学術長文を、A4・1枚の構文設計で速読即解。<br>
+          毎日の自習メニュー完全指定 × 24時間LINE伴走で、SFCへ逆転合格。
+        </p>
+        <div class="hero-action-btns">
+          <button class="hero-btn-red js-open-modal" data-campus="慶應SFC">
+            🔥 無料受験相談・体験授業に申し込む
+          </button>
+          <button class="hero-btn-line js-open-modal" data-campus="慶應SFC">
+            💬 LINEでSFC受験相談する
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-visual-block">
+        <img src="assets/instructor_1.jpg" alt="慶應SFC英語特化塾 講師" class="hero-person-photo">
+        <div class="hero-vertical-catch">
+          志望校に行きたきゃ 構文読解が最強じゃん
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Bottom Ribbon Banner -->
+    <div class="hero-bottom-ribbon">
+      <div class="container">
+        <p class="ribbon-text">
+          慶應SFC特化塾なら <span class="ribbon-highlight">A4・1枚の構文設計・日次自習管理・24時間LINEサポート</span> でSFC合格への道のりを徹底サポート！！
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SFC Strategy Section -->
+  <section class="content-section" id="strategy">
+    <div class="container">
+      <div class="sec-title-group">
+        <span class="sec-tag">SFC English Analysis</span>
+        <h2 class="sec-main-title">慶應SFC英語で「時間が足りない」「読めない」理由</h2>
+        <p class="sec-lead">
+          総合政策学部・環境情報学部の英語は、日本最長クラスの超長文が出題されます。<br>
+          単語の丸暗記や学校の画一的な授業では、SFCの学術英語を時間内に解き切ることは不可能です。
         </p>
       </div>
 
-      <div class="campus-strategy-card">
-        <span class="strategy-tag">SFC Specific Strategy</span>
-        <h3 class="strategy-title">SFC英語を攻略するための3大突破口</h3>
-        <ul class="strategy-list">
-          <li>
-            <strong>1. 1文が4〜5行に及ぶ「超重層構造」の即時分解:</strong>
-            関係詞・同格・分詞構文が複雑に絡み合う学術英文を、Syntax Methodによって「主節」と「装飾」に瞬時に切り分け、脳内ワーキングメモリのパンクを防ぎます。
-          </li>
-          <li>
-            <strong>2. 専門論文レベルの抽象語彙を文脈から構造推測:</strong>
-            社会科学・生命倫理・情報科学などの未見の難単語が出題されても、文構造上の品詞と対比関係（ディスコースマーカー）から意味を論理的に確定させます。
-          </li>
-          <li>
-            <strong>3. パラグラフ間のロジック展開（Macro Reading）:</strong>
-            2本の超長文を余裕を持って解き終えるため、段落ごとの主張と論証構造を地図のように俯瞰して捉える解法を体得させます。
-          </li>
-        </ul>
-      </div>
+      <div class="cards-grid-3">
+        <div class="takeda-card">
+          <div class="takeda-card-number">01</div>
+          <h3 class="takeda-card-title">1,000語超×2本の超長文による時間切れ</h3>
+          <p class="takeda-card-body">
+            1題あたり約1,000〜1,200語の論文クラスの英文が2本。返り読みをして日本語に直そうとする受験生は、大問1の途中で試験終了を迎えてしまいます。
+          </p>
+        </div>
 
-      <div class="grid-3">
-        <div class="feature-card">
-          <div class="feature-icon">📖</div>
-          <h3 class="feature-title">超長文の圧倒的分量</h3>
-          <p class="feature-text">
-            1題あたり約1,000〜1,200語の学術論文クラスの英文が2題出題。途中で集中力が途切れる「体力切れ」を、構造読みによる省エネ読解で克服。
+        <div class="takeda-card">
+          <div class="takeda-card-number">02</div>
+          <h3 class="takeda-card-title">1文が4〜5行に及ぶ複雑な複文構造</h3>
+          <p class="takeda-card-body">
+            関係詞・分詞構文・同格が何重にも入れ子になった英文。主語と述語の関係を見失い、内容理解が曖昧なまま選択肢で間違えます。
           </p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔍</div>
-          <h3 class="feature-title">3択問題の緻密な罠</h3>
-          <p class="feature-text">
-            「段落の要旨」「筆者の主張」を問う選択肢は、極めて精巧に紛らわしく作られています。本文の該当箇所を論理的に指差し確認する技法を徹底。
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3 class="feature-title">英語＋小論文の1科目特化</h3>
-          <p class="feature-text">
-            SFCは英語と小論文の2科目で受験可能。英語で8.5割〜満点を叩き出せば、圧倒的なアドバンテージで合格が手中に収まります。
+
+        <div class="takeda-card">
+          <div class="takeda-card-number">03</div>
+          <h3 class="takeda-card-title">専門性の高い抽象的な論文語彙</h3>
+          <p class="takeda-card-body">
+            社会科学、先端テクノロジー、生命倫理など未見の難単語が頻出。文脈と構造から論理的に意味を推測する技術がなければ太刀打ちできません。
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Syntax Method -->
-  <section class="section section-alt" id="method">
+  <!-- 6. Solution: Syntax Method -->
+  <section class="content-section content-section-gray" id="method">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Core Weapon</span>
-        <h2 class="section-title">SFCの難解な英文を秒速で解剖する「Syntax Method」</h2>
-        <p class="section-desc">
-          文法書を最初から解く必要はありません。A4・1枚にまとめられた英文構造の基本ルールを頭にインストールするだけで、SFCの英文が別世界のようにクリアに見えてきます。
+      <div class="sec-title-group">
+        <span class="sec-tag">Core Method</span>
+        <h2 class="sec-main-title">A4用紙1枚の文法体系「Syntax Method」</h2>
+        <p class="sec-lead">
+          何百ページもある分厚い文法書は必要ありません。節の結合ルールをA4・1枚に凝縮した究極の文法構造ルールで、英文の骨格を2ヶ月で完全掌握します。
         </p>
       </div>
 
-      <div class="syntax-box">
-        <span class="section-tag">Syntax Demonstration</span>
-        <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 16px; color: #fff;">
-          SFCの超複文が「主骨格」と「修飾枝」に完全分離
+      <div class="solution-box">
+        <span class="solution-badge">独自開発メソッド</span>
+        <h3 style="font-family: var(--font-heavy); font-size: 1.6rem; color: #111827; margin-bottom: 12px;">
+          講師自身が英検準2級から慶應英語満点・IELTS 7.0を達成した「完全な再現性」
         </h3>
-        <p style="color: #d1d5db; line-height: 1.8; margin-bottom: 24px;">
-          講師自身、英検準2級から留学・自学自習を経て、IELTS 7.0、慶應入試英語満点まで駆け上がった核心がこの手法です。
-          どんなに長い英文でも「主語＋動詞」の本質と、副詞節・形容詞節の入れ子構造を瞬時に見抜くため、返り読みなしで左から右へストレートに読解できます。
-        </p>
+        <div class="solution-grid">
+          <div>
+            <p style="color: #4b5563; line-height: 1.8; margin-bottom: 18px;">
+              「元から英語ができたわけではない」からこそ、読めない原因と解決策を完全に言語化できます。<br>
+              Syntax Methodをインストールすることで、どんなに複雑なSFCの超長文であっても「主節（骨格）」と「従属節（装飾）」が瞬時に視覚的に分離され、ネイティブと同じ左から右への高速直読直解が可能になります。
+            </p>
+            <ul style="list-style: none; display: grid; gap: 10px; font-weight: 700; color: #1f2937;">
+              <li>✓ 返り読みを完全追放し、読書速度を1分間160語ペースへ引き上げ</li>
+              <li>✓ 複雑な複文構造を瞬時に見抜き、内容一致問題を100%論理的に解答</li>
+              <li>✓ 慶應SFCの過去問で20分以上の見直し時間を残して85%〜満点を奪取</li>
+            </ul>
+          </div>
+          <div>
+            <img src="assets/instructor_2.jpg" alt="個別指導の様子" class="solution-photo">
+          </div>
+        </div>
 
-        <div class="syntax-comparison">
-          <div class="compare-col compare-bad">
-            <span class="compare-badge">一般の受験生の読み方</span>
-            <ul style="list-style: none; display: grid; gap: 10px; color: #fca5a5; font-size: 0.92rem;">
-              <li>✕ 難しい単語で止まり、前後の日本語をパズルのように組み立てる</li>
-              <li>✕ 1文読み終わった頃には、最初の主語が何だったか忘れる</li>
-              <li>✕ 制限時間2時間をフルに使っても大問2の途中で終わってしまう</li>
-            </ul>
-          </div>
-          <div class="compare-col compare-good">
-            <span class="compare-badge">Syntax Method による読解</span>
-            <ul style="list-style: none; display: grid; gap: 10px; color: #6ee7b7; font-size: 0.92rem;">
-              <li>◎ 主節のS+Vを瞬時にマーキングし、修飾節をカッコで括るように処理</li>
-              <li>◎ 未知語があっても「形容詞節の中の具体例」と判断して読み飛ばし可能</li>
-              <li>◎ 20分以上の見直し時間を残して余裕の満点・高得点を奪取</li>
-            </ul>
-          </div>
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">学習項目</th>
+                <th style="width: 35%;">従来の一般的な予備校・塾</th>
+                <th style="width: 40%;" class="highlight-col">慶應SFC英語特化塾</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>文法学習</strong></td>
+                <td>分厚い文法書を最初から解いて丸暗記（長文で使えない）</td>
+                <td class="highlight-col"><strong>A4・1枚のSyntax Methodで2ヶ月で構造完全制覇</strong></td>
+              </tr>
+              <tr>
+                <td><strong>長文読解</strong></td>
+                <td>日本語訳をパズルのように組み立てる「感覚読み」</td>
+                <td class="highlight-col"><strong>左から右へストレートに読む「論理的直読直解」</strong></td>
+              </tr>
+              <tr>
+                <td><strong>SFC過去問対策</strong></td>
+                <td>冬期講習で数年分を解説して終わり</td>
+                <td class="highlight-col"><strong>SFC過去問15年分を完全網羅＆マンツーマン口頭試問</strong></td>
+              </tr>
+              <tr>
+                <td><strong>自学自習の管理</strong></td>
+                <td>生徒の自主性に任せきり（放置）</td>
+                <td class="highlight-col"><strong>毎日の自習メニュー完全指定 × 24時間LINEサポート</strong></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Management System -->
-  <section class="section" id="system">
+  <!-- 7. Management System -->
+  <section class="content-section" id="system">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Management</span>
-        <h2 class="section-title">SFC合格まで1日も無駄にしない日次学習管理</h2>
-        <p class="section-desc">
-          武田塾型マネジメントの進化版。毎日の学習プラン完全指定＋週1個別面談＋24時間LINEサポート。
+      <div class="sec-title-group">
+        <span class="sec-tag">Management System</span>
+        <h2 class="sec-main-title">日次自習完全管理 × 24時間LINE伴走</h2>
+        <p class="sec-lead">
+          武田塾型マネジメントの進化版。「今日何を勉強すればいいか」で1分たりとも迷わせません。
         </p>
       </div>
 
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <h3 class="timeline-title">1. SFC合格から逆算した「日次自習メニュー」</h3>
-          <p class="timeline-desc">
-            どの英単語帳、構文解釈本、SFC過去問を1日何題解くべきかを日単位で細かく指定。自習の迷いを完全に排除します。
+      <div class="system-timeline">
+        <div class="system-step-box">
+          <div class="step-label">STEP 01</div>
+          <h3 class="step-title">毎日の自習メニュー完全指定</h3>
+          <p class="step-desc">
+            SFC合格から逆算し、英単語・構文・過去問の進捗を日割りで指定。生徒は迷わず100%集中できます。
           </p>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <h3 class="timeline-title">2. 週1回 60分 SFC過去問マンツーマン口頭試問</h3>
-          <p class="timeline-desc">
-            「なぜこの選択肢を選んだのか」「この第3パラグラフの論理展開を説明して」と厳密に口頭確認し、曖昧な理解を徹底排除。
+
+        <div class="system-step-box">
+          <div class="step-label">STEP 02</div>
+          <h3 class="step-title">週1回 60分 マンツーマン口頭試問</h3>
+          <p class="step-desc">
+            「なぜこの構造だと判断したか」を目の前で口頭試問。分かった気になっている箇所を徹底的に潰します。
           </p>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <h3 class="timeline-title">3. 24時間LINEでのSFC過去問質問対応</h3>
-          <p class="timeline-desc">
-            自宅で過去問を解いていて「この文構造がどうしても納得いかない」という疑問を、スマホで写真を撮って送れば24時間以内に講師が直々に解説。
+
+        <div class="system-step-box">
+          <div class="step-label">STEP 03</div>
+          <h3 class="step-title">LINEで24時間いつでも質問対応</h3>
+          <p class="step-desc">
+            自宅でSFC過去問を解いていて生じた疑問をスマホで質問可能。講師本人が24時間以内に即時回答します。
+          </p>
+        </div>
+
+        <div class="system-step-box">
+          <div class="step-label">STEP 04</div>
+          <h3 class="step-title">定期SFC実力測定テスト</h3>
+          <p class="step-desc">
+            SFC過去問演習で読解速度と得点率を定期的に数値化。確実な合格可能性を担保します。
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Capacity & Pricing -->
-  <section class="section section-alt" id="capacity">
-    <div class="container">
-      <div class="pricing-banner">
-        <div class="capacity-badge">
-          🚨 SFC特化枠は【最大10名限定】
+  <!-- 8. Pricing & Capacity -->
+  <section class="content-section content-section-gray" id="capacity">
+    <div class="container container-narrow">
+      <div class="capacity-box">
+        <div class="capacity-alert">
+          🚨 成果100%コミットのため【最大10名限定】
         </div>
-        <h2 class="price-title">慶應SFC特化コース 初期モニター募集</h2>
-        <p class="price-desc">
-          SFC過去問の全年度指導と徹底した自習管理を担保するため、定員は最大10名のみとさせていただきます。
+        <h2 style="font-family: var(--font-heavy); font-size: 2.2rem; color: #fff; margin-bottom: 12px;">
+          慶應SFC特化コース 初期モニター生募集
+        </h2>
+        <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.7; max-width: 620px; margin: 0 auto;">
+          講師が全生徒の自学自習とSFC過去問答案を完全に把握するため、定員は最大10名限定とさせていただきます。
         </p>
 
-        <div style="margin: 28px 0;">
-          <div style="font-size: 0.95rem; color: #9ca3af; margin-bottom: 4px;">初期限定モニター受講料</div>
-          <span class="price-amount">¥10,000〜20,000</span>
-          <span class="price-unit">/ 月（税込）</span>
-          <div style="font-size: 0.82rem; color: #38bdf8; margin-top: 8px;">
-            ※定員締切後は公式LINEでの空き枠優先案内となります。
-          </div>
+        <div class="price-main-num">
+          ¥10,000〜20,000
+          <span style="font-size: 1.1rem; color: #cbd5e1; font-weight: 500;">/ 月（税込）</span>
         </div>
+        <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 28px;">
+          ※初期実績作りの特別モニター受講料です（通常定価: 月額50,000円〜100,000円）。定員に達し次第終了します。
+        </p>
 
-        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-          <button class="btn btn-primary js-open-modal" data-campus="慶應SFC特化コース">
-            SFC無料体験授業・個別相談に申し込む
+        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+          <button class="hero-btn-red js-open-modal" data-campus="慶應SFC">
+            SFC無料受験相談・体験授業に申し込む
           </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- 9. FAQ -->
+  <section class="content-section" id="faq">
+    <div class="container container-narrow">
+      <div class="sec-title-group">
+        <span class="sec-tag">FAQ</span>
+        <h2 class="sec-main-title">よくあるご質問</h2>
+      </div>
+
+      <div class="faq-box">
+        <div class="faq-q">
+          <span>英語の偏差値が現在50前後ですが、1年でSFCに受かりますか？</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          十分可能です。講師自身も元々は英検準2級からスタートしました。大切なのは才能ではなく「A4・1枚の構文設計（Syntax Method）」と「毎日の自学自習の徹底継続」です。1日12〜15時間の学習時間を確保し、指定された計画をやり切れば、夏休み明けには合格圏に到達できます。
+        </div>
+      </div>
+
+      <div class="faq-box">
+        <div class="faq-q">
+          <span>慶應SFCの小論文対策も相談できますか？</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          当塾は英語特化の指導塾ですが、SFC入試における小論文との時間配分や学習バランス、合格戦略についてのアドバイスも面談内で実施可能です。英語で8.5割〜満点を取ることで、小論文のプレッシャーを大幅に減らすことができます。
+        </div>
+      </div>
+
+      <div class="faq-box">
+        <div class="faq-q">
+          <span>無料体験相談では何をしますか？無理な勧誘はありますか？</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          現在の学力、SFC過去問の得点状況、日々の自習習慣をヒアリング（壁打ち）し、SFC合格への年間ロードマップを提示します。無理な勧誘は一切ございません。生徒・保護者様とお互いに「これなら1年でSFCに受かる」と確信できた場合のみご入塾いただきます。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Bottom CTA -->
+  <section class="bottom-cta-sec">
+    <div class="container container-narrow">
+      <h2 style="font-family: var(--font-heavy); font-size: clamp(2rem, 4vw, 2.8rem); color: #fff; margin-bottom: 16px;">
+        慶應SFC合格への第一歩を、今すぐ。
+      </h2>
+      <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 32px; line-height: 1.8;">
+        1,000語超の長文をスラスラ読める快感を、まずは無料体験授業で実感してください。<br>
+        定員10名に達し次第、募集を締め切ります。
+      </p>
+      <button class="hero-btn-red js-open-modal" style="font-size: 1.25rem; padding: 18px 40px;" data-campus="慶應SFC">
+        🔥 無料受験相談・体験授業に申し込む
+      </button>
+    </div>
+  </section>
+
+  <!-- 11. Footer -->
+  <footer class="site-footer">
     <div class="container">
-      <p style="margin-bottom: 8px;">© 2026 Syntax English SFC Course. All Rights Reserved.</p>
-      <p>岡本直樹 個人プロジェクト ｜ 慶應SFC英語特化 完全個別指導</p>
+      <p style="margin-bottom: 6px;">© 2026 慶應SFC英語特化塾. All Rights Reserved.</p>
+      <p style="font-size: 0.8rem; color: #6b7280;">日本初！授業をしない慶應SFC英語特化塾 ｜ 完全個別指導</p>
     </div>
   </footer>
 
@@ -266,16 +348,16 @@
   <div class="modal-overlay" id="consultationModal">
     <div class="modal-content">
       <button class="modal-close" aria-label="閉じる">×</button>
-      <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 8px; color: #fff;">
-        慶應SFC特化 無料体験・個別相談
+      <h3 style="font-family: var(--font-heavy); font-size: 1.4rem; margin-bottom: 8px; color: #111827;">
+        慶應SFC特化 無料受験相談・体験授業
       </h3>
-      <p style="font-size: 0.88rem; color: #9ca3af; margin-bottom: 24px;">
-        SFC合格に向けた現状診断と個別ロードマップを作成します。
+      <p style="font-size: 0.88rem; color: #6b7280; margin-bottom: 20px;">
+        SFC合格に向けた現状診断と専用合格ロードマップを提示します。
       </p>
       <form id="consultForm">
         <div class="form-group">
-          <label class="form-label">志望大学・対象コース</label>
-          <input type="text" name="targetCampus" class="form-control" value="慶應SFC特化コース" readonly>
+          <label class="form-label">対象コース</label>
+          <input type="text" name="targetCampus" class="form-control" value="慶應SFCのための英語塾" readonly style="background: #f1f5f9; font-weight: 700;">
         </div>
         <div class="form-group">
           <label class="form-label">お名前</label>
@@ -283,7 +365,7 @@
         </div>
         <div class="form-group">
           <label class="form-label">学年 / 身分</label>
-          <select name="grade" class="form-control" required style="background: #111827; color: #fff;">
+          <select name="grade" class="form-control" required>
             <option value="高校3年生">高校3年生</option>
             <option value="既卒・浪人生">既卒・浪人生</option>
             <option value="高校2年生">高校2年生</option>
@@ -295,11 +377,11 @@
           <input type="email" name="email" class="form-control" placeholder="example@gmail.com" required>
         </div>
         <div class="form-group">
-          <label class="form-label">現在の英語偏差値・SFC志望学部（総合政策/環境情報）</label>
-          <textarea name="notes" class="form-control" rows="3" placeholder="総合政策志望、偏差値55。SFCの過去問を解いたが時間が全く足りない等"></textarea>
+          <label class="form-label">志望学部（総合政策 / 環境情報）・現在の偏差値</label>
+          <textarea name="notes" class="form-control" rows="3" placeholder="総合政策志望、偏差値53。SFCの長文で時間が全く足りない等"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%;">
-          SFC無料個別相談を申し込む
+        <button type="submit" class="hero-btn-red" style="width: 100%; border: none;">
+          無料受験相談に申し込む
         </button>
       </form>
     </div>
