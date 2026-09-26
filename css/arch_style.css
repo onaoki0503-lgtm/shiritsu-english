@@ -308,7 +308,7 @@ header .inner {
 }
 
 .kv_text_area {
-  max-width: 640px;
+  max-width: 720px;
   width: 100%;
   z-index: 2;
 }
@@ -337,9 +337,9 @@ header .inner {
 }
 
 .copy_kv {
-  font-size: clamp(2.8rem, 5.2vw, 4.6rem);
+  font-size: clamp(1.8rem, 4.0vw, 3.8rem);
   font-weight: 900;
-  line-height: 1.15;
+  line-height: 1.25;
   letter-spacing: -0.02em;
   color: var(--color-black);
   margin-bottom: 24px;
@@ -347,15 +347,19 @@ header .inner {
 
 .copy_kv span.highlight_text {
   display: inline-block;
-  background: linear-gradient(transparent 60%, var(--color-accent) 60%);
+  white-space: nowrap;
+  background: linear-gradient(transparent 65%, var(--color-accent) 65%);
   padding: 0 4px;
 }
 
 .copy_kv span.sub_block {
   display: block;
-  font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+  font-size: clamp(1.15rem, 2.2vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1.4;
   color: #2b2b2b;
-  margin-top: 6px;
+  margin-top: 14px;
+  letter-spacing: -0.01em;
 }
 
 .lead_kv {
