@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
 
       setTimeout(() => {
-        alert('【無料受験相談・体験授業の予約を受け付けました】\n\nご入力いただいたメールアドレスへ、24時間以内に担当講師（岡本直樹）より個別面談日程のご案内をお送りいたします。');
+        alert('【無料受験相談・体験授業の予約を受け付けました】\n\nご入力いただいたメールアドレスへ、24時間以内に担当講師（堀安泰世）より個別面談日程のご案内をお送りいたします。');
         submitBtn.innerText = originalText;
         submitBtn.disabled = false;
         form.reset();

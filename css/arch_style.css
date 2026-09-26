@@ -113,32 +113,38 @@ header {
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 28px 0;
+  padding: 22px 0;
   transition: var(--transition-smooth);
 }
 
 header .inner {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 24px;
+}
+
+.header_logo {
+  flex-shrink: 0;
 }
 
 .header_logo a {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--font-en);
   font-weight: 800;
-  font-size: 1.45rem;
-  letter-spacing: -0.02em;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
   color: var(--color-black);
+  white-space: nowrap;
 }
 
 .logo_tag {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   background: var(--color-dark);
@@ -151,46 +157,42 @@ header .inner {
 .nav_global {
   display: flex;
   align-items: center;
-  gap: 36px;
+  margin-left: auto;
+  margin-right: 28px;
 }
 
 .nav_global ul {
   display: flex;
   list-style: none;
-  gap: 32px;
+  gap: 22px;
+  align-items: center;
 }
 
 .nav_global li a {
   font-family: var(--font-en);
-  font-size: 0.92rem;
+  font-size: 0.84rem;
   font-weight: 600;
-  color: var(--color-black);
-  letter-spacing: 0.02em;
-  display: flex;
-  flex-direction: column;
+  color: #333333;
+  letter-spacing: 0.04em;
+  display: inline-block;
   position: relative;
-}
-
-.nav_global li a strong {
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-
-.nav_global li a span.jp {
-  font-size: 0.7rem;
-  color: var(--color-text-muted);
-  font-weight: 400;
+  padding: 6px 2px;
+  white-space: nowrap;
 }
 
 .nav_global li a::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: 0;
   left: 0;
   width: 0;
-  height: 2px;
+  height: 1.5px;
   background: var(--color-black);
   transition: width 0.3s ease;
+}
+
+.nav_global li a:hover {
+  color: var(--color-black);
 }
 
 .nav_global li a:hover::after {
@@ -200,7 +202,8 @@ header .inner {
 .header_cv_group {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .btn_cv {
@@ -208,11 +211,12 @@ header .inner {
   align-items: center;
   justify-content: center;
   font-family: var(--font-en);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  padding: 12px 24px;
+  letter-spacing: 0.06em;
+  padding: 9px 18px;
   border-radius: 9999px;
+  white-space: nowrap;
   transition: var(--transition-smooth);
 }
 
