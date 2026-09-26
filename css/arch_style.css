@@ -135,9 +135,9 @@ header .inner {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-en);
-  font-weight: 800;
-  font-size: 1.2rem;
+  font-family: var(--font-base);
+  font-weight: 900;
+  font-size: 1.25rem;
   letter-spacing: -0.01em;
   color: var(--color-black);
   white-space: nowrap;
@@ -873,7 +873,7 @@ header .inner {
 }
 
 /* --------------------------------------------------------------------------
-   Method Section (Syntax Method)
+   Method Section (構文設計メソッド)
    -------------------------------------------------------------------------- */
 .method_flex_box {
   background: var(--color-white);
