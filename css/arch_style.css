@@ -284,14 +284,15 @@ header .inner {
   padding-top: 130px;
   padding-bottom: 80px;
   background-image: 
-    linear-gradient(90deg, 
-      rgba(255, 255, 255, 0.98) 0%, 
-      rgba(255, 255, 255, 0.93) 40%, 
-      rgba(255, 255, 255, 0.58) 68%, 
-      rgba(255, 255, 255, 0.22) 100%),
+    linear-gradient(to right, 
+      rgba(255, 255, 255, 0) 0%, 
+      rgba(255, 255, 255, 0) 32%, 
+      rgba(255, 255, 255, 0.60) 52%, 
+      rgba(255, 255, 255, 0.92) 70%, 
+      rgba(255, 255, 255, 0.98) 100%),
     url('../assets/hero_study_bg.jpg');
   background-size: cover;
-  background-position: right center;
+  background-position: left center;
   background-repeat: no-repeat;
   overflow: hidden;
 }
@@ -301,14 +302,15 @@ header .inner {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 32px;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
-  gap: 48px;
   position: relative;
 }
 
 .kv_text_area {
+  max-width: 640px;
+  width: 100%;
   z-index: 2;
 }
 
@@ -1557,26 +1559,20 @@ footer .inner {
   .top_view {
     background-image: 
       linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.96) 0%, 
-        rgba(255, 255, 255, 0.88) 40%, 
-        rgba(255, 255, 255, 0.65) 100%),
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.45) 32%, 
+        rgba(255, 255, 255, 0.94) 58%, 
+        rgba(255, 255, 255, 0.98) 100%),
       url('../assets/hero_study_bg.jpg');
-    background-position: 70% 30%;
-    padding-top: 110px;
+    background-position: 18% top;
+    padding-top: 180px;
     padding-bottom: 70px;
   }
   .kv_inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    justify-content: center;
   }
-  .kv_visual_box {
-    justify-content: flex-start;
-  }
-  .kv_glass_card {
+  .kv_text_area {
     max-width: 100%;
-  }
-  .kv_image_card {
-    max-width: 380px;
   }
   .grid_cards_3 {
     grid-template-columns: 1fr;
@@ -1607,27 +1603,14 @@ footer .inner {
   .top_view {
     background-image: 
       linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.96) 0%, 
-        rgba(255, 255, 255, 0.92) 55%, 
-        rgba(255, 255, 255, 0.85) 100%),
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.50) 35%, 
+        rgba(255, 255, 255, 0.96) 55%, 
+        rgba(255, 255, 255, 0.98) 100%),
       url('../assets/hero_study_bg.jpg');
-    background-position: 65% center;
-    padding-top: 100px;
+    background-position: 22% top;
+    padding-top: 170px;
     padding-bottom: 50px;
-  }
-  .kv_glass_card {
-    padding: 20px;
-  }
-  .glass_mentor_row {
-    gap: 12px;
-  }
-  .glass_avatar_wrap {
-    width: 56px;
-    height: 56px;
-  }
-  .glass_spec_grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
   }
   .nav_global {
     display: none;
