@@ -3,21 +3,21 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. FAQ Accordion
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
+  // 1. FAQ Accordion (.faq-box & .faq-item)
+  const faqBoxes = document.querySelectorAll('.faq-box, .faq-item');
+  faqBoxes.forEach(item => {
+    const question = item.querySelector('.faq-q, .faq-question');
     if (question) {
       question.addEventListener('click', () => {
         const isOpen = item.classList.contains('open');
-        faqItems.forEach(other => {
+        faqBoxes.forEach(other => {
           other.classList.remove('open');
-          const ans = other.querySelector('.faq-answer');
+          const ans = other.querySelector('.faq-a, .faq-answer');
           if (ans) ans.style.maxHeight = null;
         });
         if (!isOpen) {
           item.classList.add('open');
-          const answer = item.querySelector('.faq-answer');
+          const answer = item.querySelector('.faq-a, .faq-answer');
           if (answer) {
             answer.style.maxHeight = answer.scrollHeight + 40 + 'px';
           }
@@ -56,11 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 3. Form Submit Handling (Mock with graceful feedback)
-  const consultForm = document.getElementById('consultForm');
-  if (consultForm) {
-    consultForm.addEventListener('submit', (e) => {
+  const handleFormSubmit = (form) => {
+    if (!form) return;
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const submitBtn = consultForm.querySelector('button[type="submit"]');
+      const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerText;
       submitBtn.innerText = '送信中...';
       submitBtn.disabled = true;
@@ -69,11 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('【無料体験・個別相談のご予約を受け付けました】\n\nご入力いただいた連絡先へ、24時間以内に担当講師より個別面談日程のご案内をお送りいたします。');
         submitBtn.innerText = originalText;
         submitBtn.disabled = false;
-        consultForm.reset();
+        form.reset();
         if (modal) modal.style.display = 'none';
       }, 800);
     });
-  }
+  };
+
+  handleFormSubmit(document.getElementById('consultForm'));
+  handleFormSubmit(document.getElementById('inlineConsultForm'));
 
   // 4. Smooth Anchor Scrolling
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
