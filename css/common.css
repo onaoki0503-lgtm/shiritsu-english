@@ -1,27 +1,26 @@
 /* ==========================================================================
    Syntax English - 武田塾スタイル 王道予備校UI (common.css)
-   【字体・タイポグラフィ完全再現版】
+   【武田塾 完全一致・極太新ゴシック版】
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=M+PLUS+1:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Yuji+Boku&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@800;900&family=Noto+Sans+JP:wght@700;900&family=Yuji+Boku&display=swap');
 
 :root {
-  /* フォント定義（武田塾完全準拠） */
-  --font-hero-impact: 'Dela Gothic One', 'M PLUS 1', 'Noto Sans JP', sans-serif; /* 「一冊を完璧に。」に相当する超極太平体フォント */
-  --font-logo-brush: 'Yuji Boku', serif;                                         /* 武田塾ロゴの筆文字・風格フォント */
-  --font-heavy: 'M PLUS 1', 'Noto Sans JP', sans-serif;                          /* 見出し・バナー用極太ゴシック */
-  --font-sans: 'Noto Sans JP', sans-serif;                                       /* 本文用ゴシック */
+  /* 武田塾「一冊を完璧に。」完全再現：正統派・超極太モダン角ゴシック */
+  --font-impact: 'Noto Sans JP', 'M PLUS 1', -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  --font-logo-brush: 'Yuji Boku', serif;
+  --font-heavy: 'M PLUS 1', 'Noto Sans JP', sans-serif;
+  --font-sans: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --c-red: #c8161d;
-  --c-red-dark: #990f14;
-  --c-navy: #162447;
-  --c-yellow: #fff200;
-  --c-dark-nav: #1c1d1f;
+  --c-red: #ba131a;
+  --c-red-bright: #d9141d;
+  --c-navy: #182344;
+  --c-yellow: #fff000;
+  --c-dark-nav: #16171a;
 
   --bg-page: #f8fafc;
   --text-main: #1f2937;
   --text-muted: #4b5563;
-  --text-light: #9ca3af;
   --border-color: #e5e7eb;
 
   --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -29,11 +28,11 @@
   --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.16);
 
   --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
   --radius-full: 9999px;
 
-  --transition: all 0.25s ease;
+  --transition: all 0.2s ease;
 }
 
 *, *::before, *::after {
@@ -70,21 +69,23 @@ img {
 
 .container {
   width: 100%;
-  max-width: 1160px;
+  max-width: 1180px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .container-narrow {
   max-width: 860px;
 }
 
-/* 1. Header (White Top Bar) */
+/* --------------------------------------------------------------------------
+   1. Site Header (武田塾 白背景トップバー)
+   -------------------------------------------------------------------------- */
 .site-header {
   background: #ffffff;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid #e5e7eb;
   padding: 12px 0;
   position: relative;
   z-index: 50;
@@ -99,15 +100,15 @@ img {
 .header-brand {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
 }
 
 .header-catch {
   font-family: var(--font-heavy);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 900;
-  color: #333333;
-  letter-spacing: 0.05em;
+  color: #111827;
+  letter-spacing: 0.04em;
 }
 
 .header-logo-group {
@@ -118,12 +119,10 @@ img {
 
 .header-logo-title {
   font-family: var(--font-logo-brush);
-  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 900;
   color: #111827;
   letter-spacing: 0.02em;
-  display: flex;
-  align-items: center;
   line-height: 1.15;
 }
 
@@ -142,7 +141,7 @@ img {
   text-align: center;
   border-radius: var(--radius-sm);
   transform: rotate(-6deg);
-  box-shadow: 0 1px 4px rgba(200, 22, 29, 0.2);
+  box-shadow: 0 1px 4px rgba(186, 19, 26, 0.2);
 }
 
 .header-cta-group {
@@ -152,53 +151,57 @@ img {
 }
 
 .btn-header-red {
-  background: linear-gradient(180deg, #d31820 0%, #b01016 100%);
+  background: linear-gradient(180deg, #c7161e 0%, #9e0f15 100%);
   color: #ffffff;
   font-family: var(--font-heavy);
   font-weight: 900;
   font-size: 1rem;
-  padding: 10px 24px;
+  padding: 11px 26px;
   border-radius: var(--radius-sm);
-  box-shadow: 0 3px 8px rgba(176, 16, 22, 0.35);
+  box-shadow: 0 3px 8px rgba(158, 15, 21, 0.35);
   border: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   transition: var(--transition);
+  letter-spacing: 0.03em;
 }
 
 .btn-header-red:hover {
   transform: translateY(-1px);
-  box-shadow: 0 5px 12px rgba(176, 16, 22, 0.45);
+  box-shadow: 0 5px 14px rgba(158, 15, 21, 0.45);
 }
 
 .btn-header-navy {
-  background: linear-gradient(180deg, #253358 0%, #151f38 100%);
+  background: linear-gradient(180deg, #243054 0%, #151d36 100%);
   color: #ffffff;
   font-family: var(--font-heavy);
   font-weight: 900;
   font-size: 1rem;
-  padding: 10px 24px;
+  padding: 11px 26px;
   border-radius: var(--radius-sm);
-  box-shadow: 0 3px 8px rgba(21, 31, 56, 0.35);
+  box-shadow: 0 3px 8px rgba(21, 29, 54, 0.35);
   border: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   transition: var(--transition);
+  letter-spacing: 0.03em;
 }
 
 .btn-header-navy:hover {
   transform: translateY(-1px);
-  box-shadow: 0 5px 12px rgba(21, 31, 56, 0.45);
+  box-shadow: 0 5px 14px rgba(21, 29, 54, 0.45);
 }
 
-/* 2. Global Dark Nav Bar */
+/* --------------------------------------------------------------------------
+   2. Global Dark Nav Bar (武田塾 黒ナビバー)
+   -------------------------------------------------------------------------- */
 .global-nav {
   background: var(--c-dark-nav);
-  border-top: 1px solid #2a2c30;
+  border-top: 1px solid #282a30;
   border-bottom: 2px solid #000000;
   position: sticky;
   top: 0;
@@ -224,10 +227,10 @@ img {
 
 .nav-menu-link {
   display: block;
-  padding: 14px 10px;
+  padding: 13px 8px;
   color: #ffffff;
   font-family: var(--font-heavy);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 900;
   letter-spacing: 0.02em;
   transition: var(--transition);
@@ -238,7 +241,9 @@ img {
   color: var(--c-yellow);
 }
 
-/* 3. Hero Section (武田塾スタイル・大迫力メインバナー) */
+/* --------------------------------------------------------------------------
+   3. Hero Section (武田塾「一冊を完璧に。」完全再現バナー)
+   -------------------------------------------------------------------------- */
 .hero-takeda {
   background: var(--theme-banner-bg, linear-gradient(135deg, #005696 0%, #0077c8 100%));
   position: relative;
@@ -249,109 +254,39 @@ img {
 
 .hero-takeda-inner {
   display: grid;
-  grid-template-columns: 1.25fr 0.95fr;
+  grid-template-columns: 1.35fr 1fr;
   align-items: center;
-  min-height: 500px;
-  padding: 40px 0 0;
+  min-height: 480px;
   position: relative;
+  padding-top: 24px;
 }
 
-.hero-text-block {
-  padding-right: 20px;
+/* ★ 左側：特大白文字「一冊を完璧に。」と同等の完全再現見出し ★ */
+.hero-title-area {
   z-index: 2;
-  margin-bottom: 40px;
+  padding-right: 10px;
 }
 
-.hero-tags {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.hero-tag {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 6px 14px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-heavy);
+.hero-impact-title {
+  font-family: var(--font-impact);
+  font-size: clamp(3.4rem, 6.8vw, 5.8rem);
   font-weight: 900;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-}
-
-/* ★「一冊を完璧に。」と同等の圧倒的フォント「Dela Gothic One」★ */
-.hero-main-title {
-  font-family: var(--font-hero-impact);
-  font-size: clamp(2.8rem, 6.2vw, 4.8rem);
-  font-weight: 400; /* Dela Gothic One は元々超極太 */
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1.08;
+  letter-spacing: -0.04em; /* ギュッと詰まったタイトな文字間 */
   color: #ffffff;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55),
-               0 2px 4px rgba(0, 0, 0, 0.4);
-  margin-bottom: 24px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  margin: 0;
   word-break: keep-all;
-}
-
-.hero-sub-catch {
-  font-family: var(--font-heavy);
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  font-weight: 800;
-  line-height: 1.65;
-  margin-bottom: 28px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  color: #f3f4f6;
-}
-
-.hero-action-btns {
   display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
-.hero-btn-red {
-  background: linear-gradient(180deg, #e51d26 0%, #ba1017 100%);
-  color: #fff;
-  font-family: var(--font-heavy);
-  font-size: 1.15rem;
-  font-weight: 900;
-  padding: 15px 34px;
-  border-radius: var(--radius-md);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  border: 2px solid #ffffff;
-  cursor: pointer;
-  transition: var(--transition);
-  letter-spacing: 0.03em;
+.hero-impact-title span {
+  display: block;
 }
 
-.hero-btn-red:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-}
-
-.hero-btn-line {
-  background: #06c755;
-  color: #fff;
-  font-family: var(--font-heavy);
-  font-size: 1.15rem;
-  font-weight: 900;
-  padding: 15px 30px;
-  border-radius: var(--radius-md);
-  box-shadow: 0 4px 16px rgba(6, 199, 85, 0.4);
-  border: 2px solid #ffffff;
-  cursor: pointer;
-  transition: var(--transition);
-  letter-spacing: 0.03em;
-}
-
-.hero-btn-line:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(6, 199, 85, 0.55);
-}
-
-/* Hero Right: Photo & Vertical Catch */
-.hero-visual-block {
+/* ★ 右側：人物写真 ＆ 右端の縦書き黄色キャッチ ★ */
+.hero-photo-area {
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -360,47 +295,48 @@ img {
   z-index: 1;
 }
 
-.hero-person-photo {
-  max-height: 490px;
+.hero-instructor-img {
+  max-height: 460px;
   width: auto;
   object-fit: cover;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
-  box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.35);
   display: block;
-  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.4));
 }
 
-/* ★武田塾の「志望校に行きたきゃ自学自習が最強じゃん」の縦書きキャッチ★ */
-.hero-vertical-catch {
+/* ★ 武田塾「志望校に行きたきゃ自学自習が最強じゃん」完全一致の縦書き ★ */
+.hero-vertical-slogan {
   position: absolute;
-  right: -10px;
-  top: 24px;
+  right: -14px;
+  top: 14px;
   writing-mode: vertical-rl;
-  font-family: var(--font-hero-impact);
-  font-size: clamp(1.3rem, 2.5vw, 1.85rem);
-  font-weight: 400;
-  letter-spacing: 0.12em;
+  font-family: var(--font-impact);
+  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+  font-weight: 900;
+  letter-spacing: 0.14em;
   color: var(--c-yellow);
-  text-shadow: 3px 3px 0px #000, -3px -3px 0px #000,
-               3px -3px 0px #000, -3px 3px 0px #000,
-               0 4px 10px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 0px #000, -2px -2px 0px #000,
+               2px -2px 0px #000, -2px 2px 0px #000,
+               0 4px 10px rgba(0, 0, 0, 0.85);
   white-space: nowrap;
   pointer-events: none;
   z-index: 5;
 }
 
-/* 4. Bottom Ribbon Banner (武田塾風 帯) */
+/* --------------------------------------------------------------------------
+   4. Bottom Ribbon Banner (武田塾 濃紺・帯テキスト)
+   -------------------------------------------------------------------------- */
 .hero-bottom-ribbon {
   background: var(--theme-ribbon-bg, #0b1c3d);
-  padding: 16px 0;
+  padding: 15px 0;
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 3px solid #111;
+  border-bottom: 3px solid #000000;
 }
 
 .ribbon-text {
-  font-family: var(--font-heavy);
-  font-size: clamp(1rem, 2.1vw, 1.3rem);
+  font-family: var(--font-impact);
+  font-size: clamp(0.98rem, 2.1vw, 1.3rem);
   font-weight: 900;
   color: #ffffff;
   letter-spacing: 0.04em;
@@ -412,7 +348,72 @@ img {
   text-underline-offset: 4px;
 }
 
-/* 5. Content Sections (White & Light Gray) */
+/* --------------------------------------------------------------------------
+   5. Action CTA Bar (バナー直下のアクションバー)
+   -------------------------------------------------------------------------- */
+.action-cta-bar {
+  background: #ffffff;
+  padding: 24px 0;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.action-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.action-cta-lead {
+  font-family: var(--font-impact);
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #111827;
+}
+
+.action-btn-red {
+  background: linear-gradient(180deg, #d9141d 0%, #aa0d14 100%);
+  color: #ffffff;
+  font-family: var(--font-impact);
+  font-size: 1.15rem;
+  font-weight: 900;
+  padding: 14px 34px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 14px rgba(170, 13, 20, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.action-btn-red:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(170, 13, 20, 0.5);
+}
+
+.action-btn-line {
+  background: #06c755;
+  color: #ffffff;
+  font-family: var(--font-impact);
+  font-size: 1.15rem;
+  font-weight: 900;
+  padding: 14px 30px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 14px rgba(6, 199, 85, 0.35);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.action-btn-line:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(6, 199, 85, 0.45);
+}
+
+/* --------------------------------------------------------------------------
+   6. Content Sections & Cards
+   -------------------------------------------------------------------------- */
 .content-section {
   padding: 70px 0;
   background: #ffffff;
@@ -424,14 +425,14 @@ img {
 
 .sec-title-group {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 48px;
 }
 
 .sec-tag {
-  font-family: var(--font-heavy);
-  font-size: 0.88rem;
+  font-family: var(--font-impact);
+  font-size: 0.9rem;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--c-red);
   text-transform: uppercase;
   margin-bottom: 8px;
@@ -439,12 +440,12 @@ img {
 }
 
 .sec-main-title {
-  font-family: var(--font-hero-impact);
-  font-size: clamp(1.8rem, 3.4vw, 2.5rem);
-  font-weight: 400;
+  font-family: var(--font-impact);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 900;
   color: #111827;
   line-height: 1.35;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .sec-lead {
@@ -457,7 +458,6 @@ img {
   line-height: 1.75;
 }
 
-/* 6. Feature & Reason Cards */
 .cards-grid-3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -468,7 +468,7 @@ img {
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-top: 5px solid var(--theme-color-primary, #005696);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   padding: 30px 24px;
   box-shadow: var(--shadow-sm);
   display: flex;
@@ -476,16 +476,16 @@ img {
 }
 
 .takeda-card-number {
-  font-family: var(--font-hero-impact);
+  font-family: var(--font-impact);
   font-size: 1.8rem;
-  font-weight: 400;
+  font-weight: 900;
   color: var(--theme-color-primary, #005696);
   line-height: 1;
   margin-bottom: 12px;
 }
 
 .takeda-card-title {
-  font-family: var(--font-heavy);
+  font-family: var(--font-impact);
   font-size: 1.25rem;
   font-weight: 900;
   color: #111827;
@@ -499,11 +499,11 @@ img {
   line-height: 1.75;
 }
 
-/* 7. Special Solution Box (Syntax Method) */
+/* Solution Box */
 .solution-box {
   background: #ffffff;
   border: 2px solid var(--theme-color-primary, #005696);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   padding: 40px;
   box-shadow: var(--shadow-md);
   margin-top: 40px;
@@ -512,14 +512,14 @@ img {
 .solution-badge {
   background: var(--theme-color-primary, #005696);
   color: #ffffff;
-  font-family: var(--font-heavy);
-  font-size: 0.88rem;
+  font-family: var(--font-impact);
+  font-size: 0.9rem;
   font-weight: 900;
   padding: 5px 16px;
   border-radius: var(--radius-sm);
   display: inline-block;
   margin-bottom: 14px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 
 .solution-grid {
@@ -532,50 +532,13 @@ img {
 
 .solution-photo {
   width: 100%;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
   object-fit: cover;
   max-height: 320px;
 }
 
-/* 8. Comparison Table */
-.comparison-table-wrap {
-  margin-top: 36px;
-  overflow-x: auto;
-}
-
-.comparison-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-.comparison-table th, .comparison-table td {
-  padding: 16px 20px;
-  border: 1px solid #e2e8f0;
-}
-
-.comparison-table th {
-  background: #1e293b;
-  color: #ffffff;
-  font-family: var(--font-heavy);
-  font-weight: 900;
-  font-size: 0.95rem;
-}
-
-.comparison-table td {
-  background: #ffffff;
-  font-size: 0.92rem;
-}
-
-.comparison-table .highlight-col {
-  background: #f0f9ff;
-  border-left: 2px solid var(--theme-color-primary, #005696);
-  border-right: 2px solid var(--theme-color-primary, #005696);
-  font-weight: 700;
-}
-
-/* 9. Management System */
+/* System Steps */
 .system-timeline {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -586,23 +549,22 @@ img {
 .system-step-box {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   padding: 24px;
   position: relative;
   box-shadow: var(--shadow-sm);
 }
 
 .step-label {
-  font-family: var(--font-hero-impact);
+  font-family: var(--font-impact);
   font-size: 0.9rem;
-  font-weight: 400;
+  font-weight: 900;
   color: var(--c-red);
   margin-bottom: 8px;
-  letter-spacing: 0.05em;
 }
 
 .step-title {
-  font-family: var(--font-heavy);
+  font-family: var(--font-impact);
   font-size: 1.15rem;
   font-weight: 900;
   color: #111827;
@@ -615,11 +577,11 @@ img {
   line-height: 1.7;
 }
 
-/* 10. Pricing & Capacity Banner */
+/* Capacity Banner */
 .capacity-box {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   color: #ffffff;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   padding: 48px 32px;
   text-align: center;
   box-shadow: var(--shadow-lg);
@@ -629,7 +591,7 @@ img {
 .capacity-alert {
   background: var(--c-red);
   color: #ffffff;
-  font-family: var(--font-heavy);
+  font-family: var(--font-impact);
   font-size: 1rem;
   font-weight: 900;
   padding: 8px 24px;
@@ -640,27 +602,27 @@ img {
 }
 
 .price-main-num {
-  font-family: var(--font-hero-impact);
+  font-family: var(--font-impact);
   font-size: clamp(2.8rem, 6.5vw, 4.2rem);
-  font-weight: 400;
+  font-weight: 900;
   color: var(--c-yellow);
   line-height: 1.1;
   margin: 16px 0;
   letter-spacing: -0.02em;
 }
 
-/* 11. FAQ */
+/* FAQ */
 .faq-box {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   margin-bottom: 14px;
   overflow: hidden;
 }
 
 .faq-q {
   padding: 18px 24px;
-  font-family: var(--font-heavy);
+  font-family: var(--font-impact);
   font-weight: 900;
   font-size: 1.05rem;
   cursor: pointer;
@@ -699,7 +661,7 @@ img {
   transform: rotate(45deg);
 }
 
-/* 12. Bottom CTA & Footer */
+/* Bottom CTA & Footer */
 .bottom-cta-sec {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: #ffffff;
@@ -733,7 +695,7 @@ img {
 .modal-content {
   background: #ffffff;
   color: #111827;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   max-width: 500px;
   width: 100%;
   padding: 32px 24px;
@@ -758,9 +720,9 @@ img {
 
 .form-label {
   display: block;
-  font-family: var(--font-heavy);
+  font-family: var(--font-impact);
   font-size: 0.88rem;
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 6px;
   color: #374151;
 }
@@ -784,25 +746,27 @@ img {
   .hero-takeda-inner {
     grid-template-columns: 1fr;
     min-height: auto;
-    padding-top: 30px;
+    padding-top: 24px;
   }
-  .hero-text-block {
+  .hero-title-area {
     padding-right: 0;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    text-align: center;
   }
-  .hero-visual-block {
+  .hero-impact-title {
+    font-size: clamp(2.8rem, 11vw, 4.4rem);
+    align-items: center;
+  }
+  .hero-photo-area {
     max-height: 380px;
   }
-  .hero-person-photo {
+  .hero-instructor-img {
     max-height: 360px;
   }
-  .hero-vertical-catch {
-    right: 10px;
-    top: 10px;
-    font-size: 1.3rem;
-  }
-  .solution-grid {
-    grid-template-columns: 1fr;
+  .hero-vertical-slogan {
+    right: 8px;
+    top: 8px;
+    font-size: 1.25rem;
   }
   .global-nav {
     overflow-x: auto;
@@ -813,5 +777,8 @@ img {
   }
   .header-catch {
     display: none;
+  }
+  .action-cta-inner {
+    flex-direction: column;
   }
 }
