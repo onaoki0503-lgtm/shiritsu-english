@@ -1,14 +1,16 @@
 /* ==========================================================================
    Syntax English - 武田塾スタイル 王道予備校UI (common.css)
+   【字体・タイポグラフィ完全再現版】
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=Shippori+Mincho:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=M+PLUS+1:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Yuji+Boku&display=swap');
 
 :root {
-  --font-heavy: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
-  --font-sans: 'Noto Sans JP', sans-serif;
-  --font-serif: 'Shippori Mincho', serif;
-  --font-en: 'Plus Jakarta Sans', sans-serif;
+  /* フォント定義（武田塾完全準拠） */
+  --font-hero-impact: 'Dela Gothic One', 'M PLUS 1', 'Noto Sans JP', sans-serif; /* 「一冊を完璧に。」に相当する超極太平体フォント */
+  --font-logo-brush: 'Yuji Boku', serif;                                         /* 武田塾ロゴの筆文字・風格フォント */
+  --font-heavy: 'M PLUS 1', 'Noto Sans JP', sans-serif;                          /* 見出し・バナー用極太ゴシック */
+  --font-sans: 'Noto Sans JP', sans-serif;                                       /* 本文用ゴシック */
 
   --c-red: #c8161d;
   --c-red-dark: #990f14;
@@ -68,7 +70,7 @@ img {
 
 .container {
   width: 100%;
-  max-width: 1140px;
+  max-width: 1160px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 16px;
@@ -76,14 +78,14 @@ img {
 }
 
 .container-narrow {
-  max-width: 840px;
+  max-width: 860px;
 }
 
 /* 1. Header (White Top Bar) */
 .site-header {
   background: #ffffff;
   border-bottom: 1px solid #eaeaea;
-  padding: 14px 0;
+  padding: 12px 0;
   position: relative;
   z-index: 50;
 }
@@ -97,31 +99,32 @@ img {
 .header-brand {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .header-catch {
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-family: var(--font-heavy);
+  font-size: 0.78rem;
+  font-weight: 900;
   color: #333333;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
 }
 
 .header-logo-group {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .header-logo-title {
-  font-family: var(--font-heavy);
-  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-family: var(--font-logo-brush);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
   font-weight: 900;
   color: #111827;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   display: flex;
   align-items: center;
-  gap: 8px;
+  line-height: 1.15;
 }
 
 .stamp-badge {
@@ -132,7 +135,8 @@ img {
   height: 44px;
   border: 2px solid var(--c-red);
   color: var(--c-red);
-  font-size: 0.7rem;
+  font-family: var(--font-heavy);
+  font-size: 0.72rem;
   font-weight: 900;
   line-height: 1.1;
   text-align: center;
@@ -150,9 +154,10 @@ img {
 .btn-header-red {
   background: linear-gradient(180deg, #d31820 0%, #b01016 100%);
   color: #ffffff;
+  font-family: var(--font-heavy);
   font-weight: 900;
-  font-size: 0.95rem;
-  padding: 10px 22px;
+  font-size: 1rem;
+  padding: 10px 24px;
   border-radius: var(--radius-sm);
   box-shadow: 0 3px 8px rgba(176, 16, 22, 0.35);
   border: none;
@@ -171,9 +176,10 @@ img {
 .btn-header-navy {
   background: linear-gradient(180deg, #253358 0%, #151f38 100%);
   color: #ffffff;
+  font-family: var(--font-heavy);
   font-weight: 900;
-  font-size: 0.95rem;
-  padding: 10px 22px;
+  font-size: 1rem;
+  padding: 10px 24px;
   border-radius: var(--radius-sm);
   box-shadow: 0 3px 8px rgba(21, 31, 56, 0.35);
   border: none;
@@ -209,7 +215,7 @@ img {
 .nav-menu-item {
   flex: 1;
   text-align: center;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .nav-menu-item:last-child {
@@ -220,13 +226,15 @@ img {
   display: block;
   padding: 14px 10px;
   color: #ffffff;
-  font-size: 0.88rem;
-  font-weight: 700;
+  font-family: var(--font-heavy);
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
   transition: var(--transition);
 }
 
 .nav-menu-link:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   color: var(--c-yellow);
 }
 
@@ -243,7 +251,7 @@ img {
   display: grid;
   grid-template-columns: 1.25fr 0.95fr;
   align-items: center;
-  min-height: 480px;
+  min-height: 500px;
   padding: 40px 0 0;
   position: relative;
 }
@@ -254,41 +262,46 @@ img {
   margin-bottom: 40px;
 }
 
-.hero-main-title {
-  font-family: var(--font-heavy);
-  font-size: clamp(2.6rem, 5.8vw, 4.4rem);
-  font-weight: 900;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
-  color: #ffffff;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
-  margin-bottom: 20px;
-  word-break: keep-all;
-}
-
-.hero-sub-catch {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  font-weight: 700;
-  line-height: 1.6;
-  margin-bottom: 28px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-  color: #f3f4f6;
-}
-
 .hero-tags {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .hero-tag {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 6px 14px;
   border-radius: var(--radius-sm);
-  font-weight: 800;
+  font-family: var(--font-heavy);
+  font-weight: 900;
   font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+/* ★「一冊を完璧に。」と同等の圧倒的フォント「Dela Gothic One」★ */
+.hero-main-title {
+  font-family: var(--font-hero-impact);
+  font-size: clamp(2.8rem, 6.2vw, 4.8rem);
+  font-weight: 400; /* Dela Gothic One は元々超極太 */
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55),
+               0 2px 4px rgba(0, 0, 0, 0.4);
+  margin-bottom: 24px;
+  word-break: keep-all;
+}
+
+.hero-sub-catch {
+  font-family: var(--font-heavy);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-weight: 800;
+  line-height: 1.65;
+  margin-bottom: 28px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  color: #f3f4f6;
 }
 
 .hero-action-btns {
@@ -303,17 +316,18 @@ img {
   font-family: var(--font-heavy);
   font-size: 1.15rem;
   font-weight: 900;
-  padding: 14px 32px;
+  padding: 15px 34px;
   border-radius: var(--radius-md);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   border: 2px solid #ffffff;
   cursor: pointer;
   transition: var(--transition);
+  letter-spacing: 0.03em;
 }
 
 .hero-btn-red:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .hero-btn-line {
@@ -322,17 +336,18 @@ img {
   font-family: var(--font-heavy);
   font-size: 1.15rem;
   font-weight: 900;
-  padding: 14px 28px;
+  padding: 15px 30px;
   border-radius: var(--radius-md);
-  box-shadow: 0 4px 15px rgba(6, 199, 85, 0.4);
+  box-shadow: 0 4px 16px rgba(6, 199, 85, 0.4);
   border: 2px solid #ffffff;
   cursor: pointer;
   transition: var(--transition);
+  letter-spacing: 0.03em;
 }
 
 .hero-btn-line:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(6, 199, 85, 0.55);
+  box-shadow: 0 8px 24px rgba(6, 199, 85, 0.55);
 }
 
 /* Hero Right: Photo & Vertical Catch */
@@ -346,27 +361,29 @@ img {
 }
 
 .hero-person-photo {
-  max-height: 480px;
+  max-height: 490px;
   width: auto;
   object-fit: cover;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
-  box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.35);
   display: block;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35));
 }
 
+/* ★武田塾の「志望校に行きたきゃ自学自習が最強じゃん」の縦書きキャッチ★ */
 .hero-vertical-catch {
   position: absolute;
-  right: -8px;
-  top: 30px;
+  right: -10px;
+  top: 24px;
   writing-mode: vertical-rl;
-  font-family: var(--font-heavy);
-  font-size: clamp(1.2rem, 2.4vw, 1.8rem);
-  font-weight: 900;
+  font-family: var(--font-hero-impact);
+  font-size: clamp(1.3rem, 2.5vw, 1.85rem);
+  font-weight: 400;
   letter-spacing: 0.12em;
   color: var(--c-yellow);
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8), -2px -2px 0px rgba(0, 0, 0, 0.8),
-               2px -2px 0px rgba(0, 0, 0, 0.8), -2px 2px 0px rgba(0, 0, 0, 0.8);
+  text-shadow: 3px 3px 0px #000, -3px -3px 0px #000,
+               3px -3px 0px #000, -3px 3px 0px #000,
+               0 4px 10px rgba(0, 0, 0, 0.8);
   white-space: nowrap;
   pointer-events: none;
   z-index: 5;
@@ -377,13 +394,13 @@ img {
   background: var(--theme-ribbon-bg, #0b1c3d);
   padding: 16px 0;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 3px solid #111;
 }
 
 .ribbon-text {
   font-family: var(--font-heavy);
-  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  font-size: clamp(1rem, 2.1vw, 1.3rem);
   font-weight: 900;
   color: #ffffff;
   letter-spacing: 0.04em;
@@ -411,9 +428,10 @@ img {
 }
 
 .sec-tag {
-  font-size: 0.85rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  font-family: var(--font-heavy);
+  font-size: 0.88rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
   color: var(--c-red);
   text-transform: uppercase;
   margin-bottom: 8px;
@@ -421,19 +439,22 @@ img {
 }
 
 .sec-main-title {
-  font-family: var(--font-heavy);
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-  font-weight: 900;
+  font-family: var(--font-hero-impact);
+  font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+  font-weight: 400;
   color: #111827;
   line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 
 .sec-lead {
-  font-size: 1rem;
+  font-family: var(--font-heavy);
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--text-muted);
-  max-width: 760px;
+  max-width: 780px;
   margin: 12px auto 0;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 /* 6. Feature & Reason Cards */
@@ -446,7 +467,7 @@ img {
 .takeda-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-top: 4px solid var(--theme-color-primary, #005696);
+  border-top: 5px solid var(--theme-color-primary, #005696);
   border-radius: var(--radius-md);
   padding: 30px 24px;
   box-shadow: var(--shadow-sm);
@@ -455,9 +476,9 @@ img {
 }
 
 .takeda-card-number {
-  font-family: var(--font-heavy);
+  font-family: var(--font-hero-impact);
   font-size: 1.8rem;
-  font-weight: 900;
+  font-weight: 400;
   color: var(--theme-color-primary, #005696);
   line-height: 1;
   margin-bottom: 12px;
@@ -469,7 +490,7 @@ img {
   font-weight: 900;
   color: #111827;
   margin-bottom: 14px;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .takeda-card-body {
@@ -492,12 +513,13 @@ img {
   background: var(--theme-color-primary, #005696);
   color: #ffffff;
   font-family: var(--font-heavy);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 900;
-  padding: 4px 14px;
+  padding: 5px 16px;
   border-radius: var(--radius-sm);
   display: inline-block;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  letter-spacing: 0.05em;
 }
 
 .solution-grid {
@@ -536,6 +558,7 @@ img {
 .comparison-table th {
   background: #1e293b;
   color: #ffffff;
+  font-family: var(--font-heavy);
   font-weight: 900;
   font-size: 0.95rem;
 }
@@ -570,11 +593,12 @@ img {
 }
 
 .step-label {
-  font-family: var(--font-heavy);
-  font-size: 0.85rem;
-  font-weight: 900;
+  font-family: var(--font-hero-impact);
+  font-size: 0.9rem;
+  font-weight: 400;
   color: var(--c-red);
   margin-bottom: 8px;
+  letter-spacing: 0.05em;
 }
 
 .step-title {
@@ -606,21 +630,23 @@ img {
   background: var(--c-red);
   color: #ffffff;
   font-family: var(--font-heavy);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 900;
-  padding: 6px 20px;
+  padding: 8px 24px;
   border-radius: var(--radius-full);
   display: inline-block;
   margin-bottom: 20px;
+  letter-spacing: 0.05em;
 }
 
 .price-main-num {
-  font-family: var(--font-heavy);
-  font-size: clamp(2.6rem, 6vw, 3.8rem);
-  font-weight: 900;
+  font-family: var(--font-hero-impact);
+  font-size: clamp(2.8rem, 6.5vw, 4.2rem);
+  font-weight: 400;
   color: var(--c-yellow);
   line-height: 1.1;
   margin: 16px 0;
+  letter-spacing: -0.02em;
 }
 
 /* 11. FAQ */
@@ -732,8 +758,9 @@ img {
 
 .form-label {
   display: block;
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-family: var(--font-heavy);
+  font-size: 0.88rem;
+  font-weight: 800;
   margin-bottom: 6px;
   color: #374151;
 }
@@ -772,7 +799,7 @@ img {
   .hero-vertical-catch {
     right: 10px;
     top: 10px;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
   }
   .solution-grid {
     grid-template-columns: 1fr;
