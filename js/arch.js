@@ -1,61 +1,88 @@
 /* ==========================================================================
-   αrCH Inspired Interactive Script (arch.js)
-   - Matrix / Dot Grid Canvas Background Animation
-   - Fixed Sticky Header on Scroll
-   - Interactive SVG Circle Button Hover Effects
-   - Accordion for FAQ
-   - Graceful Form Handling
+   SFC English Masterclass — Awwwards / Webby / FWA Interactive Engine
+   - 60fps Matrix / Dot Grid Canvas Background
+   - Dynamic Scroll Progress Indicator
+   - IntersectionObserver Reveal & Stagger Animation
+   - Intelligent Numbers CountUp Engine
+   - Glassmorphic Fixed Header Controller
+   - Smooth Accordion Animation
+   - Form Submission UX
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // 1. Matrix / Dot Grid Canvas Background
+  // 1. Scroll Progress Bar
+  const progressBar = document.getElementById('scrollProgressBar');
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      progressBar.style.width = scrolled + '%';
+    });
+  }
+
+  // 2. Matrix / Dot Grid Canvas Background (Light, Performant, Non-distracting)
   const canvas = document.getElementById('matrix_canvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
 
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }, 150);
     });
 
     const dots = [];
-    const numDots = Math.floor((width * height) / 18000);
+    const numDots = Math.min(Math.floor((width * height) / 22000), 55);
 
     for (let i = 0; i < numDots; i++) {
       dots.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        radius: Math.random() * 1.5 + 0.8
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        radius: Math.random() * 1.4 + 0.8
       });
     }
 
+    let isVisible = true;
+    document.addEventListener('visibilitychange', () => {
+      isVisible = !document.hidden;
+    });
+
     function animate() {
+      if (!isVisible) {
+        requestAnimationFrame(animate);
+        return;
+      }
+
       ctx.clearRect(0, 0, width, height);
 
-      // Draw faint connections
+      // Draw subtle connective threads
       for (let i = 0; i < dots.length; i++) {
         for (let j = i + 1; j < dots.length; j++) {
           const dx = dots[i].x - dots[j].x;
           const dy = dots[i].y - dots[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 130) {
+          if (dist < 110) {
             ctx.beginPath();
             ctx.moveTo(dots[i].x, dots[i].y);
             ctx.lineTo(dots[j].x, dots[j].y);
-            ctx.strokeStyle = `rgba(0, 0, 0, ${0.05 * (1 - dist / 130)})`;
-            ctx.lineWidth = 0.6;
+            ctx.strokeStyle = `rgba(0, 0, 0, ${0.04 * (1 - dist / 110)})`;
+            ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         }
       }
 
-      // Draw dots
+      // Draw dot points
       for (let i = 0; i < dots.length; i++) {
         const dot = dots[i];
         dot.x += dot.vx;
@@ -68,28 +95,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.18)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.16)';
         ctx.fill();
       }
 
       requestAnimationFrame(animate);
     }
-    animate();
+    requestAnimationFrame(animate);
   }
 
-  // 2. Fixed Header Scroll Trigger
+  // 3. Fixed Sticky Header Controller
   const fixedHeader = document.getElementById('fixed_header');
   if (fixedHeader) {
+    let lastScroll = 0;
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 350) {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 400) {
         fixedHeader.classList.add('is_show');
       } else {
         fixedHeader.classList.remove('is_show');
       }
+      lastScroll = currentScroll;
     });
   }
 
-  // 3. FAQ Accordion
+  // 4. Scroll Reveal Animation Engine (IntersectionObserver)
+  const revealElements = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is_revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    revealElements.forEach(el => el.classList.add('is_revealed'));
+  }
+
+  // 5. Intelligent Numbers CountUp Engine
+  const counterElements = document.querySelectorAll('.metric_num[data-count]');
+  let countersStarted = false;
+
+  function runCounters() {
+    if (countersStarted) return;
+    countersStarted = true;
+
+    counterElements.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-count'), 10);
+      const duration = 1600; // ms
+      const startTime = performance.now();
+
+      function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease-out cubic
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const currentVal = Math.floor(easeOut * target);
+
+        counter.innerText = currentVal.toLocaleString();
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      }
+
+      requestAnimationFrame(updateCounter);
+    });
+  }
+
+  const metricsSection = document.getElementById('metrics');
+  if (metricsSection && 'IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          runCounters();
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    counterObserver.observe(metricsSection);
+  } else {
+    runCounters();
+  }
+
+  // 6. Smooth FAQ Accordion
   const faqItems = document.querySelectorAll('.faq_item_arch');
   faqItems.forEach(item => {
     const q = item.querySelector('.faq_q_arch');
@@ -97,39 +197,49 @@ document.addEventListener('DOMContentLoaded', () => {
     if (q && a) {
       q.addEventListener('click', () => {
         const isOpen = item.classList.contains('is_open');
+        
+        // Close others
         faqItems.forEach(other => {
-          other.classList.remove('is_open');
-          const otherA = other.querySelector('.faq_a_arch');
-          if (otherA) otherA.style.maxHeight = null;
+          if (other !== item && other.classList.contains('is_open')) {
+            other.classList.remove('is_open');
+            const otherA = other.querySelector('.faq_a_arch');
+            if (otherA) otherA.style.maxHeight = null;
+          }
         });
+
         if (!isOpen) {
           item.classList.add('is_open');
-          a.style.maxHeight = a.scrollHeight + 30 + 'px';
+          a.style.maxHeight = a.scrollHeight + 40 + 'px';
+        } else {
+          item.classList.remove('is_open');
+          a.style.maxHeight = null;
         }
       });
     }
   });
 
-  // 4. Form Submission Handling
+  // 7. Form Submission UX
   const form = document.getElementById('archContactForm');
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerText;
-      submitBtn.innerText = 'SENDING...';
+      const submitText = submitBtn.querySelector('.btn_submit_text') || submitBtn;
+      const originalText = submitText.innerText;
+
+      submitText.innerText = 'PROCESSING REQUEST...';
       submitBtn.disabled = true;
 
       setTimeout(() => {
-        alert('【無料受験相談・体験授業の予約を受け付けました】\n\nご入力いただいたメールアドレスへ、24時間以内に担当講師（堀安泰世）より個別面談日程のご案内をお送りいたします。');
-        submitBtn.innerText = originalText;
+        alert('【無料受験相談・体験授業の予約を承りました】\n\nご登録いただいたメールアドレスへ、24時間以内に担当講師（堀安泰世）より個別面談日程のご案内をお送りいたします。\n慶應SFC合格への第一歩を全力でサポートいたします。');
+        submitText.innerText = originalText;
         submitBtn.disabled = false;
         form.reset();
-      }, 700);
+      }, 600);
     });
   }
 
-  // 5. Smooth Scroll
+  // 8. Smooth Anchor Navigation
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -137,7 +247,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
-          targetElement.scrollIntoView({ behavior: 'smooth' });
+          const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - 70;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
         }
       }
     });
