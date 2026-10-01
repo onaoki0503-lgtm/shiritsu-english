@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
 
       setTimeout(() => {
-        alert('【無料受験相談・体験授業の予約を承りました】\n\nご登録いただいたメールアドレスへ、24時間以内に担当講師（堀安泰世）より個別面談日程のご案内をお送りいたします。\n慶應SFC合格への第一歩を全力でサポートいたします。');
+        alert('【無料学習相談のお申し込みを受け付けました】\n\nご登録いただいたメールアドレスへ、原則24時間以内に担当講師（堀安泰世）より日程調整のご案内をお送りいたします。\n現在の学力や教材、学習状況に合わせた最適なアドバイスをお伝えします。');
         submitText.innerText = originalText;
         submitBtn.disabled = false;
         form.reset();
