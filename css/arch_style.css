@@ -773,6 +773,258 @@ header .inner {
 }
 
 /* --------------------------------------------------------------------------
+   Challenges Section (ha-ko風 お悩み解決吹き出し)
+   -------------------------------------------------------------------------- */
+.sec_challenges {
+  background: #ffffff;
+  padding: 100px 0;
+  position: relative;
+}
+
+.challenges_balloon_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 50px;
+}
+
+.challenge_balloon_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.c_balloon_box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px 20px;
+  width: 100%;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.challenge_balloon_item:hover .c_balloon_box {
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+}
+
+/* Balloon tail pointing downwards */
+.c_balloon_box::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #e2e8f0;
+}
+
+.c_balloon_box::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 9px solid #f8fafc;
+  z-index: 1;
+}
+
+.c_balloon_txt {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.c_balloon_txt strong {
+  color: #0f172a;
+  font-weight: 700;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.c_solution_note {
+  margin-top: 24px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+  padding: 16px 14px;
+  text-align: left;
+}
+
+.c_solution_tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+
+.c_solution_txt {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.challenges_bottom_cta {
+  margin-top: 48px;
+  text-align: center;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 16px;
+  padding: 28px 20px;
+}
+
+.c_bottom_lead {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 14px;
+}
+
+.btn_pill_cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn_pill_cta:hover {
+  background: #1e293b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   Data Section (ha-ko風 数字で見る塾)
+   -------------------------------------------------------------------------- */
+.sec_data {
+  background: #f8fafc;
+  padding: 100px 0;
+  position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.data_metrics_grid_4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 50px;
+}
+
+.data_card_arch {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 28px 22px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.data_card_arch:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  border-color: #cbd5e1;
+}
+
+.data_card_top {
+  margin-bottom: 14px;
+}
+
+.data_badge {
+  display: inline-block;
+  font-family: var(--font-en);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.data_title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.data_number_wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 8px 0 12px;
+}
+
+.data_num_val {
+  font-family: var(--font-en);
+  font-size: clamp(2.2rem, 3.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+}
+
+.data_num_val.highlight_accent {
+  color: #0f172a;
+  background: linear-gradient(180deg, transparent 65%, var(--color-accent) 65%);
+}
+
+.data_unit {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-left: 2px;
+}
+
+.data_slash {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #cbd5e1;
+  margin: 0 4px;
+}
+
+.data_lead_txt {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.data_desc_txt {
+  font-size: 0.78rem;
+  line-height: 1.62;
+  color: #64748b;
+}
+
+/* --------------------------------------------------------------------------
    Editorial Section Layouts
    -------------------------------------------------------------------------- */
 .sec {
@@ -1969,6 +2221,8 @@ footer .inner {
   .nav_global { display: none; }
   .sec_voices_marquee { padding: 40px 0 46px; }
   .voice_card_marquee { width: 330px; padding: 20px; }
+  .challenges_balloon_grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .data_metrics_grid_4 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .about_manifesto_grid { grid-template-columns: 1fr; }
   .subjects_grid_2 { grid-template-columns: 1fr; }
   .steps_row_3 { grid-template-columns: 1fr; }
@@ -2000,6 +2254,11 @@ footer .inner {
   .v_card_heading { font-size: 0.9rem; }
   .v_card_text { font-size: 0.78rem; line-height: 1.6; }
   .marquee_track { gap: 16px; animation-duration: 36s; }
+  .sec_challenges { padding: 60px 0; }
+  .challenges_balloon_grid { grid-template-columns: 1fr; gap: 18px; }
+  .c_balloon_box { min-height: auto; padding: 20px 16px; }
+  .sec_data { padding: 60px 0; }
+  .data_metrics_grid_4 { grid-template-columns: 1fr; gap: 16px; }
   .mentor_achievements_grid { grid-template-columns: 1fr; }
   .form_grid_2 { grid-template-columns: 1fr; }
   .contact_form_arch { padding: 36px 20px; }
