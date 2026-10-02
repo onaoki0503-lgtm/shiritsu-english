@@ -579,74 +579,197 @@ header .inner {
 }
 
 /* --------------------------------------------------------------------------
-   Metrics Ribbon
+   Student Voices Infinite Marquee (明るい背景で横に流れる受講者の声)
    -------------------------------------------------------------------------- */
-.sec_metrics_ribbon {
-  background: var(--color-black);
-  color: var(--color-white);
-  padding: 44px 0;
+.sec_voices_marquee {
+  background: #f8fafc;
+  padding: 48px 0 54px;
   position: relative;
-  border-top: 1px solid var(--color-border-dark);
-  border-bottom: 1px solid var(--color-border-dark);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
 }
 
-.metrics_grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
+.marquee_header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 28px;
+  padding: 0 20px;
 }
 
-.metric_item {
-  padding: 0 16px;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+.marquee_pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-family: var(--font-en);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-black);
+  margin-bottom: 10px;
+}
+
+.live_pulse_dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.marquee_lead {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: #4b5563;
+  letter-spacing: -0.01em;
+}
+
+/* Marquee Scroller Track Wrap & Fading Mask */
+.marquee_track_wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.marquee_track {
+  display: flex;
+  gap: 22px;
+  flex-shrink: 0;
+  animation: marqueeScroll 42s linear infinite;
+  will-change: transform;
+}
+
+/* Pause scroll when hovered or tapped */
+.marquee_track_wrap:hover .marquee_track,
+.marquee_track_wrap:focus-within .marquee_track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 22px));
+  }
+}
+
+/* Individual Voice Card */
+.voice_card_marquee {
+  width: 360px;
+  max-width: 85vw;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  flex-shrink: 0;
 }
 
-.metric_item:last-child {
-  border-right: none;
+.voice_card_marquee:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  border-color: #cbd5e1;
 }
 
-.metric_item.is_highlight {
-  background: rgba(240, 233, 0, 0.08);
-  border-radius: 8px;
-  border: 1px solid rgba(240, 233, 0, 0.3);
-  padding: 12px 16px;
-}
-
-.metric_num_wrap {
+.v_card_top {
   display: flex;
-  align-items: baseline;
-  gap: 4px;
-  margin-bottom: 6px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
-.metric_num_text {
-  font-family: var(--font-en);
-  font-size: clamp(1.6rem, 2.2vw, 2.3rem);
-  font-weight: 800;
-  line-height: 1.1;
-  color: var(--color-white);
-  letter-spacing: -0.02em;
-}
-
-.metric_num_text.highlight_accent {
-  color: var(--color-accent);
-}
-
-.metric_title {
-  font-size: 0.88rem;
+.v_student_tag {
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--color-white);
-  margin-bottom: 4px;
-  line-height: 1.4;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
 }
 
-.metric_desc {
-  font-size: 0.74rem;
-  line-height: 1.55;
-  color: #9da3af;
+.v_student_tag.pass_tag {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.v_student_tag.active_tag {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.v_student_meta {
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.v_card_heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.v_card_text {
+  font-size: 0.82rem;
+  line-height: 1.68;
+  color: #475569;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.v_card_foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px dashed #f1f5f9;
+}
+
+.v_stars {
+  color: #f59e0b;
+  font-size: 0.88rem;
+  letter-spacing: 2px;
+}
+
+.v_student_id {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #94a3b8;
 }
 
 /* --------------------------------------------------------------------------
@@ -1844,8 +1967,8 @@ footer .inner {
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .nav_global { display: none; }
-  .metrics_grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .metric_item { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 16px; }
+  .sec_voices_marquee { padding: 40px 0 46px; }
+  .voice_card_marquee { width: 330px; padding: 20px; }
   .about_manifesto_grid { grid-template-columns: 1fr; }
   .subjects_grid_2 { grid-template-columns: 1fr; }
   .steps_row_3 { grid-template-columns: 1fr; }
@@ -1870,9 +1993,13 @@ footer .inner {
   .copy_kv { font-size: 1.85rem; }
   .copy_kv span.highlight_text { white-space: normal; }
   .copy_kv span.sub_block { font-size: 1.1rem; }
-  .metrics_grid { grid-template-columns: 1fr 1fr; }
-  .metric_item:nth-child(2n) { border-right: none; }
-  .metric_item.is_highlight { grid-column: span 2; }
+  .sec_voices_marquee { padding: 36px 0 42px; }
+  .marquee_header { margin-bottom: 20px; }
+  .marquee_lead { font-size: 0.85rem; }
+  .voice_card_marquee { width: 300px; padding: 18px 16px; }
+  .v_card_heading { font-size: 0.9rem; }
+  .v_card_text { font-size: 0.78rem; line-height: 1.6; }
+  .marquee_track { gap: 16px; animation-duration: 36s; }
   .mentor_achievements_grid { grid-template-columns: 1fr; }
   .form_grid_2 { grid-template-columns: 1fr; }
   .contact_form_arch { padding: 36px 20px; }
