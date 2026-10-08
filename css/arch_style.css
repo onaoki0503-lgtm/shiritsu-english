@@ -1156,380 +1156,113 @@ header .inner {
 }
 
 /* --------------------------------------------------------------------------
-   About Section (Interactive Concept: Mentor Illust & Expandable Speech Bubbles)
+   About Section (Manifesto Grid)
    -------------------------------------------------------------------------- */
-.interactive_concept_container {
+.about_manifesto_grid {
   display: grid;
-  grid-template-columns: 0.95fr 1.25fr;
-  gap: 48px;
-  align-items: start;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: stretch;
 }
 
-/* --- 左側: 講師・イラストステージ --- */
-.concept_mentor_col {
-  position: sticky;
-  top: 100px;
-}
-
-.mentor_illust_stage {
-  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 20px;
-  padding: 36px 30px;
-  position: relative;
-  box-shadow: 0 16px 36px -12px rgba(15, 23, 42, 0.08);
-  overflow: hidden;
-  text-align: center;
-}
-
-.stage_decor_circle {
-  position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(240, 233, 0, 0.22) 0%, rgba(240, 233, 0, 0) 70%);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.stage_avatar_wrap {
-  position: relative;
-  width: 170px;
-  height: 170px;
-  margin: 0 auto 20px;
-  z-index: 1;
-}
-
-.stage_mentor_photo {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--color-white);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-  display: block;
-}
-
-.stage_illust_badge {
-  position: absolute;
-  right: -18px;
-  bottom: -6px;
-  width: 90px;
-  height: 90px;
-  background: #ffffff;
-  border: 3px solid #0f172a;
-  border-radius: 50%;
-  padding: 6px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: floatIllust 3.5s ease-in-out infinite;
-}
-
-.stage_illust_hako {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-@keyframes floatIllust {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-.stage_mentor_meta {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 20px;
-}
-
-.stage_mentor_meta .meta_label {
-  display: inline-block;
-  font-family: var(--font-en);
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  color: #64748b;
-  background: #f1f5f9;
-  padding: 3px 10px;
-  border-radius: 999px;
-  margin-bottom: 8px;
-}
-
-.stage_mentor_meta .meta_name {
-  font-size: 1.35rem;
-  font-weight: 900;
-  color: var(--color-black);
-  letter-spacing: -0.01em;
-  margin-bottom: 4px;
-}
-
-.stage_mentor_meta .meta_sub {
-  font-size: 0.82rem;
-  line-height: 1.5;
-  color: var(--color-text-sub);
-}
-
-.stage_mentor_core_quote {
-  position: relative;
-  z-index: 1;
-  background: #ffffff;
-  border: 1px dashed rgba(0, 0, 0, 0.14);
+.manifesto_lead_card {
+  background: var(--color-light-bg);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  padding: 16px 18px 14px;
-  text-align: left;
+  padding: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.core_quote_symbol {
+.quote_mark {
   font-family: Georgia, serif;
-  font-size: 2.2rem;
+  font-size: 5rem;
   line-height: 1;
   color: var(--color-accent);
-  display: block;
-  margin-bottom: -10px;
+  opacity: 0.8;
+  margin-bottom: -20px;
 }
 
-.core_quote_text {
-  font-size: 0.85rem;
-  line-height: 1.7;
+.manifesto_text {
+  font-size: 1.02rem;
+  line-height: 2.0;
   color: var(--color-text-main);
-  margin: 0;
+  margin-bottom: 28px;
 }
 
-.core_quote_text strong {
-  color: var(--color-black);
-  background: linear-gradient(180deg, transparent 65%, rgba(240, 233, 0, 0.45) 65%);
-}
-
-/* --- 右側: 吹き出し ＆ 対話リスト --- */
-.concept_bubbles_col {
+.manifesto_author {
   display: flex;
   flex-direction: column;
+  border-top: 1px solid var(--color-border);
+  padding-top: 18px;
 }
 
-.bubbles_guide_bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  padding: 8px 16px;
-  border-radius: 999px;
-  margin-bottom: 22px;
-  width: fit-content;
+.author_role {
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
 }
 
-.guide_pulse_dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-  animation: guidePulse 2s infinite;
-}
-
-@keyframes guidePulse {
-  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-}
-
-.guide_text {
-  font-size: 0.76rem;
+.author_name {
+  font-size: 0.95rem;
   font-weight: 700;
-  color: #475569;
+  color: var(--color-black);
 }
 
-.bubble_dialogue_list {
+.manifesto_pillars {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
-/* 吹き出し個別アイテム */
-.concept_bubble_item {
-  position: relative;
-  background: #ffffff;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 16px;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.concept_bubble_item:hover,
-.concept_bubble_item.is_expanded {
-  border-color: #0f172a;
-  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.12);
-  transform: translateY(-2px);
-}
-
-/* 吹き出しの三角ヒゲ（講師側＝左向き） */
-.concept_bubble_item::before {
-  content: '';
-  position: absolute;
-  top: 24px;
-  left: -9px;
-  width: 16px;
-  height: 16px;
-  background: #ffffff;
-  border-left: 1.5px solid #e2e8f0;
-  border-bottom: 1.5px solid #e2e8f0;
-  transform: rotate(45deg);
-  transition: border-color 0.35s ease;
-  z-index: 2;
-}
-
-.concept_bubble_item:hover::before,
-.concept_bubble_item.is_expanded::before {
-  border-color: #0f172a;
-}
-
-/* 吹き出しヘッダー（常に表示される要約部） */
-.bubble_bubble_head {
+.pillar_card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
   padding: 22px 26px;
   display: flex;
-  align-items: center;
-  gap: 16px;
-  user-select: none;
-  background: transparent;
-  outline: none;
+  gap: 20px;
+  align-items: flex-start;
+  transition: var(--transition-smooth);
 }
 
-.bubble_tag {
+.pillar_card:hover {
+  border-color: var(--color-black);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.pillar_num {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  color: var(--color-black);
   background: var(--color-light-gray);
-  color: #334155;
-  padding: 4px 9px;
+  padding: 6px 12px;
   border-radius: 6px;
-  flex-shrink: 0;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.concept_bubble_item.is_expanded .bubble_tag,
-.concept_bubble_item:hover .bubble_tag {
-  background: var(--color-accent);
-  color: var(--color-black);
-}
-
-.bubble_lead {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.bubble_speaker_icon {
-  font-size: 1.15rem;
   line-height: 1;
-  flex-shrink: 0;
 }
 
-.bubble_lead_text {
-  font-size: 1.04rem;
+.pillar_content {
+  flex: 1;
+}
+
+.pillar_title {
+  font-size: 1.05rem;
   font-weight: 800;
-  color: var(--color-black);
-  line-height: 1.45;
-  letter-spacing: -0.01em;
-}
-
-.bubble_action_hint {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: #64748b;
-  flex-shrink: 0;
-  transition: color 0.3s ease;
-}
-
-.hint_chevron {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.concept_bubble_item.is_expanded .hint_chevron {
-  transform: rotate(180deg);
-}
-
-.concept_bubble_item.is_expanded .bubble_action_hint {
+  margin-bottom: 6px;
   color: var(--color-black);
 }
 
-/* ホワッと出る詳細パネル */
-.bubble_detail_panel {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  background: #f8fafc;
-  border-top: 1px solid transparent;
-}
-
-.concept_bubble_item.is_expanded .bubble_detail_panel {
-  max-height: 300px;
-  opacity: 1;
-  border-top-color: #e2e8f0;
-}
-
-.detail_panel_inner {
-  padding: 20px 26px 24px 58px;
-  animation: fadeInSoft 0.4s ease-out;
-}
-
-@keyframes fadeInSoft {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.detail_point_title {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #0f172a;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.detail_point_title::before {
-  content: '▶';
-  font-size: 0.65rem;
-  color: #eab308;
-}
-
-.detail_point_desc {
+.pillar_desc {
   font-size: 0.88rem;
-  line-height: 1.75;
-  color: #475569;
-  margin-bottom: 14px;
-}
-
-.detail_badge_row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.detail_pill {
-  font-size: 0.74rem;
-  font-weight: 700;
-  color: #0f172a;
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  padding: 3px 10px;
-  border-radius: 999px;
+  line-height: 1.7;
+  color: var(--color-text-sub);
 }
 
 /* --------------------------------------------------------------------------
@@ -2525,8 +2258,7 @@ footer .inner {
   .voice_card_marquee { width: 330px; padding: 20px; }
   .challenges_balloon_grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .data_metrics_grid_4 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .interactive_concept_container { grid-template-columns: 1fr; gap: 36px; }
-  .concept_mentor_col { position: static; max-width: 520px; margin: 0 auto; }
+  .about_manifesto_grid { grid-template-columns: 1fr; }
   .subjects_grid_2 { grid-template-columns: 1fr; }
   .steps_row_3 { grid-template-columns: 1fr; }
   .support_features_grid { grid-template-columns: 1fr; }
@@ -2565,14 +2297,4 @@ footer .inner {
   .mentor_achievements_grid { grid-template-columns: 1fr; }
   .form_grid_2 { grid-template-columns: 1fr; }
   .contact_form_arch { padding: 36px 20px; }
-  
-  /* スマホでの吹き出し調整 */
-  .interactive_concept_container { gap: 28px; }
-  .mentor_illust_stage { padding: 28px 20px; }
-  .stage_avatar_wrap { width: 140px; height: 140px; }
-  .stage_illust_badge { width: 76px; height: 76px; right: -10px; bottom: -6px; }
-  .concept_bubble_item::before { display: none; } /* スマホではヒゲを非表示にしカードを安定化 */
-  .bubble_bubble_head { padding: 18px 16px; gap: 12px; }
-  .bubble_lead_text { font-size: 0.94rem; }
-  .detail_panel_inner { padding: 16px 16px 20px; }
 }
