@@ -4,25 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SFC生の英語塾 ｜ 慶應SFC特化 英語・小論文 個別学習伴走</title>
-  <meta name="description" content="英検1級・慶應英語過去問満点の現役SFC生がマンツーマンで伴走。一人ひとりの学力と教材に合わせた個別学習設計で、慶應SFC合格のための英語・小論文を徹底サポート。">
+  <meta name="description" content="英検1級・慶應英語過去問満点の現役SFC生がマンツーマンで伴走。手元の教材を活かした個別学習設計で慶應SFC合格へ導きます。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/arch_style.css?v=20261002a">
+  <link rel="stylesheet" href="css/arch_style.css?v=20261009a">
 </head>
 <body>
 
   <!-- Top Scroll Progress Bar -->
   <div class="scroll_progress_bar" id="scrollProgressBar"></div>
 
-  <!-- Canvas Background (Matrix / Dot Grid Network) -->
+  <!-- Canvas Background -->
   <div class="bg_canvas_box" id="matrix_canvas_wrapper">
     <canvas class="bg_canvas" id="matrix_canvas"></canvas>
   </div>
 
   <div id="container">
 
-    <!-- Header (Transparent / Absolute Top) -->
+    <!-- Header -->
     <header>
       <div class="inner">
         <div class="header_logo">
@@ -34,14 +34,13 @@
 
         <nav class="nav_global">
           <ul>
-            <li><a href="#challenges">CHALLENGES</a></li>
-            <li><a href="#concept">CONCEPT</a></li>
-            <li><a href="#data">DATA</a></li>
-            <li><a href="#subjects">SUBJECTS</a></li>
-            <li><a href="#system">SYSTEM</a></li>
-            <li><a href="#mentor">MENTOR</a></li>
-            <li><a href="#tuition">TUITION</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#challenges">お悩み</a></li>
+            <li><a href="#features">塾の特徴</a></li>
+            <li><a href="#system">指導システム</a></li>
+            <li><a href="#mentor">講師紹介</a></li>
+            <li><a href="#tuition">料金プラン</a></li>
+            <li><a href="#flow">受講の流れ</a></li>
+            <li><a href="#faq">よくある質問</a></li>
           </ul>
         </nav>
 
@@ -51,7 +50,7 @@
       </div>
     </header>
 
-    <!-- Fixed Header (Glassmorphic Blur on Scroll) -->
+    <!-- Fixed Header -->
     <div class="header_fixed" id="fixed_header">
       <div class="inner">
         <div class="header_logo">
@@ -63,13 +62,12 @@
         <nav class="nav_global">
           <ul>
             <li><a href="#challenges">お悩み</a></li>
-            <li><a href="#concept">指導方針</a></li>
-            <li><a href="#data">数字で見る塾</a></li>
-            <li><a href="#subjects">指導科目</a></li>
-            <li><a href="#system">面談の流れ</a></li>
-            <li><a href="#mentor">担当講師</a></li>
+            <li><a href="#features">塾の特徴</a></li>
+            <li><a href="#system">指導システム</a></li>
+            <li><a href="#mentor">講師紹介</a></li>
             <li><a href="#tuition">料金プラン</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#flow">受講の流れ</a></li>
+            <li><a href="#faq">よくある質問</a></li>
           </ul>
         </nav>
 
@@ -83,13 +81,10 @@
     <section class="top_view">
       <div class="kv_inner">
         
-        <!-- Left Text Area -->
         <div class="kv_text_area">
-          
-          <!-- Live Status Indicator Pill -->
           <div class="status_pill_arch reveal_fade">
             <span class="pulse_dot"></span>
-            <span class="status_text">慶應SFC受験特化 ｜ 英語・小論文 個別学習伴走</span>
+            <span class="status_text">慶應SFC特化 ｜ 英語・小論文 個別学習伴走</span>
           </div>
 
           <h1 class="copy_kv reveal_fade" style="animation-delay: 0.1s;">
@@ -98,8 +93,7 @@
           </h1>
 
           <p class="lead_kv reveal_fade" style="animation-delay: 0.2s;">
-            今の学力や使っている教材に合わせて、何を、どうやって、どの順でやるかを個別設計。<br class="pc_only">
-            生徒一人ひとりの勉強の質を高め、慶應SFC合格までマンツーマンで伴走します。
+            手元の教材を活かした個別学習設計で、慶應SFC合格までマンツーマンで伴走します。
           </p>
 
           <div class="kv_action_group reveal_fade" style="animation-delay: 0.3s;">
@@ -125,190 +119,117 @@
 
       </div>
 
-      <!-- Scroll Down Indicator -->
       <div class="scroll_indicator">
         <span class="scroll_text">SCROLL</span>
         <div class="scroll_line"></div>
       </div>
     </section>
 
-    <!-- Student Voices Infinite Marquee (明るい背景で横に流れる受講者の声) -->
+    <!-- Student Voices Infinite Marquee (厳選3枚のコンパクトカルーセル) -->
     <section class="sec_voices_marquee" id="voices">
       <div class="marquee_header">
         <div class="marquee_pill">
           <span class="live_pulse_dot"></span>
-          <span>STUDENT VOICES ｜ 受講生・合格者の声</span>
+          <span>STUDENT VOICES ｜ 合格者・受講生の声</span>
         </div>
-        <p class="marquee_lead">勉強のやり方が変わり、合格まで迷わず集中できた受講生の声をご紹介します</p>
+        <p class="marquee_lead">勉強の迷いをなくし、合格へ集中できた受講生の声</p>
       </div>
 
       <div class="marquee_track_wrap">
         
-        <!-- Track 1 -->
         <div class="marquee_track">
           
-          <!-- Card 1 -->
           <div class="voice_card_marquee">
             <div class="v_card_top">
               <span class="v_student_tag pass_tag">慶應SFC 総合政策 合格</span>
-              <span class="v_student_meta">高3 ｜ 英語＋小論文 / 週2回</span>
+              <span class="v_student_meta">高3 ｜ 英語＋小論文</span>
             </div>
-            <h4 class="v_card_heading">手元の単語帳とポラリスを使い倒し、長文読解速度が向上</h4>
+            <h4 class="v_card_heading">手元の単語帳とポラリスを使い倒して合格</h4>
             <p class="v_card_text">
-              学校で配られた単語帳の暗記法から見直してもらい、毎日の復習ルーティンを確立。1日の自習メニューが明確になり、小論文も面談内で直接添削してもらえたのが合格の決め手になりました。
+              毎日の復習手順を明確にしてもらい、迷わず机に向かえるように。面談内で小論文を直接添削してもらえたのが決め手でした。
             </p>
             <div class="v_card_foot">
               <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">SFC 総合政策学部 合格生</span>
+              <span class="v_student_id">総合政策学部 合格生</span>
             </div>
           </div>
 
-          <!-- Card 2 -->
           <div class="voice_card_marquee">
             <div class="v_card_top">
               <span class="v_student_tag pass_tag">慶應SFC 環境情報 合格</span>
-              <span class="v_student_meta">既卒 ｜ 英語 / 週2回</span>
+              <span class="v_student_meta">既卒 ｜ 英語</span>
             </div>
-            <h4 class="v_card_heading">1,000語の過去問で時間切れだったのが、本番は15分余らせて完答</h4>
+            <h4 class="v_card_heading">長文で時間切れだったのが、本番15分余りで完答</h4>
             <p class="v_card_text">
-              1,000語超の過去問で毎回時間切れになっていましたが、面談でつまずきを突き止めてもらい、返り読みをなくす練習を徹底。試験本番では15分見直し時間を余らせて8割以上を確保できました。
+              1,000語超の長文で返り読みをなくす練習を徹底。試験本番では15分の見直し時間を残して8割以上を確保できました。
             </p>
             <div class="v_card_foot">
               <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">SFC 環境情報学部 合格生</span>
+              <span class="v_student_id">環境情報学部 合格生</span>
             </div>
           </div>
 
-          <!-- Card 3 -->
           <div class="voice_card_marquee">
             <div class="v_card_top">
               <span class="v_student_tag active_tag">慶應SFC 志望・受講中</span>
-              <span class="v_student_meta">高3 ｜ 小論文 / 週1回</span>
+              <span class="v_student_meta">高3 ｜ 小論文</span>
             </div>
-            <h4 class="v_card_heading">小論文を面談内で対話しながら深掘り。次の課題がクリアに</h4>
+            <h4 class="v_card_heading">面談内で対話しながら答案を改善。課題が明確に</h4>
             <p class="v_card_text">
-              答案をただ赤字添削されるのではなく、60分の面談でなぜこの構成にしたかを対話で深掘りしてくれるので、毎回の気づきが深いです。次の面談までに練習すべきテーマが明確で迷いません。
+              赤字返却だけでなく、なぜその論理展開にしたかを60分対話で深掘り。次の面談までにやるべきことがはっきりしています。
             </p>
             <div class="v_card_foot">
               <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">SFC 総合政策志望・現役生</span>
-            </div>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="voice_card_marquee">
-            <div class="v_card_top">
-              <span class="v_student_tag pass_tag">慶應SFC 環境情報 合格</span>
-              <span class="v_student_meta">高3 ｜ 英語＋小論文 / 週3回</span>
-            </div>
-            <h4 class="v_card_heading">秋からの週3回プランで短期間に集中。LINEで毎日疑問を解消できた</h4>
-            <p class="v_card_text">
-              部活引退後の秋から週3回プランで受講。毎日LINEで疑問を解消でき、週3回こまめに進捗を軌道修正してもらえたおかげで、短期間で一気に合格圏まで駆け上がることができました。
-            </p>
-            <div class="v_card_foot">
-              <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">SFC 環境情報学部 合格生</span>
-            </div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="voice_card_marquee">
-            <div class="v_card_top">
-              <span class="v_student_tag active_tag">慶應SFC 志望・受講中</span>
-              <span class="v_student_meta">高2 ｜ 英語 / 週1回</span>
-            </div>
-            <h4 class="v_card_heading">自習の優先順位がクリアになり、毎日の机に向かう集中力がアップ</h4>
-            <p class="v_card_text">
-              やみくもに新しい参考書を買い足すのをやめ、基礎の穴埋めから着実に進められるようになりました。週1回の面談がモチベーションの軸になり、勉強習慣が安定しました。
-            </p>
-            <div class="v_card_foot">
-              <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">SFC 志望・高校2年生</span>
+              <span class="v_student_id">現役受講生</span>
             </div>
           </div>
 
         </div>
 
-        <!-- Track 2 (Clone for Infinite Seamless Loop) -->
         <div class="marquee_track" aria-hidden="true">
           
-          <!-- Card 1 -->
           <div class="voice_card_marquee">
             <div class="v_card_top">
               <span class="v_student_tag pass_tag">慶應SFC 総合政策 合格</span>
-              <span class="v_student_meta">高3 ｜ 英語＋小論文 / 週2回</span>
+              <span class="v_student_meta">高3 ｜ 英語＋小論文</span>
             </div>
-            <h4 class="v_card_heading">手元の単語帳とポラリスを使い倒し、長文読解速度が向上</h4>
+            <h4 class="v_card_heading">手元の単語帳とポラリスを使い倒して合格</h4>
             <p class="v_card_text">
-              学校で配られた単語帳の暗記法から見直してもらい、毎日の復習ルーティンを確立。1日の自習メニューが明確になり、小論文も面談内で直接添削してもらえたのが合格の決め手になりました。
+              毎日の復習手順を明確にしてもらい、迷わず机に向かえるように。面談内で小論文を直接添削してもらえたのが決め手でした。
             </p>
             <div class="v_card_foot">
               <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">SFC 総合政策学部 合格生</span>
+              <span class="v_student_id">総合政策学部 合格生</span>
             </div>
           </div>
 
-          <!-- Card 2 -->
           <div class="voice_card_marquee">
             <div class="v_card_top">
               <span class="v_student_tag pass_tag">慶應SFC 環境情報 合格</span>
-              <span class="v_student_meta">既卒 ｜ 英語 / 週2回</span>
+              <span class="v_student_meta">既卒 ｜ 英語</span>
             </div>
-            <h4 class="v_card_heading">1,000語の過去問で時間切れだったのが、本番は15分余らせて完答</h4>
+            <h4 class="v_card_heading">長文で時間切れだったのが、本番15分余りで完答</h4>
             <p class="v_card_text">
-              1,000語超の過去問で毎回時間切れになっていましたが、面談でつまずきを突き止めてもらい、返り読みをなくす練習を徹底。試験本番では15分見直し時間を余らせて8割以上を確保できました。
+              1,000語超の長文で返り読みをなくす練習を徹底。試験本番では15分の見直し時間を残して8割以上を確保できました。
             </p>
             <div class="v_card_foot">
               <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">SFC 環境情報学部 合格生</span>
+              <span class="v_student_id">環境情報学部 合格生</span>
             </div>
           </div>
 
-          <!-- Card 3 -->
           <div class="voice_card_marquee">
             <div class="v_card_top">
               <span class="v_student_tag active_tag">慶應SFC 志望・受講中</span>
-              <span class="v_student_meta">高3 ｜ 小論文 / 週1回</span>
+              <span class="v_student_meta">高3 ｜ 小論文</span>
             </div>
-            <h4 class="v_card_heading">小論文を面談内で対話しながら深掘り。次の課題がクリアに</h4>
+            <h4 class="v_card_heading">面談内で対話しながら答案を改善。課題が明確に</h4>
             <p class="v_card_text">
-              答案をただ赤字添削されるのではなく、60分の面談でなぜこの構成にしたかを対話で深掘りしてくれるので、毎回の気づきが深いです。次の面談までに練習すべきテーマが明確で迷いません。
+              赤字返却だけでなく、なぜその論理展開にしたかを60分対話で深掘り。次の面談までにやるべきことがはっきりしています。
             </p>
             <div class="v_card_foot">
               <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">SFC 総合政策志望・現役生</span>
-            </div>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="voice_card_marquee">
-            <div class="v_card_top">
-              <span class="v_student_tag pass_tag">慶應SFC 環境情報 合格</span>
-              <span class="v_student_meta">高3 ｜ 英語＋小論文 / 週3回</span>
-            </div>
-            <h4 class="v_card_heading">秋からの週3回プランで短期間に集中。LINEで毎日疑問を解消できた</h4>
-            <p class="v_card_text">
-              部活引退後の秋から週3回プランで受講。毎日LINEで疑問を解消でき、週3回こまめに進捗を軌道修正してもらえたおかげで、短期間で一気に合格圏まで駆け上がることができました。
-            </p>
-            <div class="v_card_foot">
-              <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">SFC 環境情報学部 合格生</span>
-            </div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="voice_card_marquee">
-            <div class="v_card_top">
-              <span class="v_student_tag active_tag">慶應SFC 志望・受講中</span>
-              <span class="v_student_meta">高2 ｜ 英語 / 週1回</span>
-            </div>
-            <h4 class="v_card_heading">自習の優先順位がクリアになり、毎日の机に向かう集中力がアップ</h4>
-            <p class="v_card_text">
-              やみくもに新しい参考書を買い足すのをやめ、基礎の穴埋めから着実に進められるようになりました。週1回の面談がモチベーションの軸になり、勉強習慣が安定しました。
-            </p>
-            <div class="v_card_foot">
-              <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">SFC 志望・高校2年生</span>
+              <span class="v_student_id">現役受講生</span>
             </div>
           </div>
 
@@ -320,7 +241,7 @@
     <!-- Main Content -->
     <main>
 
-      <!-- Section: Challenges (受験生のこんなお悩みを一緒に解決しています / ha-ko風) -->
+      <!-- Section 01: Challenges (お悩み) -->
       <section class="sec sec_challenges" id="challenges">
         <div class="wrapper">
           <div class="editorial_header text_center" data-reveal>
@@ -331,8 +252,7 @@
             </div>
             <h2 class="editorial_title">こんな不安を抱えながら、<br><strong>勉強していませんか？</strong></h2>
             <p class="editorial_sub">
-              <span class="u_phrase">自分で情報を調べて勉強しているけれど、</span><span class="u_phrase">今のやり方でいいのか自信が持てない──</span><br class="pc_only">
-              <span class="u_phrase">当塾は、そんなあなたの取り組みを一緒に確認し、</span><span class="u_phrase">納得して勉強に集中できる環境を作ります。</span>
+              <span class="u_phrase">今の取り組みを一緒に確認し、</span><span class="u_phrase">納得して勉強に集中できる環境を作ります。</span>
             </p>
           </div>
 
@@ -350,11 +270,8 @@
               </div>
               <div class="c_solution_note">
                 <p class="c_solution_txt">
-                  <span class="u_phrase">ネットや動画で勉強法を調べて、</span>
-                  <span class="u_phrase">自分なりに取り入れている。</span>
-                  <span class="u_phrase">毎日勉強もしているけれど、</span>
-                  <span class="u_phrase">思ったほどできるようにならず、</span>
-                  <span class="u_phrase">何を変えればいいのか分からない。</span>
+                  <span class="u_phrase">ネットで勉強法を調べて毎日取り組んでいるが、</span>
+                  <span class="u_phrase">思ったほど手応えがなく、何を変えればいいか分からない。</span>
                 </p>
               </div>
             </div>
@@ -371,13 +288,8 @@
               </div>
               <div class="c_solution_note">
                 <p class="c_solution_txt">
-                  <span class="u_phrase">いろいろ比較して、</span>
-                  <span class="u_phrase">この教材とやり方で</span>
-                  <span class="u_phrase">進めようと決めた。</span>
-                  <span class="u_phrase">それでも、</span>
-                  <span class="u_phrase">本当に自分に合っているのか、</span>
-                  <span class="u_phrase">このまま続けていいのか、</span>
-                  <span class="u_phrase">不安になる。</span>
+                  <span class="u_phrase">教材や方針を決めて進めているが、</span>
+                  <span class="u_phrase">本当に自分に合っているのか、続けていいか不安になる。</span>
                 </p>
               </div>
             </div>
@@ -394,12 +306,8 @@
               </div>
               <div class="c_solution_note">
                 <p class="c_solution_txt">
-                  <span class="u_phrase">おすすめの参考書や</span>
-                  <span class="u_phrase">勉強法を見ると、</span>
-                  <span class="u_phrase">そっちの方がいいのかもしれないと</span>
-                  <span class="u_phrase">思ってしまう。</span>
-                  <span class="u_phrase">今やっていることに納得して、</span>
-                  <span class="u_phrase">目の前の勉強に集中したい。</span>
+                  <span class="u_phrase">他のおすすめ参考書が気になって手が止まる。</span>
+                  <span class="u_phrase">今やっていることに納得して、目の前の勉強に集中したい。</span>
                 </p>
               </div>
             </div>
@@ -416,12 +324,8 @@
               </div>
               <div class="c_solution_note">
                 <p class="c_solution_txt">
-                  <span class="u_phrase">うまくいかないとき、</span>
-                  <span class="u_phrase">勉強量が足りないのか、</span>
-                  <span class="u_phrase">やり方を変えた方がいいのか</span>
-                  <span class="u_phrase">判断できない。</span>
-                  <span class="u_phrase">自分の取り組みを見て、</span>
-                  <span class="u_phrase">一緒に考えてくれる人がほしい。</span>
+                  <span class="u_phrase">量が足りないのか、方法が悪いのか判断できない。</span>
+                  <span class="u_phrase">自分の取り組みを見て、客観的にアドバイスしてくれる人がほしい。</span>
                 </p>
               </div>
             </div>
@@ -431,256 +335,72 @@
         </div>
       </section>
 
-      <!-- Section: Concept & Philosophy -->
-      <section class="sec sec_about" id="concept">
+      <!-- Section 02: Features (塾の特徴 - 旧CONCEPTと旧SUBJECTSを集約) -->
+      <section class="sec sec_about" id="features">
         <div class="wrapper">
           <div class="editorial_header" data-reveal>
             <div class="editorial_index">
               <span class="index_num">02</span>
               <span class="index_divider">/</span>
-              <span class="index_tag">OUR CONCEPT</span>
+              <span class="index_tag">OUR FEATURES</span>
             </div>
-            <h2 class="editorial_title">一人ひとりの勉強の質を高める、<br class="sp_only">完全マンツーマン個別指導。</h2>
+            <h2 class="editorial_title">慶應SFC合格へ導く、<br>3つの指導方針</h2>
             <p class="editorial_sub">
-              画一的な講義を聞くだけでは成績は伸びません。大切なのは、自習の時間に正しいやり方で必要な学習を積み重ねられているかです。
+              講義の一方通行ではなく、日々の自習の質を高めるためのマンツーマン個別指導です。
             </p>
           </div>
 
-          <div class="about_manifesto_grid">
-            <div class="manifesto_lead_card" data-reveal>
-              <p class="manifesto_text">
-                当塾では、使い慣れた教材を無理に変えさせることはいたしません。<strong>現在使っている参考書が合っていれば、それを最大限に活かします。</strong><br><br>
-                学力や志望学部をヒアリングした上で、あなたに最適な<strong>何を、どういう方法で、どの順番でやるか</strong>を個別設計。<br><br>
-                毎回の面談で学習の進み具合やつまずきを確認し、その都度やり方を調整・改善しながら、慶應SFC合格まで二人三脚で支え続けます。
-              </p>
-              <div class="manifesto_author">
-                <span class="author_role">Founder & Lead Mentor</span>
-                <span class="author_name">堀安 泰世 ── 慶應義塾大学 総合政策学部2年</span>
-              </div>
-            </div>
-
-            <div class="manifesto_pillars" data-reveal>
-              <div class="pillar_card">
-                <div class="pillar_num">01</div>
-                <div class="pillar_content">
-                  <h4 class="pillar_title">現在の教材と学習状況を尊重</h4>
-                  <p class="pillar_desc">学校や予備校の教材、すでに使い込んでいる参考書を無理に捨てさせません。手元のテキストをどう使いこなすかから設計します。</p>
-                </div>
-              </div>
-
-              <div class="pillar_card">
-                <div class="pillar_num">02</div>
-                <div class="pillar_content">
-                  <h4 class="pillar_title">日々の自習メニューの具体化</h4>
-                  <p class="pillar_desc">ただ漠然と英語を頑張るのではなく、単語の定着手順や長文の復習法など、毎日の自習で迷わない具体的な手順を定めます。</p>
-                </div>
-              </div>
-
-              <div class="pillar_card">
-                <div class="pillar_num">03</div>
-                <div class="pillar_content">
-                  <h4 class="pillar_title">進捗を見ながらその都度チューニング</h4>
-                  <p class="pillar_desc">計画倒れにさせません。面談ごとにつまずきを分析し、現実の進み具合に合わせてやり方を柔軟に軌道修正します。</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section: Data (数字で見る SFC生の英語塾 / ha-ko風) -->
-      <section class="sec sec_data" id="data">
-        <div class="wrapper">
-          <div class="editorial_header text_center" data-reveal>
-            <div class="editorial_index" style="justify-content: center;">
-              <span class="index_num">03</span>
-              <span class="index_divider">/</span>
-              <span class="index_tag">DATA & METRICS</span>
-            </div>
-            <h2 class="editorial_title">数字で見る <strong>SFC生の英語塾</strong></h2>
-            <p class="editorial_sub">確かな実績と手厚いサポート体制を、数字で分かりやすくご紹介します。</p>
-          </div>
-
-          <div class="data_metrics_grid_4" data-reveal>
+          <div class="features_grid_3" data-reveal>
             
-            <div class="data_card_arch">
-              <div class="data_card_top">
-                <span class="data_badge">HIGHEST QUALIFICATION</span>
-                <h3 class="data_title">講師保有資格</h3>
+            <div class="feature_card_arch">
+              <div class="feature_card_top">
+                <span class="feature_num">01</span>
+                <span class="feature_badge">学習設計</span>
               </div>
-              <div class="data_icon_wrap">
-                <img src="./assets/hako/icon_data_01.webp" alt="講師保有資格アイコン" class="data_icon_img" loading="lazy">
-              </div>
-              <div class="data_number_wrap">
-                <span class="data_num_val highlight_accent">Grade 1</span>
-              </div>
-              <p class="data_lead_txt">実用英語技能検定 1級取得</p>
-              <p class="data_desc_txt">最難関英語資格を保持する現役SFC生が直接担当。学術長文を読み解く本物の英語力を伝授します。</p>
+              <h3 class="feature_title">手元の教材を活かした個別設計</h3>
+              <p class="feature_desc">
+                使い慣れた参考書を無理に変えさせることはしません。現在の学力に合わせて何を・どの順で進めるか整理し、毎日の自習メニューを具体化します。
+              </p>
             </div>
 
-            <div class="data_card_arch">
-              <div class="data_card_top">
-                <span class="data_badge">GLOBAL STANDARD</span>
-                <h3 class="data_title">国際基準英語力</h3>
+            <div class="feature_card_arch">
+              <div class="feature_card_top">
+                <span class="feature_num">02</span>
+                <span class="feature_badge">英語指導</span>
               </div>
-              <div class="data_icon_wrap">
-                <img src="./assets/hako/icon_data_02.webp" alt="国際基準英語力アイコン" class="data_icon_img" loading="lazy">
-              </div>
-              <div class="data_number_wrap">
-                <span class="data_num_val">7.0</span>
-                <span class="data_unit">Band</span>
-              </div>
-              <p class="data_lead_txt">IELTS Academic 7.0 取得</p>
-              <p class="data_desc_txt">海外トップ大学進学レベルのアカデミック読解力。小論文にも通底する論理構成力を備えています。</p>
+              <h3 class="feature_title">慶應SFC特化の超長文速読指導</h3>
+              <p class="feature_desc">
+                1題1,000語超の長文を制限時間内に読み解く力を養成。返り読みをなくす読解法と、過去問演習の設問処理・時間配分戦略を伝授します。
+              </p>
             </div>
 
-            <div class="data_card_arch">
-              <div class="data_card_top">
-                <span class="data_badge">PRACTICE RECORD</span>
-                <h3 class="data_title">慶應英語 実戦演習</h3>
+            <div class="feature_card_arch">
+              <div class="feature_card_top">
+                <span class="feature_num">03</span>
+                <span class="feature_badge">小論文指導</span>
               </div>
-              <div class="data_icon_wrap">
-                <img src="./assets/hako/icon_data_03.webp" alt="慶應英語実戦演習アイコン" class="data_icon_img" loading="lazy">
-              </div>
-              <div class="data_number_wrap">
-                <span class="data_num_val highlight_accent">満点</span>
-                <span class="data_unit">獲得経験</span>
-              </div>
-              <p class="data_lead_txt">過去問演習で満点の実績</p>
-              <p class="data_desc_txt">SFC英語の出題意図、設問の落とし穴、見直し時間の生み出し方を肌感覚で熟知しています。</p>
-            </div>
-
-            <div class="data_card_arch">
-              <div class="data_card_top">
-                <span class="data_badge">SUPPORT SYSTEM</span>
-                <h3 class="data_title">面談 ＆ 質問サポート</h3>
-              </div>
-              <div class="data_icon_wrap">
-                <img src="./assets/hako/icon_data_01.webp" alt="サポート体制アイコン" class="data_icon_img" loading="lazy">
-              </div>
-              <div class="data_number_wrap">
-                <span class="data_num_val">60</span>
-                <span class="data_unit">分</span>
-                <span class="data_slash">/</span>
-                <span class="data_num_val">24</span>
-                <span class="data_unit">h</span>
-              </div>
-              <p class="data_lead_txt">60分個別面談 ＋ 24h LINE</p>
-              <p class="data_desc_txt">毎回の濃密な対話面談に加え、自宅学習の疑問はLINEで原則24時間以内に直接回答します。</p>
+              <h3 class="feature_title">対話形式の小論文答案改善</h3>
+              <p class="feature_desc">
+                単なる赤字返却ではなく、60分面談の中で答案の論理展開を対話しながら深掘り。SFCが求める問題解決思考を実践的に鍛えます。
+              </p>
             </div>
 
           </div>
         </div>
       </section>
 
-      <!-- Section 2: Subjects (English & Essay) -->
-      <!-- Section: Subjects (English & Essay) -->
-      <section class="sec sec_analysis" id="subjects">
-        <div class="wrapper">
-          <div class="editorial_header" data-reveal>
-            <div class="editorial_index">
-              <span class="index_num">04</span>
-              <span class="index_divider">/</span>
-              <span class="index_tag">SUBJECTS</span>
-            </div>
-            <h2 class="editorial_title">慶應SFC入試に直結する、<br>英語と小論文の指導</h2>
-            <p class="editorial_sub">
-              SFC入試は英語と小論文の2科目勝負。英語のみ、小論文のみ、または両方の受講から、今の課題に合わせて選択可能です。
-            </p>
-          </div>
-
-          <div class="subjects_grid_2">
-            
-            <!-- 英語指導 -->
-            <div class="subject_card_arch" data-reveal>
-              <div class="subject_card_head">
-                <span class="subject_badge">SUBJECT 01</span>
-                <h3 class="subject_title">慶應SFC 英語指導</h3>
-              </div>
-              <p class="subject_lead">
-                1題1,000語超×2本という日本最長クラスの超長文を、制限時間内に論理的に読み解く力を養成します。
-              </p>
-              
-              <div class="subject_points">
-                <div class="s_point_item">
-                  <div class="s_point_bullet">●</div>
-                  <div class="s_point_text">
-                    <strong>現在の習熟度に応じた基礎〜長文演習のステップ設計</strong>
-                    <p>基礎の抜け漏れを放置したまま過去問を解いても伸びません。語彙の定着から複文の構造把握まで、着実な段階を踏みます。</p>
-                  </div>
-                </div>
-
-                <div class="s_point_item">
-                  <div class="s_point_bullet">●</div>
-                  <div class="s_point_text">
-                    <strong>返り読みをなくし、左から右へ読む速読力の定着</strong>
-                    <p>長文を日本語に訳しながら戻って読んでいては時間が足りません。文頭から意味を掴む読解習慣を面談で確認・修正します。</p>
-                  </div>
-                </div>
-
-                <div class="s_point_item">
-                  <div class="s_point_bullet">●</div>
-                  <div class="s_point_text">
-                    <strong>慶應英語過去問の解き直しと時間配分戦略</strong>
-                    <p>講師自ら過去問演習で満点を獲得した経験から、設問の処理順序や捨て問の判断、見直し時間の作り方を具体的に伝授します。</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 小論文指導 -->
-            <div class="subject_card_arch" data-reveal>
-              <div class="subject_card_head">
-                <span class="subject_badge">SUBJECT 02</span>
-                <h3 class="subject_title">慶應SFC 小論文指導</h3>
-              </div>
-              <p class="subject_lead">
-                面談の中で一緒に答案を確認。なぜこの論理展開にしたかを掘り下げ、改善点と次の練習方法を具体化します。
-              </p>
-              
-              <div class="subject_points">
-                <div class="s_point_item">
-                  <div class="s_point_bullet">●</div>
-                  <div class="s_point_text">
-                    <strong>設問意図の正確な読み取りと論理の組み立て</strong>
-                    <p>SFC小論文で最も多い失敗は、設問の問いに答えていないこと。問題文の要求を正確に分解し、骨子を作る思考力を鍛えます。</p>
-                  </div>
-                </div>
-
-                <div class="s_point_item">
-                  <div class="s_point_bullet">●</div>
-                  <div class="s_point_text">
-                    <strong>面談内で答案をリアルタイム添削・ディスカッション</strong>
-                    <p>単に赤字を入れて返却するだけではなく、60分の面談で一緒に答案を見ながら、どう書き直せば説得力が増すかをその場で対話します。</p>
-                  </div>
-                </div>
-
-                <div class="s_point_item">
-                  <div class="s_point_bullet">●</div>
-                  <div class="s_point_text">
-                    <strong>総合政策・環境情報特有の問題解決思考を養成</strong>
-                    <p>社会課題の構造化、新規性のある解決策の立案など、SFCが求める思考様式を日々の小論文演習を通じて身につけます。</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- Section: Mentoring Flow & Support System -->
+      <!-- Section 03: System (指導システム) -->
       <section class="sec sec_method" id="system">
         <div class="wrapper">
           <div class="editorial_header" data-reveal>
             <div class="editorial_index">
-              <span class="index_num">05</span>
+              <span class="index_num">03</span>
               <span class="index_divider">/</span>
               <span class="index_tag">MENTORING SYSTEM</span>
             </div>
-            <h2 class="editorial_title">毎回60分のマンツーマン面談 ＆<br>24時間LINE伴走サポート</h2>
+            <h2 class="editorial_title">毎回60分面談 ＋ 24時間LINEサポート</h2>
             <p class="editorial_sub">
-              面談は週1回・週2回・週3回から選択可能。こまめに確認と修正を繰り返すことで、勉強の迷いを完全になくします。
+              進捗確認と学習法の修正をこまめに繰り返し、日々の勉強の手を止めさせません。
             </p>
           </div>
 
@@ -688,77 +408,55 @@
           <div class="session_flow_card" data-reveal>
             <div class="flow_card_header">
               <span class="flow_badge">EACH 60 MIN SESSION</span>
-              <h3 class="flow_title">毎回60分の面談で行う3つのこと ｜ 全プラン共通</h3>
-              <p class="flow_subtitle">何をやったか、どこでつまずいたかを可視化し、次のアクションを明確にします。</p>
+              <h3 class="flow_title">毎回60分の面談で行う3つのこと</h3>
+              <p class="flow_subtitle">何をやったか、どこでつまずいたかを明確にし、次の一手を定めます。</p>
             </div>
 
             <div class="steps_row_3">
               <div class="step_block">
                 <div class="step_num_arch">STEP 01</div>
-                <h4 class="step_name">前回からの進捗確認・つまずき分析</h4>
-                <p class="step_text">
-                  前回から何を進めたか、どこで手が止まったかを詳しく確認。小論文なら書いた答案を一緒に見ながら課題を洗い出します。
-                </p>
+                <h4 class="step_name">進捗確認・つまずき分析</h4>
+                <p class="step_text">前回からの進み具合と手が止まった箇所を把握。小論文答案の課題も洗い出します。</p>
               </div>
 
               <div class="step_block">
                 <div class="step_num_arch">STEP 02</div>
-                <h4 class="step_name">勉強方法・進め方の改善・修正</h4>
-                <p class="step_text">
-                  なぜその問題で間違えたのか、どう読めばよかったのかを掘り下げ、暗記のやり方や長文・小論文の解き方を修正します。
-                </p>
+                <h4 class="step_name">勉強法・解き方の修正</h4>
+                <p class="step_text">なぜ間違えたかを掘り下げ、暗記手順や長文の読み方、小論文の構成を改善します。</p>
               </div>
 
               <div class="step_block">
                 <div class="step_num_arch">STEP 03</div>
-                <h4 class="step_name">次回面談までにやる自習タスクを決定</h4>
-                <p class="step_text">
-                  次の面談までに進める範囲と具体的な取り組み方を明確に決定。迷いなく机に向かえる状態にして終了します。
-                </p>
+                <h4 class="step_name">次回までの自習タスク決定</h4>
+                <p class="step_text">次の面談までに進める範囲と具体的な手順を確定し、迷いなく机に向かえる状態にします。</p>
               </div>
             </div>
           </div>
 
-          <!-- 頻度の違い & LINEサポート -->
-          <div class="support_features_grid" data-reveal>
-            
-            <div class="feature_support_card">
-              <div class="f_icon_box">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </div>
-              <h4 class="f_title">週1回・週2回・週3回の頻度の違い</h4>
-              <p class="f_desc">
-                面談の内容は共通ですが、<strong>頻度が高いほど、よりこまめに学習の進捗を確認し、やり方のズレを素早く修正できます。</strong>一人だとサボってしまう方や、過去問演習の添削と修正を頻繁に行いたい方は週2回や週3回が適しています。
-              </p>
+          <!-- LINEサポート告知 -->
+          <div class="system_line_box" data-reveal>
+            <div class="line_box_icon">💬</div>
+            <div class="line_box_text">
+              <strong>全プラン共通：24時間 LINE質問対応</strong>
+              <p>自宅学習中の疑問や小論文のテーマ相談は、いつでもLINEで質問可能。原則24時間以内に担当講師が直接回答します。</p>
             </div>
-
-            <div class="feature_support_card">
-              <div class="f_icon_box">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-              </div>
-              <h4 class="f_title">全プラン共通：24時間LINE質問受付</h4>
-              <p class="f_desc">
-                自宅での自習中に英語の長文構造でつまずいたり、小論文のテーマで悩んだ時は、いつでもLINEで質問可能。<strong>原則24時間以内に担当講師が直接返信</strong>し、学習の手を止めさせません。
-              </p>
-            </div>
-
           </div>
 
         </div>
       </section>
 
-      <!-- Section: Mentor Profile -->
+      <!-- Section 04: Mentor Profile (旧DATAと旧MENTORを集約) -->
       <section class="sec sec_mentor" id="mentor">
         <div class="wrapper">
           <div class="editorial_header" data-reveal>
             <div class="editorial_index">
-              <span class="index_num">06</span>
+              <span class="index_num">04</span>
               <span class="index_divider">/</span>
               <span class="index_tag">LEAD MENTOR</span>
             </div>
             <h2 class="editorial_title">担当講師紹介</h2>
             <p class="editorial_sub">
-              アルバイト講師への丸投げは一切ありません。現役SFC生である代表講師本人が、責任を持って直接伴走します。
+              アルバイト講師への丸投げは一切ありません。現役SFC生である代表講師が責任を持って直接伴走します。
             </p>
           </div>
 
@@ -779,7 +477,7 @@
               </div>
               <h3 class="mentor_full_name">堀安 泰世</h3>
               <div class="mentor_academic">
-                Taisei Horiyasu ── 慶應義塾大学 総合政策学部2年 / 城西川越高校出身
+                Taisei Horiyasu ── 慶應義塾大学 総合政策学部2年
               </div>
 
               <div class="mentor_achievements_grid">
@@ -789,24 +487,22 @@
                 </div>
                 <div class="achieve_item">
                   <span class="achieve_label">IELTS Academic</span>
-                  <span class="achieve_val">Band 7.0 取得</span>
+                  <span class="achieve_val">7.0 取得</span>
                 </div>
                 <div class="achieve_item">
                   <span class="achieve_label">慶應英語 実戦演習</span>
-                  <span class="achieve_val">過去問満点の経験</span>
+                  <span class="achieve_val">過去問満点の実績</span>
                 </div>
                 <div class="achieve_item">
                   <span class="achieve_label">指導スタイル</span>
-                  <span class="achieve_val">個別学習設計 ＆ 伴走型指導</span>
+                  <span class="achieve_val">個別学習設計 ＆ 伴走指導</span>
                 </div>
               </div>
 
               <div class="mentor_story_box">
-                <h4 class="story_heading">講師メッセージ：自分が具体的に何をしてあげられるかを大切に</h4>
                 <p class="story_p">
-                  受験勉強で一番苦しいのは、この教材とやり方で本当に伸びているのか分からないまま、一人で机に向かい続けることだと思います。<br><br>
-                  私自身、最初から何でもスムーズにできたわけではありませんでした。だからこそ、受験生がつまずくポイントや、どこで手が止まり、どう直せば勉強の質が大きく変わるかを具体的にアドバイスできます。<br><br>
-                  市販の教材を無理に変えさせるのではなく、今あなたが持っているものを最大限に活かしながら、慶應SFC合格に必要なステップを一緒に歩んでいきます。どんな些細な疑問や悩みでも、遠慮なく相談してください。
+                  受験勉強で一番苦しいのは、今のやり方で本当に伸びているのか分からないまま、一人で机に向かい続けることだと思います。<br><br>
+                  私自身、最初から全て順調だったわけではありません。だからこそ、受験生がつまずくポイントや、どう直せば勉強の質が変わるかを具体的にアドバイスできます。手元の教材を活かしながら、慶應SFC合格まで一緒に走り抜けましょう。
                 </p>
               </div>
 
@@ -815,7 +511,7 @@
         </div>
       </section>
 
-      <!-- Section: Tuition Plans -->
+      <!-- Section 05: Tuition Plans (料金プラン - タブ切替＆マトリクス比較) -->
       <section class="sec sec_capacity" id="tuition">
         <div class="wrapper">
           <div class="capacity_arch_box" data-reveal>
@@ -826,177 +522,159 @@
               </div>
               <h2 class="capacity_title">受講料金プラン</h2>
               <p class="capacity_lead">
-                科目数と面談頻度から、ご自身の学習状況に合わせてお選びいただけます。<br>
+                全プラン共通で<strong>毎回60分のマンツーマン面談</strong>と<strong>24時間LINE質問対応</strong>が含まれます。<br>
                 全学年共通・すべて税込の月額料金です。
               </p>
             </div>
 
-            <!-- プランカテゴリ 1: 1科目プラン -->
-            <div class="plan_category_block">
-              <div class="plan_cat_header">
-                <span class="cat_badge">PLAN OPTION 01</span>
-                <h3 class="cat_title">1科目プラン ｜ 英語 または 小論文</h3>
-                <p class="cat_desc">英語の長文速読を徹底強化したい方や、小論文の添削と書き方を集中的に改善したい方向け</p>
-              </div>
-
-              <div class="plan_grid_arch">
-                
-                <!-- 1科目 週1回 -->
-                <div class="plan_card_arch" data-reveal>
-                  <div class="plan_card_header">
-                    <div class="plan_tag_arch">LIGHT / 週1回</div>
-                    <h4 class="plan_title_arch">1科目 週1回プラン</h4>
-                    <p class="plan_target_arch">自習習慣があり、週1回のペースメーカーと方針確認を行いたい方</p>
-                  </div>
-                  <div class="plan_features_box">
-                    <ul class="plan_features_list">
-                      <li>毎回60分 マンツーマン面談 / 週1回</li>
-                      <li>英語または小論文の学習設計</li>
-                      <li>毎回の進捗確認 ＆ 勉強法改善</li>
-                      <li>24時間 LINE質問対応 / 原則24時間以内に返信</li>
-                    </ul>
-                  </div>
-                  <div class="plan_price_box">
-                    <div class="plan_price_label">MONTHLY TUITION</div>
-                    <div class="plan_price_main">¥40,000 <span class="unit">/ 月 税込</span></div>
-                  </div>
-                </div>
-
-                <!-- 1科目 週2回 / Featured -->
-                <div class="plan_card_arch is_featured" data-reveal>
-                  <div class="featured_ribbon">STANDARD / おすすめ</div>
-                  <div class="plan_card_header">
-                    <div class="plan_tag_arch">STANDARD / 週2回</div>
-                    <h4 class="plan_title_arch">1科目 週2回プラン</h4>
-                    <p class="plan_target_arch">こまめに進捗を確認し、つまずきを素早く修正しながら進めたい方</p>
-                  </div>
-                  <div class="plan_features_box">
-                    <ul class="plan_features_list">
-                      <li>毎回60分 マンツーマン面談 / 週2回</li>
-                      <li>英語または小論文の学習設計</li>
-                      <li>毎回の進捗確認 ＆ 勉強法改善</li>
-                      <li>小論文の添削・解き直しサイクル加速</li>
-                      <li>24時間 LINE質問対応 / 原則24時間以内に返信</li>
-                    </ul>
-                  </div>
-                  <div class="plan_price_box">
-                    <div class="plan_price_label">MONTHLY TUITION</div>
-                    <div class="plan_price_main featured_price">¥60,000 <span class="unit">/ 月 税込</span></div>
-                  </div>
-                </div>
-
-                <!-- 1科目 週3回 -->
-                <div class="plan_card_arch" data-reveal>
-                  <div class="plan_card_header">
-                    <div class="plan_tag_arch">INTENSIVE / 週3回</div>
-                    <h4 class="plan_title_arch">1科目 週3回プラン</h4>
-                    <p class="plan_target_arch">短期間で一気に勉強のやり方を軌道修正し、徹底伴走を受けたい方</p>
-                  </div>
-                  <div class="plan_features_box">
-                    <ul class="plan_features_list">
-                      <li>毎回60分 マンツーマン面談 / 週3回</li>
-                      <li>英語または小論文の学習設計</li>
-                      <li>高頻度の進捗チェック ＆ 徹底修正</li>
-                      <li>小論文答案の多頻度ブラッシュアップ</li>
-                      <li>24時間 LINE質問対応 / 原則24時間以内に返信</li>
-                    </ul>
-                  </div>
-                  <div class="plan_price_box">
-                    <div class="plan_price_label">MONTHLY TUITION</div>
-                    <div class="plan_price_main">¥80,000 <span class="unit">/ 月 税込</span></div>
-                  </div>
-                </div>
-
+            <!-- 全プラン共通帯 -->
+            <div class="tuition_common_strip">
+              <div class="common_badge">全プラン共通サポート</div>
+              <div class="common_items">
+                <span>✓ 毎回60分 マンツーマン面談</span>
+                <span>✓ 24時間 LINE質問対応（原則24h以内返信）</span>
+                <span>✓ 現在の教材に合わせた学習設計</span>
               </div>
             </div>
 
-            <!-- プランカテゴリ 2: 2科目プラン -->
-            <div class="plan_category_block" style="margin-top: 50px;">
-              <div class="plan_cat_header">
-                <span class="cat_badge cat_badge_accent">PLAN OPTION 02</span>
-                <h3 class="cat_title">2科目プラン ｜ 英語 ＋ 小論文</h3>
-                <p class="cat_desc">SFC入試の2科目、英語と小論文をトータルでバランスよく個別管理したい方向け。各回60分の中で配分します。</p>
-              </div>
-
-              <div class="plan_grid_arch">
-                
-                <!-- 2科目 週1回 -->
-                <div class="plan_card_arch" data-reveal>
-                  <div class="plan_card_header">
-                    <div class="plan_tag_arch">LIGHT / 週1回</div>
-                    <h4 class="plan_title_arch">2科目 週1回プラン</h4>
-                    <p class="plan_target_arch">2科目のバランスを確認しつつ、自習計画を週単位で管理したい方</p>
-                  </div>
-                  <div class="plan_features_box">
-                    <ul class="plan_features_list">
-                      <li>毎回60分 マンツーマン面談 / 週1回・時間内配分</li>
-                      <li>英語・小論文の総合学習設計</li>
-                      <li>答案確認 ＆ 勉強法アドバイス</li>
-                      <li>24時間 LINE質問対応 / 原則24時間以内に返信</li>
-                    </ul>
-                  </div>
-                  <div class="plan_price_box">
-                    <div class="plan_price_label">MONTHLY TUITION</div>
-                    <div class="plan_price_main">¥50,000 <span class="unit">/ 月 税込</span></div>
-                  </div>
-                </div>
-
-                <!-- 2科目 週2回 / Featured -->
-                <div class="plan_card_arch is_featured" data-reveal>
-                  <div class="featured_ribbon">POPULAR / 2科目おすすめ</div>
-                  <div class="plan_card_header">
-                    <div class="plan_tag_arch">STANDARD / 週2回</div>
-                    <h4 class="plan_title_arch">2科目 週2回プラン</h4>
-                    <p class="plan_target_arch">英語・小論文ともにこまめな確認と修正を行い、確実に力をつけたい方</p>
-                  </div>
-                  <div class="plan_features_box">
-                    <ul class="plan_features_list">
-                      <li>毎回60分 マンツーマン面談 / 週2回・時間内配分</li>
-                      <li>英語・小論文の総合学習設計</li>
-                      <li>英語の長文読解確認 ＆ 小論文添削</li>
-                      <li>24時間 LINE質問対応 / 原則24時間以内に返信</li>
-                    </ul>
-                  </div>
-                  <div class="plan_price_box">
-                    <div class="plan_price_label">MONTHLY TUITION</div>
-                    <div class="plan_price_main featured_price">¥70,000 <span class="unit">/ 月 税込</span></div>
-                  </div>
-                </div>
-
-                <!-- 2科目 週3回 -->
-                <div class="plan_card_arch" data-reveal>
-                  <div class="plan_card_header">
-                    <div class="plan_tag_arch">INTENSIVE / 週3回</div>
-                    <h4 class="plan_title_arch">2科目 週3回プラン</h4>
-                    <p class="plan_target_arch">英語と小論文の両方を手厚く伴走し、最短距離でSFC合格圏を目指す方</p>
-                  </div>
-                  <div class="plan_features_box">
-                    <ul class="plan_features_list">
-                      <li>毎回60分 マンツーマン面談 / 週3回・時間内配分</li>
-                      <li>英語・小論文の総合学習設計</li>
-                      <li>高頻度の答案確認 ＆ 勉強法修正</li>
-                      <li>24時間 LINE質問対応 / 原則24時間以内に返信</li>
-                    </ul>
-                  </div>
-                  <div class="plan_price_box">
-                    <div class="plan_price_label">MONTHLY TUITION</div>
-                    <div class="plan_price_main">¥90,000 <span class="unit">/ 月 税込</span></div>
-                  </div>
-                </div>
-
+            <!-- 1科目 / 2科目 タブ切替コントロール -->
+            <div class="tuition_switcher">
+              <div class="tuition_tabs" role="tablist">
+                <button type="button" class="tuition_tab_btn is_active" data-plan="single" role="tab" aria-selected="true">
+                  <span class="tab_main">1科目プラン</span>
+                  <span class="tab_sub">英語 または 小論文</span>
+                </button>
+                <button type="button" class="tuition_tab_btn" data-plan="double" role="tab" aria-selected="false">
+                  <span class="tab_main">2科目プラン</span>
+                  <span class="tab_sub">英語 ＋ 小論文（総合管理）</span>
+                </button>
               </div>
             </div>
 
-            <!-- Notes Strip -->
-            <div class="capacity_foot_notice" style="margin-top: 36px;">
-              <div class="notice_icon">ℹ︎</div>
-              <div class="notice_text">
-                ※面談時間はすべて1回あたり60分です。2科目受講の場合も、各回60分の中で進度や課題に合わせて時間配分いたします。<br>
-                ※受講開始前に無料学習相談を実施し、現状の学力や使っている教材、学習状況をお伺いした上で最適なプランをご提案いたします。無理な勧誘は一切ございません。
+            <!-- プランカードエリア -->
+            <div class="tuition_cards_container">
+              
+              <!-- 1科目カード群 -->
+              <div class="tuition_panel is_active" id="panel_single">
+                <div class="tuition_cards_grid">
+                  
+                  <div class="t_card">
+                    <div class="t_card_head">
+                      <span class="t_card_freq">週1回 ｜ 月4回</span>
+                      <h3 class="t_card_name">週1回プラン</h3>
+                      <p class="t_card_desc">自習習慣があり、週1回のペースメーカーと方針確認を行いたい方</p>
+                    </div>
+                    <div class="t_card_price">
+                      <span class="price_num">¥40,000</span>
+                      <span class="price_unit">/ 月（税込）</span>
+                    </div>
+                  </div>
+
+                  <div class="t_card is_recommend">
+                    <div class="t_badge_rec">おすすめ / 標準</div>
+                    <div class="t_card_head">
+                      <span class="t_card_freq">週2回 ｜ 月8回</span>
+                      <h3 class="t_card_name">週2回プラン</h3>
+                      <p class="t_card_desc">こまめに進捗を確認し、つまずきを素早く修正しながら進めたい方</p>
+                    </div>
+                    <div class="t_card_price">
+                      <span class="price_num">¥60,000</span>
+                      <span class="price_unit">/ 月（税込）</span>
+                    </div>
+                  </div>
+
+                  <div class="t_card">
+                    <div class="t_card_head">
+                      <span class="t_card_freq">週3回 ｜ 月12回</span>
+                      <h3 class="t_card_name">週3回プラン</h3>
+                      <p class="t_card_desc">短期間で一気に勉強のやり方を軌道修正し、徹底伴走を受けたい方</p>
+                    </div>
+                    <div class="t_card_price">
+                      <span class="price_num">¥80,000</span>
+                      <span class="price_unit">/ 月（税込）</span>
+                    </div>
+                  </div>
+
+                </div>
               </div>
+
+              <!-- 2科目カード群 -->
+              <div class="tuition_panel" id="panel_double">
+                <div class="tuition_cards_grid">
+                  
+                  <div class="t_card">
+                    <div class="t_card_head">
+                      <span class="t_card_freq">週1回 ｜ 月4回</span>
+                      <h3 class="t_card_name">2科目 週1回プラン</h3>
+                      <p class="t_card_desc">2科目のバランスを確認しつつ、自習計画を週単位で管理したい方</p>
+                    </div>
+                    <div class="t_card_price">
+                      <span class="price_num">¥50,000</span>
+                      <span class="price_unit">/ 月（税込）</span>
+                    </div>
+                  </div>
+
+                  <div class="t_card is_recommend">
+                    <div class="t_badge_rec">2科目おすすめ</div>
+                    <div class="t_card_head">
+                      <span class="t_card_freq">週2回 ｜ 月8回</span>
+                      <h3 class="t_card_name">2科目 週2回プラン</h3>
+                      <p class="t_card_desc">英語・小論文ともにこまめな確認と修正を行い、確実に力をつけたい方</p>
+                    </div>
+                    <div class="t_card_price">
+                      <span class="price_num">¥70,000</span>
+                      <span class="price_unit">/ 月（税込）</span>
+                    </div>
+                  </div>
+
+                  <div class="t_card">
+                    <div class="t_card_head">
+                      <span class="t_card_freq">週3回 ｜ 月12回</span>
+                      <h3 class="t_card_name">2科目 週3回プラン</h3>
+                      <p class="t_card_desc">英語と小論文の両方を手厚く伴走し、最短距離で合格圏を目指す方</p>
+                    </div>
+                    <div class="t_card_price">
+                      <span class="price_num">¥90,000</span>
+                      <span class="price_unit">/ 月（税込）</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
             </div>
 
-            <div class="capacity_cta_area">
+            <!-- 一目でわかる比較マトリクス表 -->
+            <div class="tuition_matrix_wrapper">
+              <h4 class="matrix_title">料金一覧・比較表</h4>
+              <table class="tuition_matrix_table">
+                <thead>
+                  <tr>
+                    <th>プラン</th>
+                    <th>週1回（月4回）</th>
+                    <th class="th_rec">週2回（月8回）★標準</th>
+                    <th>週3回（月12回）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="td_plan_name"><strong>1科目</strong><br><span>英語 または 小論文</span></td>
+                    <td><strong>¥40,000</strong></td>
+                    <td class="td_rec"><strong>¥60,000</strong></td>
+                    <td><strong>¥80,000</strong></td>
+                  </tr>
+                  <tr>
+                    <td class="td_plan_name"><strong>2科目</strong><br><span>英語 ＋ 小論文</span></td>
+                    <td><strong>¥50,000</strong></td>
+                    <td class="td_rec"><strong>¥70,000</strong></td>
+                    <td><strong>¥90,000</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="matrix_note">※表示価格はすべて税込の月額料金です。入会金等の追加費用はございません。</p>
+            </div>
+
+            <div class="capacity_cta_area" style="margin-top: 40px;">
               <a href="#form_area" class="btn_mega_cta">
                 <span class="cta_en">FREE CONSULTATION</span>
                 <span class="cta_ja">無料学習相談に申し込む →</span>
@@ -1007,19 +685,18 @@
         </div>
       </section>
 
-      <!-- Section: Consultation Flow -->
+      <!-- Section 06: Consultation Flow (受講の流れ) -->
       <section class="sec sec_about" id="flow">
         <div class="wrapper_narrow">
           <div class="editorial_header text_center" data-reveal>
             <div class="editorial_index" style="justify-content: center;">
-              <span class="index_num">07</span>
+              <span class="index_num">06</span>
               <span class="index_divider">/</span>
-              <span class="index_tag">CONSULTATION FLOW</span>
+              <span class="index_tag">FLOW</span>
             </div>
-            <h2 class="editorial_title">まずは無料学習相談から</h2>
+            <h2 class="editorial_title">受講開始までの流れ</h2>
             <p class="editorial_sub">
-              あなたの今の勉強方法や教材、学習状況を確認し、<br>
-              続けるべきこと、変えるべきこと、次にやることを具体的にお伝えします。
+              まずは無料学習相談で、現状の学力と教材に合わせたアドバイスをお伝えします。
             </p>
           </div>
 
@@ -1028,24 +705,24 @@
             <div class="v_step_item">
               <div class="v_step_badge">01</div>
               <div class="v_step_content">
-                <h4 class="v_step_title">Webフォームよりお申し込み</h4>
-                <p class="v_step_desc">ページ下部のフォームより必要事項をご入力の上、お申し込みください。担当講師より日程調整のご連絡を差し上げます。</p>
+                <h4 class="v_step_title">Webフォームからお申し込み</h4>
+                <p class="v_step_desc">ページ下部のフォームより必要事項を送信。担当講師より日程調整のご連絡を差し上げます。</p>
               </div>
             </div>
 
             <div class="v_step_item">
               <div class="v_step_badge">02</div>
               <div class="v_step_content">
-                <h4 class="v_step_title">オンライン無料学習相談の実施</h4>
-                <p class="v_step_desc">Zoom等のオンラインビデオ通話にて、現在の学力・志望学部・使っている教材・勉強の進め方を丁寧にヒアリングします。</p>
+                <h4 class="v_step_title">オンライン無料学習相談（Zoom等）</h4>
+                <p class="v_step_desc">現在の学力、使っている参考書、志望学部をヒアリングし、課題を客観的に整理します。</p>
               </div>
             </div>
 
             <div class="v_step_item">
               <div class="v_step_badge">03</div>
               <div class="v_step_content">
-                <h4 class="v_step_title">改善ポイントと今後のアクションを提示</h4>
-                <p class="v_step_desc">現状の課題、今すぐ取り入れるべき学習法、合格までの大まかなスケジュールを具体的にお伝えします。</p>
+                <h4 class="v_step_title">改善方針・最適プランの提示</h4>
+                <p class="v_step_desc">今すぐ取り入れるべき学習法と合格までの学習ステップをご提案します。</p>
               </div>
             </div>
 
@@ -1053,7 +730,7 @@
               <div class="v_step_badge">04</div>
               <div class="v_step_content">
                 <h4 class="v_step_title">ご納得いただいた場合のみ受講スタート</h4>
-                <p class="v_step_desc">アドバイス内容に納得し、この講師と一緒に伴走してほしいと感じていただけた場合のみご契約となります。無理な勧誘は一切ありません。</p>
+                <p class="v_step_desc">提案内容に納得し、伴走を希望される場合のみご契約となります。無理な勧誘は一切ありません。</p>
               </div>
             </div>
 
@@ -1061,17 +738,17 @@
         </div>
       </section>
 
-      <!-- Section: FAQ -->
+      <!-- Section 07: FAQ (よくある質問 - 厳選4問) -->
       <section class="sec sec_faq" id="faq">
         <div class="wrapper_narrow">
           <div class="editorial_header text_center" data-reveal>
             <div class="editorial_index" style="justify-content: center;">
-              <span class="index_num">08</span>
+              <span class="index_num">07</span>
               <span class="index_divider">/</span>
-              <span class="index_tag">FREQUENTLY ASKED QUESTIONS</span>
+              <span class="index_tag">FAQ</span>
             </div>
             <h2 class="editorial_title">よくあるご質問</h2>
-            <p class="editorial_sub">受講に関する疑問やご不安にお答えします。</p>
+            <p class="editorial_sub">受講に関する主なご質問にお答えします。</p>
           </div>
 
           <div class="faq_list_arch" data-reveal>
@@ -1086,7 +763,7 @@
               </div>
               <div class="faq_a_arch">
                 <div class="faq_a_inner">
-                  はい、もちろん可能です。英語だけ集中的に見てもらいたい、小論文の添削と書き方だけを指導してほしいといったご要望に合わせて、1科目プランをお選びいただけます。途中で2科目プランへ変更することも可能です。
+                  はい、可能です。英語の長文速読のみ、あるいは小論文の答案添削のみなど、苦手科目や強化したい分野に合わせて1科目から受講いただけます。
                 </div>
               </div>
             </div>
@@ -1094,14 +771,14 @@
             <div class="faq_item_arch">
               <div class="faq_q_arch">
                 <span class="faq_q_badge">Q2</span>
-                <span class="faq_q_text">今使っている参考書や予備校の教材をそのまま使えますか？</span>
+                <span class="faq_q_text">今使っている参考書をそのまま使えますか？</span>
                 <span class="faq_icon_arch">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 </span>
               </div>
               <div class="faq_a_arch">
                 <div class="faq_a_inner">
-                  はい、使えます。使い慣れた教材がご自身の現状に合っていれば、無理に別の教材に変える必要はありません。その参考書をどういうやり方で使いこなすかを一緒に整理し、勉強の質を高めていきます。
+                  はい、使えます。使い慣れた教材が現在の学力に合っていれば無理に変える必要はありません。その教材をどう使いこなすかから設計します。
                 </div>
               </div>
             </div>
@@ -1109,21 +786,6 @@
             <div class="faq_item_arch">
               <div class="faq_q_arch">
                 <span class="faq_q_badge">Q3</span>
-                <span class="faq_q_text">小論文の指導はどのように行われますか？</span>
-                <span class="faq_icon_arch">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                </span>
-              </div>
-              <div class="faq_a_arch">
-                <div class="faq_a_inner">
-                  60分の面談の中で、事前に書いていただいた答案を講師と一緒に確認します。設問の意図をどう捉えたか、論理の展開に不自然な点がないかを対話形式で振り返り、改善点と次の練習方法を具体的に整理します。単なる赤字添削にとどまらない、深い思考力を鍛えます。
-                </div>
-              </div>
-            </div>
-
-            <div class="faq_item_arch">
-              <div class="faq_q_arch">
-                <span class="faq_q_badge">Q4</span>
                 <span class="faq_q_text">面談の頻度はどのように選べばいいですか？</span>
                 <span class="faq_icon_arch">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -1131,22 +793,22 @@
               </div>
               <div class="faq_a_arch">
                 <div class="faq_a_inner">
-                  自学自習の習慣がすでに身についており、ペースメーカーとして方向性を確認したい方は週1回がおすすめです。学習の進捗確認とつまずきの修正をこまめに行いたい方は週2回、短期間で一気に勉強のやり方を改善したい方や、小論文の演習量を多く積みたい方は週3回が適しています。無料相談時にご相談の上決定することも可能です。
+                  自習のペースメーカーとして方針を確認したい方は週1回、こまめにつまずきを修正したい方は週2回（標準）、短期集中で学習量を増やしたい方は週3回が適しています。無料相談時にご相談の上決定いただけます。
                 </div>
               </div>
             </div>
 
             <div class="faq_item_arch">
               <div class="faq_q_arch">
-                <span class="faq_q_badge">Q5</span>
-                <span class="faq_q_text">無料学習相談では無理な勧誘はありますか？</span>
+                <span class="faq_q_badge">Q4</span>
+                <span class="faq_q_text">無料学習相談で無理な勧誘はありますか？</span>
                 <span class="faq_icon_arch">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 </span>
               </div>
               <div class="faq_a_arch">
                 <div class="faq_a_inner">
-                  無理な勧誘は一切ございません。無料学習相談では、現状の学力や課題を分析し、続けるべきこと、変えるべきこと、次にやることを率直にお伝えします。その内容に納得し、この講師に伴走してほしいと思ってくださった方のみご契約いただきます。
+                  一切ございません。相談では現状の課題とやるべきことを客観的にお伝えし、内容に納得された場合のみご受講いただきます。
                 </div>
               </div>
             </div>
@@ -1155,7 +817,7 @@
         </div>
       </section>
 
-      <!-- Section 8: Contact Form & Consultation Booking -->
+      <!-- Section 08: Contact Form -->
       <section class="sec_cmn_contact" id="form_area">
         <div class="wrapper">
 
@@ -1259,14 +921,13 @@
           <div class="footer_tagline">Keio SFC English & Essay Masterclass</div>
         </div>
         <div class="footer_nav">
-          <a href="#challenges">Challenges</a>
-          <a href="#concept">Concept</a>
-          <a href="#data">Data</a>
-          <a href="#subjects">Subjects</a>
-          <a href="#system">System</a>
-          <a href="#mentor">Mentor</a>
-          <a href="#tuition">Tuition</a>
-          <a href="#faq">FAQ</a>
+          <a href="#challenges">お悩み</a>
+          <a href="#features">塾の特徴</a>
+          <a href="#system">指導システム</a>
+          <a href="#mentor">講師紹介</a>
+          <a href="#tuition">料金プラン</a>
+          <a href="#flow">受講の流れ</a>
+          <a href="#faq">よくある質問</a>
         </div>
         <div class="footer_copy">
           © 2026 SFC生の英語塾. All Rights Reserved.
@@ -1274,8 +935,16 @@
       </div>
     </footer>
 
+    <!-- Mobile Sticky Floating CTA Bar (スマホ常時追従バー) -->
+    <div class="mobile_sticky_cta" id="mobileStickyCta">
+      <a href="#form_area" class="btn_sticky_cta">
+        <span class="sticky_cta_main">無料学習相談に申し込む</span>
+        <span class="sticky_cta_sub">完全無料・オンライン相談 →</span>
+      </a>
+    </div>
+
   </div>
 
-  <script src="js/arch.js?v=20261002a"></script>
+  <script src="js/arch.js?v=20261009a"></script>
 </body>
 </html>

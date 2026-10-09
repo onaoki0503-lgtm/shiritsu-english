@@ -218,7 +218,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 7. Form Submission UX
+  // 7. Tuition Plan Tab Switcher (1科目 vs 2科目)
+  const tuitionTabs = document.querySelectorAll('.tuition_tab_btn');
+  const panelSingle = document.getElementById('panel_single');
+  const panelDouble = document.getElementById('panel_double');
+
+  tuitionTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const plan = tab.getAttribute('data-plan');
+      
+      tuitionTabs.forEach(t => {
+        t.classList.remove('is_active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('is_active');
+      tab.setAttribute('aria-selected', 'true');
+
+      if (plan === 'double') {
+        if (panelSingle) panelSingle.classList.remove('is_active');
+        if (panelDouble) panelDouble.classList.add('is_active');
+      } else {
+        if (panelDouble) panelDouble.classList.remove('is_active');
+        if (panelSingle) panelSingle.classList.add('is_active');
+      }
+    });
+  });
+
+  // 8. Mobile Sticky CTA Hide when Form Area is in view
+  const stickyCta = document.getElementById('mobileStickyCta');
+  const formArea = document.getElementById('form_area');
+  if (stickyCta && formArea && 'IntersectionObserver' in window) {
+    const formObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stickyCta.style.display = 'none';
+        } else {
+          stickyCta.style.display = '';
+        }
+      });
+    }, { threshold: 0.1 });
+    formObserver.observe(formArea);
+  }
+
+  // 9. Form Submission UX
   const form = document.getElementById('archContactForm');
   if (form) {
     form.addEventListener('submit', (e) => {
@@ -239,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 8. Smooth Anchor Navigation
+  // 10. Smooth Anchor Navigation
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -258,3 +300,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+

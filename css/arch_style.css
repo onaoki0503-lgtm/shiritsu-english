@@ -1614,7 +1614,101 @@ header .inner {
 }
 
 /* --------------------------------------------------------------------------
-   Tuition Plans Section (Category Blocks)
+   Features Grid (Section 02)
+   -------------------------------------------------------------------------- */
+.features_grid_3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.feature_card_arch {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 32px 28px;
+  transition: var(--transition-smooth);
+}
+
+.feature_card_arch:hover {
+  border-color: var(--color-black);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.feature_card_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.feature_num {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-text-muted);
+}
+
+.feature_badge {
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.feature_title {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--color-black);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.feature_desc {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--color-text-sub);
+}
+
+/* System LINE Box */
+.system_line_box {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.line_box_icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.line_box_text strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #166534;
+  margin-bottom: 4px;
+}
+
+.line_box_text p {
+  font-size: 0.86rem;
+  color: #15803d;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Tuition Plans Section (Overhauled with Common Strip, Tabs, Matrix)
    -------------------------------------------------------------------------- */
 .capacity_arch_box {
   background: var(--color-light-bg);
@@ -1626,7 +1720,7 @@ header .inner {
 .capacity_top_meta {
   text-align: center;
   max-width: 800px;
-  margin: 0 auto 48px;
+  margin: 0 auto 36px;
 }
 
 .capacity_badge_pill {
@@ -1657,51 +1751,119 @@ header .inner {
   color: var(--color-text-sub);
 }
 
-.plan_cat_header {
-  margin-bottom: 24px;
+/* Common Strip */
+.tuition_common_strip {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-bottom: 32px;
 }
 
-.cat_badge {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+.common_badge {
+  font-family: var(--font-en);
+  font-size: 0.74rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   background: var(--color-black);
   color: var(--color-white);
   padding: 4px 10px;
   border-radius: 4px;
-  display: inline-block;
-  margin-bottom: 8px;
 }
 
-.cat_badge_accent {
-  background: #002b49;
-  color: #fff;
-}
-
-.cat_title {
-  font-size: 1.35rem;
-  font-weight: 900;
+.common_items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.86rem;
+  font-weight: 700;
   color: var(--color-black);
-  margin-bottom: 6px;
 }
 
-.cat_desc {
-  font-size: 0.88rem;
+/* Tabs Switcher */
+.tuition_switcher {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.tuition_tabs {
+  display: inline-flex;
+  background: #e4e6eb;
+  padding: 5px;
+  border-radius: 12px;
+  gap: 4px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.tuition_tab_btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 16px;
+  border-radius: 9px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
   color: var(--color-text-sub);
 }
 
-.plan_grid_arch {
+.tuition_tab_btn .tab_main {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.tuition_tab_btn .tab_sub {
+  font-size: 0.72rem;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+.tuition_tab_btn:hover {
+  color: var(--color-black);
+}
+
+.tuition_tab_btn.is_active {
+  background: var(--color-white);
+  color: var(--color-black);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tuition_tab_btn.is_active .tab_main {
+  color: var(--color-black);
+}
+
+/* Cards Grid */
+.tuition_panel {
+  display: none;
+}
+
+.tuition_panel.is_active {
+  display: block;
+}
+
+.tuition_cards_grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  margin-bottom: 36px;
 }
 
-.plan_card_arch {
+.t_card {
   background: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  padding: 32px 26px;
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1709,18 +1871,18 @@ header .inner {
   transition: var(--transition-smooth);
 }
 
-.plan_card_arch:hover {
+.t_card:hover {
   border-color: var(--color-black);
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
 
-.plan_card_arch.is_featured {
+.t_card.is_recommend {
   border: 2px solid var(--color-black);
   box-shadow: var(--shadow-featured);
 }
 
-.featured_ribbon {
+.t_badge_rec {
   position: absolute;
   top: -13px;
   left: 50%;
@@ -1728,131 +1890,133 @@ header .inner {
   background: var(--color-accent);
   color: var(--color-black);
   font-family: var(--font-en);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 900;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   padding: 3px 14px;
   border-radius: 9999px;
   border: 1px solid var(--color-black);
   white-space: nowrap;
 }
 
-.plan_card_header {
-  margin-bottom: 20px;
+.t_card_head {
+  margin-bottom: 24px;
 }
 
-.plan_tag_arch {
-  font-family: var(--font-en);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+.t_card_freq {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
   color: var(--color-text-muted);
-  text-transform: uppercase;
+  display: block;
   margin-bottom: 6px;
 }
 
-.plan_title_arch {
-  font-size: 1.25rem;
+.t_card_name {
+  font-size: 1.3rem;
   font-weight: 900;
   color: var(--color-black);
   margin-bottom: 8px;
 }
 
-.plan_target_arch {
-  font-size: 0.82rem;
+.t_card_desc {
+  font-size: 0.84rem;
   line-height: 1.6;
   color: var(--color-text-sub);
 }
 
-.plan_features_box {
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-  padding: 18px 0;
-  margin-bottom: 22px;
-  flex-grow: 1;
-}
-
-.plan_features_list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.plan_features_list li {
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: var(--color-text-main);
-  position: relative;
-  padding-left: 18px;
-  line-height: 1.5;
-}
-
-.plan_features_list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--color-black);
-  font-weight: 800;
-}
-
-.plan_price_box {
+.t_card_price {
   text-align: center;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-border);
 }
 
-.plan_price_label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--color-text-muted);
-  margin-bottom: 4px;
-}
-
-.plan_price_main {
+.t_card_price .price_num {
   font-family: var(--font-en);
-  font-size: 2.1rem;
+  font-size: 2.2rem;
   font-weight: 800;
   color: var(--color-black);
   letter-spacing: -0.02em;
-  line-height: 1.2;
 }
 
-.plan_price_main.featured_price {
-  font-size: 2.3rem;
-}
-
-.plan_price_main .unit {
+.t_card_price .price_unit {
   font-family: var(--font-ja);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--color-text-sub);
+  margin-left: 4px;
+}
+
+/* Comparison Matrix Table */
+.tuition_matrix_wrapper {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-top: 16px;
+}
+
+.matrix_title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-black);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.tuition_matrix_table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.tuition_matrix_table th,
+.tuition_matrix_table td {
+  padding: 14px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tuition_matrix_table th {
+  background: var(--color-light-gray);
+  font-weight: 800;
+  color: var(--color-black);
+  font-size: 0.86rem;
+}
+
+.tuition_matrix_table th.th_rec {
+  background: #fff8cc;
+  color: var(--color-black);
+  font-weight: 900;
+}
+
+.tuition_matrix_table td.td_plan_name {
+  text-align: left;
+  font-weight: 700;
+  color: var(--color-black);
+  width: 28%;
+}
+
+.tuition_matrix_table td.td_plan_name span {
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.tuition_matrix_table td.td_rec {
+  background: #fffae6;
+  font-weight: 800;
+  color: var(--color-black);
+}
+
+.matrix_note {
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  margin-top: 12px;
+  text-align: center;
 }
 
 /* Capacity Notice & Mega CTA */
-.capacity_foot_notice {
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 16px 20px;
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  max-width: 900px;
-  margin: 0 auto 36px;
-}
-
-.notice_icon {
-  font-size: 1.2rem;
-  color: var(--color-text-muted);
-  line-height: 1.2;
-}
-
-.notice_text {
-  font-size: 0.84rem;
-  line-height: 1.7;
-  color: var(--color-text-sub);
-}
-
 .capacity_cta_area {
   text-align: center;
 }
@@ -2257,6 +2421,63 @@ footer .inner {
 }
 
 /* --------------------------------------------------------------------------
+   Mobile Sticky Floating CTA Bar (スマホ固定追従バー)
+   -------------------------------------------------------------------------- */
+.mobile_sticky_cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 16px env(safe-area-inset-bottom, 12px);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 998;
+}
+
+.btn_sticky_cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--color-black);
+  color: var(--color-white);
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: var(--transition-fast);
+}
+
+.btn_sticky_cta:active {
+  transform: scale(0.98);
+  background: var(--color-accent);
+  color: var(--color-black);
+}
+
+.sticky_cta_main {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+.sticky_cta_sub {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-top: 2px;
+}
+
+.btn_sticky_cta:active .sticky_cta_sub {
+  color: var(--color-black);
+}
+
+/* --------------------------------------------------------------------------
    Responsive Media Queries
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
@@ -2264,16 +2485,21 @@ footer .inner {
   .sec_voices_marquee { padding: 40px 0 46px; }
   .voice_card_marquee { width: 330px; padding: 20px; }
   .challenges_balloon_grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .data_metrics_grid_4 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .about_manifesto_grid { grid-template-columns: 1fr; }
-  .subjects_grid_2 { grid-template-columns: 1fr; }
+  .features_grid_3 { grid-template-columns: 1fr; gap: 20px; }
   .steps_row_3 { grid-template-columns: 1fr; }
-  .support_features_grid { grid-template-columns: 1fr; }
   .mentor_profile_card_arch { grid-template-columns: 1fr; }
-  .plan_grid_arch { grid-template-columns: 1fr; }
+  .tuition_cards_grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
+  /* スマホ下部余白の確保（固定バーとの被りを防ぐ） */
+  body {
+    padding-bottom: 84px;
+  }
+  .mobile_sticky_cta {
+    display: block;
+  }
+
   .wrapper { padding: 0 20px; }
   .top_view {
     padding-top: 105px;
@@ -2296,11 +2522,41 @@ footer .inner {
   .v_card_heading { font-size: 0.9rem; }
   .v_card_text { font-size: 0.78rem; line-height: 1.6; }
   .marquee_track { gap: 16px; animation-duration: 36s; }
-  .sec_challenges { padding: 60px 0; }
+  
+  .sec_challenges { padding: 50px 0; }
   .challenges_balloon_grid { grid-template-columns: 1fr; gap: 18px; }
   .c_balloon_box { min-height: auto; padding: 20px 16px; }
-  .sec_data { padding: 60px 0; }
-  .data_metrics_grid_4 { grid-template-columns: 1fr; gap: 16px; }
+  
+  .sec_about { padding: 50px 0; }
+  .sec_method { padding: 50px 0; }
+  .sec_mentor { padding: 50px 0; }
+  .sec_capacity { padding: 50px 0; }
+  .sec_faq { padding: 50px 0; }
+  
+  .capacity_arch_box { padding: 36px 20px; }
+  .tuition_common_strip { flex-direction: column; text-align: center; gap: 12px; }
+  .common_items { flex-direction: column; gap: 8px; font-size: 0.82rem; }
+  .tuition_tabs { flex-direction: column; width: 100%; }
+  .tuition_tab_btn { padding: 10px 14px; }
+  .tuition_tab_btn .tab_main { font-size: 0.95rem; }
+  .tuition_cards_grid { grid-template-columns: 1fr; gap: 18px; }
+  .t_card { padding: 26px 20px; }
+  
+  /* マトリクス表のモバイル最適化 */
+  .tuition_matrix_wrapper {
+    padding: 20px 14px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tuition_matrix_table {
+    min-width: 480px;
+    font-size: 0.82rem;
+  }
+  .tuition_matrix_table th,
+  .tuition_matrix_table td {
+    padding: 10px 8px;
+  }
+
   .mentor_achievements_grid { grid-template-columns: 1fr; }
   .form_grid_2 { grid-template-columns: 1fr; }
   .contact_form_arch { padding: 36px 20px; }
