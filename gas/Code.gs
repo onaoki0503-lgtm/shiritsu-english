@@ -13,9 +13,15 @@
 // 【設定項目】ご自身の環境に合わせて書き換えてください
 // ==========================================
 const CONFIG = {
-  // 問い合わせ通知を受信するメールアドレス
-  NOTIFICATION_EMAIL: "o.naoki0503@intakingresources.com", 
+  // 問い合わせ通知を受信する講師のメールアドレス
+  NOTIFICATION_EMAIL: "taiseihori18@gmail.com", 
   
+  // 返信・通知メール送信者名
+  SENDER_NAME: "SFC生の英語塾 堀安泰世",
+
+  // 返信先（Reply-To）メールアドレス
+  REPLY_TO_EMAIL: "taiseihori18@gmail.com",
+
   // LINE Notify アクセストークン（LINE通知を受け取る場合）
   // ※ LINE Notify公式サイト (https://notify-bot.line.me/) で発行したトークンを入力
   LINE_NOTIFY_TOKEN: "", 
@@ -136,11 +142,13 @@ function doPost(e) {
         return createJsonResponse({ status: "error", message: "Missing recipient or body." });
       }
 
-      // メール送信
+      // メール送信（送信元名と返信先アドレスを設定）
       MailApp.sendEmail({
         to: to,
         subject: subject,
-        body: body
+        body: body,
+        name: CONFIG.SENDER_NAME,
+        replyTo: CONFIG.REPLY_TO_EMAIL
       });
 
       // スプレッドシートのステータス更新

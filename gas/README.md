@@ -26,8 +26,14 @@
 ```javascript
 const CONFIG = {
   // 問い合わせ通知を受け取る講師のメールアドレス
-  NOTIFICATION_EMAIL: "o.naoki0503@intakingresources.com", 
+  NOTIFICATION_EMAIL: "taiseihori18@gmail.com", 
   
+  // 返信メール・通知メールの送信者表示名
+  SENDER_NAME: "SFC生の英語塾 堀安泰世",
+
+  // 生徒が返信した際の宛先（Reply-To）
+  REPLY_TO_EMAIL: "taiseihori18@gmail.com",
+
   // LINE Notifyで通知を受け取る場合（トークンを入力）
   // 取得方法: https://notify-bot.line.me/ にアクセスし、「マイページ」→「トークンを発行する」でグループまたは自分宛のトークンを発行
   LINE_NOTIFY_TOKEN: "ここに発行したLINE_NOTIFY_TOKENを貼り付け", 
