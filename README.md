@@ -1,6 +1,6 @@
 # SFC生の英語塾 LPリポジトリ（私立英語塾/lp/）
 
-> **最終更新日**: 2026-10-02  
+> **最終更新日**: 2026-10-12  
 > **管理者**: 岡本直樹（代表）  
 > **公開URL**: [https://onaoki0503-lgtm.github.io/shiritsu-english/](https://onaoki0503-lgtm.github.io/shiritsu-english/)  
 
