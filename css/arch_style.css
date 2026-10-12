@@ -718,15 +718,15 @@ header .inner {
 }
 
 .v_student_tag.pass_tag {
-  background: #ecfdf5;
-  color: #047857;
-  border: 1px solid #a7f3d0;
+  background: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
 }
 
 .v_student_tag.active_tag {
-  background: #eff6ff;
-  color: #1d4ed8;
-  border: 1px solid #bfdbfe;
+  background: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
 }
 
 .v_student_meta {
@@ -893,9 +893,9 @@ header .inner {
   font-weight: 700;
   padding: 3px 8px;
   border-radius: 4px;
-  background: #ecfdf5;
-  color: #047857;
-  border: 1px solid #a7f3d0;
+  background: #f8fafc;
+  color: var(--color-black);
+  border: 1px solid #e2e8f0;
   margin-bottom: 8px;
   letter-spacing: 0.04em;
 }
@@ -1678,8 +1678,8 @@ header .inner {
 
 /* System LINE Box */
 .system_line_box {
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 20px 24px;
   display: flex;
@@ -1696,13 +1696,13 @@ header .inner {
 .line_box_text strong {
   display: block;
   font-size: 0.95rem;
-  color: #166534;
+  color: var(--color-black);
   margin-bottom: 4px;
 }
 
 .line_box_text p {
   font-size: 0.86rem;
-  color: #15803d;
+  color: var(--color-text-sub);
   line-height: 1.6;
   margin: 0;
 }
@@ -1985,7 +1985,7 @@ header .inner {
 }
 
 .tuition_matrix_table th.th_rec {
-  background: #fff8cc;
+  background: #f1f5f9;
   color: var(--color-black);
   font-weight: 900;
 }
@@ -2004,7 +2004,7 @@ header .inner {
 }
 
 .tuition_matrix_table td.td_rec {
-  background: #fffae6;
+  background: #f8fafc;
   font-weight: 800;
   color: var(--color-black);
 }
