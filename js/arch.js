@@ -234,24 +234,73 @@ document.addEventListener('DOMContentLoaded', () => {
     formObserver.observe(formArea);
   }
 
-  // 9. Form Submission UX
+  // 8. Form Submission UX & GAS Notification
   const form = document.getElementById('archContactForm');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const submitBtn = form.querySelector('button[type="submit"]');
       const submitText = submitBtn.querySelector('.btn_submit_text') || submitBtn;
       const originalText = submitText.innerText;
 
-      submitText.innerText = 'PROCESSING REQUEST...';
+      submitText.innerText = '送信中...';
       submitBtn.disabled = true;
 
+      // フォームデータの収集
+      const formData = new FormData(form);
+      const payload = {
+        type: 'contact',
+        name: formData.get('name') || '',
+        grade: formData.get('grade') || '',
+        subjects: formData.get('subjects') || '',
+        frequency: formData.get('frequency') || '',
+        email: formData.get('email') || '',
+        tel: formData.get('tel') || '',
+        message: formData.get('message') || '',
+        timestamp: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })
+      };
+
+      // ローカルキャッシュ（ダッシュボード確認用）
+      try {
+        const localContacts = JSON.parse(localStorage.getItem('sfc_local_contacts') || '[]');
+        localContacts.unshift({
+          date: payload.timestamp,
+          name: payload.name,
+          grade: payload.grade,
+          subjects: payload.subjects,
+          frequency: payload.frequency,
+          email: payload.email,
+          tel: payload.tel,
+          message: payload.message,
+          status: '受付済'
+        });
+        localStorage.setItem('sfc_local_contacts', JSON.stringify(localContacts.slice(0, 50)));
+      } catch (err) {
+        console.warn('Local storage error:', err);
+      }
+
+      // GASエンドポイントへの非同期送信
+      const endpoint = localStorage.getItem('sfc_analytics_endpoint') || '';
+      if (endpoint) {
+        try {
+          await fetch(endpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+            body: JSON.stringify(payload)
+          });
+        } catch (fetchErr) {
+          console.error('GAS dispatch error:', fetchErr);
+        }
+      }
+
+      // 送信完了フィードバック
       setTimeout(() => {
-        alert('【無料学習相談のお申し込みを受け付けました】\n\nご登録いただいたメールアドレスへ、原則24時間以内に担当講師（堀安泰世）より日程調整のご案内をお送りいたします。\n現在の学力や教材、学習状況に合わせた最適なアドバイスをお伝えします。');
+        alert('【無料学習相談のお申し込みを受け付けました】\n\nご登録いただいたメールアドレスへ、原則24時間以内に担当講師より日程調整のご案内をお送りいたします。\n現在の学力や教材、学習状況に合わせた最適なアドバイスをお伝えします。');
         submitText.innerText = originalText;
         submitBtn.disabled = false;
         form.reset();
-      }, 600);
+      }, 500);
     });
   }
 

@@ -766,6 +766,37 @@
             </div>
           </div>
 
+          <!-- Contact Channels (LINE vs Web Form) -->
+          <div class="contact_channels_box" data-reveal>
+            <div class="c_channel_card channel_line">
+              <div class="c_channel_badge">QUICK CONTACT</div>
+              <div class="c_channel_icon">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="#06C755"><path d="M12 2C6.48 2 2 5.92 2 10.75c0 3.14 1.9 5.89 4.75 7.42-.21.78-.77 2.82-.88 3.25-.14.54.2.53.42.38.17-.12 2.37-1.6 3.32-2.25.77.16 1.57.25 2.39.25 5.52 0 10-3.92 10-8.75S17.52 2 12 2z"/></svg>
+              </div>
+              <h4 class="c_channel_title">公式LINEで気軽に相談</h4>
+              <p class="c_channel_desc">
+                「今の学力で間に合うか知りたい」「教材の相談だけしたい」など、公式LINEからチャットでいつでも直接ご相談いただけます。
+              </p>
+              <a href="https://line.me/R/ti/p/@example" target="_blank" rel="noopener noreferrer" class="btn_channel_line" id="lineConsultBtn">
+                <span>LINEで相談する（無料） →</span>
+              </a>
+            </div>
+
+            <div class="c_channel_card channel_form">
+              <div class="c_channel_badge mono">EMAIL FORM</div>
+              <div class="c_channel_icon">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <h4 class="c_channel_title">Webフォームから申し込む</h4>
+              <p class="c_channel_desc">
+                志望状況や使用教材をフォームにご記入ください。原則24時間以内に担当講師よりメールにて日程調整をご連絡いたします。
+              </p>
+              <a href="#archContactForm" class="btn_channel_form">
+                <span>フォーム入力に進む ↓</span>
+              </a>
+            </div>
+          </div>
+
           <!-- Contact Form Card -->
           <div class="contact_form_arch" data-reveal>
             <div class="form_header_box">
@@ -780,11 +811,11 @@
               <div class="form_grid_2">
                 <div class="form_group_arch">
                   <label class="form_label_arch">お名前 <span class="req">*</span></label>
-                  <input type="text" class="form_input_arch" placeholder="慶應 太郎" required>
+                  <input type="text" name="name" class="form_input_arch" placeholder="慶應 太郎" required>
                 </div>
                 <div class="form_group_arch">
                   <label class="form_label_arch">学年 / ご身分 <span class="req">*</span></label>
-                  <select class="form_input_arch" required>
+                  <select name="grade" class="form_input_arch" required>
                     <option value="" disabled selected>学年を選択してください</option>
                     <option value="高校3年生">高校3年生</option>
                     <option value="既卒・浪人生">既卒・浪人生</option>
@@ -798,7 +829,7 @@
               <div class="form_grid_2">
                 <div class="form_group_arch">
                   <label class="form_label_arch">受講希望科目 <span class="req">*</span></label>
-                  <select class="form_input_arch" required>
+                  <select name="subjects" class="form_input_arch" required>
                     <option value="" disabled selected>希望科目を選択してください</option>
                     <option value="英語のみ">英語のみ ｜ 1科目</option>
                     <option value="小論文のみ">小論文のみ ｜ 1科目</option>
@@ -808,7 +839,7 @@
                 </div>
                 <div class="form_group_arch">
                   <label class="form_label_arch">希望面談頻度 ｜ 目安</label>
-                  <select class="form_input_arch">
+                  <select name="frequency" class="form_input_arch">
                     <option value="相談して決めたい" selected>相談して決めたい</option>
                     <option value="週1回">週1回</option>
                     <option value="週2回">週2回</option>
@@ -820,17 +851,17 @@
               <div class="form_grid_2">
                 <div class="form_group_arch">
                   <label class="form_label_arch">メールアドレス <span class="req">*</span></label>
-                  <input type="email" class="form_input_arch" placeholder="example@gmail.com" required>
+                  <input type="email" name="email" class="form_input_arch" placeholder="example@gmail.com" required>
                 </div>
                 <div class="form_group_arch">
                   <label class="form_label_arch">電話番号 ｜ 任意</label>
-                  <input type="tel" class="form_input_arch" placeholder="090-0000-0000">
+                  <input type="tel" name="tel" class="form_input_arch" placeholder="090-0000-0000">
                 </div>
               </div>
 
               <div class="form_group_arch">
                 <label class="form_label_arch">現在使っている教材・勉強の悩み ｜ 任意</label>
-                <textarea class="form_input_arch" rows="3" placeholder="例：ターゲット1900とポラリスを使用。長文で時間が足りない、小論文の書き方が分からない等"></textarea>
+                <textarea name="message" class="form_input_arch" rows="3" placeholder="例：ターゲット1900とポラリスを使用。長文で時間が足りない、小論文の書き方が分からない等"></textarea>
               </div>
 
               <button type="submit" class="btn_submit_arch">
@@ -880,5 +911,6 @@
   </div>
 
   <script src="js/arch.js?v=20261012b"></script>
+  <script src="js/tracker.js?v=20261012b"></script>
 </body>
 </html>

@@ -2136,6 +2136,111 @@ header .inner {
   color: #a4a9b6;
 }
 
+/* Contact Channels Dual Box (LINE vs Web Form) */
+.contact_channels_box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 820px;
+  margin: 0 auto 28px;
+}
+
+.c_channel_card {
+  background: var(--color-white);
+  border-radius: 14px;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  transition: var(--transition-smooth);
+}
+
+.c_channel_card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+}
+
+.c_channel_badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--font-en);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  background: #06C755;
+  color: #ffffff;
+}
+
+.c_channel_badge.mono {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.c_channel_icon {
+  margin-bottom: 12px;
+}
+
+.c_channel_title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--color-black);
+  margin-bottom: 8px;
+}
+
+.c_channel_desc {
+  font-size: 0.82rem;
+  color: var(--color-text-sub);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.btn_channel_line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #06C755;
+  color: #ffffff;
+  padding: 13px 20px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.btn_channel_line:hover {
+  background: #05b04c;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn_channel_form {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: var(--color-black);
+  padding: 13px 20px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  transition: var(--transition-fast);
+}
+
+.btn_channel_form:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
 /* Contact Form Card */
 .contact_form_arch {
   background: var(--color-white);
@@ -2462,5 +2567,6 @@ footer .inner {
 
   .mentor_achievements_grid { grid-template-columns: 1fr; }
   .form_grid_2 { grid-template-columns: 1fr; }
+  .contact_channels_box { grid-template-columns: 1fr; gap: 14px; }
   .contact_form_arch { padding: 36px 20px; }
 }

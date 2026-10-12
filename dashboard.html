@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アクセス分析 ＆ 問い合わせ管理ダッシュボード ｜ SFC生の英語塾</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --color-black: #0a0a0c;
+      --color-dark: #121316;
+      --color-white: #ffffff;
+      --color-bg: #f8fafc;
+      --color-border: #e2e8f0;
+      --color-border-dark: #cbd5e1;
+      --color-accent: #F0E900;
+      --color-green: #06C755;
+      --color-text-main: #0a0a0c;
+      --color-text-sub: #475569;
+      --color-text-muted: #94a3b8;
+      --font-en: 'Plus Jakarta Sans', sans-serif;
+      --font-ja: 'Zen Kaku Gothic New', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text-main);
+      font-family: var(--font-ja);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header */
+    .dash_header {
+      background: var(--color-black);
+      color: var(--color-white);
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #27272a;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .dash_brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .dash_logo {
+      font-size: 1.15rem;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+
+    .dash_tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      background: var(--color-accent);
+      color: var(--color-black);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .dash_actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn_dash {
+      background: #27272a;
+      color: var(--color-white);
+      border: 1px solid #3f3f46;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn_dash:hover {
+      background: #3f3f46;
+      border-color: #52525b;
+    }
+
+    .btn_dash.primary {
+      background: var(--color-accent);
+      color: var(--color-black);
+      border-color: var(--color-accent);
+    }
+
+    .btn_dash.primary:hover {
+      background: #ded700;
+    }
+
+    /* Container */
+    .dash_container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 32px 24px 60px;
+    }
+
+    /* Meta Bar */
+    .dash_meta_bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .meta_title {
+      font-size: 1.4rem;
+      font-weight: 900;
+    }
+
+    .meta_source_badge {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+
+    .status_dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-green);
+    }
+
+    /* KPI Summary Cards */
+    .kpi_grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .kpi_card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 22px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .kpi_label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--color-text-sub);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .kpi_val {
+      font-family: var(--font-en);
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--color-black);
+      line-height: 1.1;
+    }
+
+    .kpi_sub {
+      font-size: 0.74rem;
+      color: var(--color-text-muted);
+      margin-top: 6px;
+    }
+
+    /* Charts Grid */
+    .chart_grid_2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .chart_card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .chart_head {
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chart_title {
+      font-size: 1.05rem;
+      font-weight: 900;
+    }
+
+    .chart_note {
+      font-size: 0.72rem;
+      color: var(--color-text-muted);
+    }
+
+    .chart_canvas_wrapper {
+      position: relative;
+      height: 280px;
+    }
+
+    /* Section Reach Table / Breakdown */
+    .section_reach_list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .reach_item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.84rem;
+    }
+
+    .reach_name {
+      width: 140px;
+      font-weight: 700;
+      color: var(--color-black);
+    }
+
+    .reach_bar_bg {
+      flex: 1;
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .reach_bar_fill {
+      height: 100%;
+      background: var(--color-black);
+      border-radius: 5px;
+      transition: width 0.6s ease;
+    }
+
+    .reach_bar_fill.accent {
+      background: var(--color-accent);
+    }
+
+    .reach_percent {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 0.8rem;
+      width: 50px;
+      text-align: right;
+    }
+
+    /* Inquiries Table Card */
+    .inquiries_card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 28px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .table_wrapper {
+      overflow-x: auto;
+      margin-top: 16px;
+    }
+
+    .inquiry_table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+      min-width: 800px;
+    }
+
+    .inquiry_table th,
+    .inquiry_table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .inquiry_table th {
+      background: #f1f5f9;
+      font-weight: 800;
+      color: var(--color-black);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+
+    .inquiry_table tr:hover td {
+      background: #fafbfc;
+    }
+
+    .status_tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: #e2e8f0;
+      color: var(--color-black);
+    }
+
+    .status_tag.new {
+      background: #fef08a;
+      color: #854d0e;
+    }
+
+    /* Modal for Settings */
+    .modal_backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal_backdrop.is_open {
+      display: flex;
+    }
+
+    .modal_card {
+      background: var(--color-white);
+      border-radius: 14px;
+      max-width: 560px;
+      width: 90%;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal_title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .modal_desc {
+      font-size: 0.85rem;
+      color: var(--color-text-sub);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .modal_input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      outline: none;
+    }
+
+    .modal_input:focus {
+      border-color: var(--color-black);
+    }
+
+    .modal_btns {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .kpi_grid { grid-template-columns: repeat(2, 1fr); }
+      .chart_grid_2 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .kpi_grid { grid-template-columns: 1fr; }
+      .dash_header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .dash_actions { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="dash_header">
+    <div class="dash_brand">
+      <h1 class="dash_logo">SFC生の英語塾</h1>
+      <span class="dash_tag">ANALYTICS DASHBOARD</span>
+    </div>
+    <div class="dash_actions">
+      <a href="index.html" class="btn_dash" target="_blank">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        LPを開く
+      </a>
+      <button class="btn_dash" id="btnRefresh">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+        更新
+      </button>
+      <button class="btn_dash primary" id="btnOpenSettings">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        GAS API設定
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="dash_container">
+
+    <!-- Meta Title Bar -->
+    <div class="dash_meta_bar">
+      <div>
+        <h2 class="meta_title">リアルタイム・アクセス ＆ スクロール分析</h2>
+        <p style="font-size: 0.85rem; color: var(--color-text-sub); margin-top: 4px;">
+          訪問者がLPのどこまで読み進めたか、どのセクションで離脱したかを可視化します。
+        </p>
+      </div>
+      <div class="meta_source_badge" id="sourceBadge">
+        <span class="status_dot"></span>
+        <span id="sourceText">データソース: ローカル・デモ連携中</span>
+      </div>
+    </div>
+
+    <!-- 1. KPI Summary Cards -->
+    <div class="kpi_grid">
+      <div class="kpi_card">
+        <div class="kpi_label">
+          <span>TOTAL PAGEVIEWS</span>
+          <span>閲覧総数</span>
+        </div>
+        <div class="kpi_val" id="valTotalPv">1,428</div>
+        <div class="kpi_sub">累計ページ閲覧数</div>
+      </div>
+
+      <div class="kpi_card">
+        <div class="kpi_label">
+          <span>UNIQUE VISITORS</span>
+          <span>訪問者数</span>
+        </div>
+        <div class="kpi_val" id="valUniqueVisitors">892</div>
+        <div class="kpi_sub">ユニーク端末セッション</div>
+      </div>
+
+      <div class="kpi_card">
+        <div class="kpi_label">
+          <span>AVG SCROLL DEPTH</span>
+          <span>平均読了深度</span>
+        </div>
+        <div class="kpi_val" id="valAvgScroll">68.4%</div>
+        <div class="kpi_sub">ページ平均スクロール率</div>
+      </div>
+
+      <div class="kpi_card">
+        <div class="kpi_label">
+          <span>INQUIRIES (CV)</span>
+          <span>無料相談 申込数</span>
+        </div>
+        <div class="kpi_val" id="valTotalContacts" style="color: #06C755;">24</div>
+        <div class="kpi_sub">CV率: <strong id="valCvRate">2.69%</strong></div>
+      </div>
+    </div>
+
+    <!-- 2. Charts Row: Scroll Funnel & Daily PV -->
+    <div class="chart_grid_2">
+      
+      <!-- Scroll Depth Funnel -->
+      <div class="chart_card">
+        <div class="chart_head">
+          <h3 class="chart_title">スクロール深度ファネル（どこまで読まれたか）</h3>
+          <span class="chart_note">読了パーセンテージ別 到達率</span>
+        </div>
+        <div class="chart_canvas_wrapper">
+          <canvas id="scrollChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Section Reach Breakdown -->
+      <div class="chart_card">
+        <div class="chart_head">
+          <h3 class="chart_title">セクション別到達率（離脱ポイント分析）</h3>
+          <span class="chart_note">どのコンテンツで離脱したかを特定</span>
+        </div>
+        <div class="section_reach_list" id="sectionReachList">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. Daily Trend Chart -->
+    <div class="chart_card" style="margin-bottom: 28px;">
+      <div class="chart_head">
+        <h3 class="chart_title">日別アクセス推移（過去14日間）</h3>
+        <span class="chart_note">訪問数の推移</span>
+      </div>
+      <div class="chart_canvas_wrapper" style="height: 240px;">
+        <canvas id="dailyChart"></canvas>
+      </div>
+    </div>
+
+    <!-- 4. Recent Inquiries Table -->
+    <div class="inquiries_card">
+      <div class="chart_head">
+        <h3 class="chart_title">無料学習相談 申込一覧（最新受付）</h3>
+        <span class="chart_note">フォームより送信された問い合わせ</span>
+      </div>
+      <div class="table_wrapper">
+        <table class="inquiry_table">
+          <thead>
+            <tr>
+              <th>受信日時</th>
+              <th>お名前</th>
+              <th>学年</th>
+              <th>希望科目</th>
+              <th>希望頻度</th>
+              <th>メールアドレス</th>
+              <th>電話番号</th>
+              <th>現在の教材・お悩み</th>
+              <th>対応状況</th>
+            </tr>
+          </thead>
+          <tbody id="inquiryTableBody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- GAS API Settings Modal -->
+  <div class="modal_backdrop" id="settingsModal">
+    <div class="modal_card">
+      <h3 class="modal_title">Google Apps Script (GAS) 連携設定</h3>
+      <p class="modal_desc">
+        スプレッドシートのApps Scriptでデプロイした「ウェブアプリのURL（https://script.google.com/macros/s/.../exec）」を入力すると、スプレッドシートの実データとリアルタイム連動します。
+      </p>
+      <input type="text" class="modal_input" id="inputEndpoint" placeholder="https://script.google.com/macros/s/.../exec">
+      <div class="modal_btns">
+        <button class="btn_dash" id="btnUseDemo">デモデータに戻す</button>
+        <button class="btn_dash" id="btnCloseModal">キャンセル</button>
+        <button class="btn_dash primary" id="btnSaveEndpoint">URLを保存して接続</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // State & Storage
+    const ENDPOINT_KEY = 'sfc_analytics_endpoint';
+    let currentEndpoint = localStorage.getItem(ENDPOINT_KEY) || '';
+
+    // Chart instances
+    let scrollChartInst = null;
+    let dailyChartInst = null;
+
+    // Default Mock Data for Instant Preview
+    const mockData = {
+      summary: {
+        totalPv: 1428,
+        uniqueVisitors: 892,
+        totalContacts: 24,
+        avgScrollDepth: 68.4
+      },
+      scrollBuckets: {
+        "25": 820,
+        "50": 645,
+        "75": 480,
+        "100": 340
+      },
+      sections: [
+        { id: "hero", label: "01. ヒーロー (KV)", reach: 100 },
+        { id: "challenges", label: "02. 受験生の悩み", reach: 88 },
+        { id: "features", label: "03. 塾の特徴 (個別設計)", reach: 76 },
+        { id: "mentor", label: "04. 講師紹介 (SFC生)", reach: 68 },
+        { id: "tuition", label: "05. 料金プラン表", reach: 59 },
+        { id: "flow", label: "06. 受講の流れ", reach: 48 },
+        { id: "faq", label: "07. よくある質問", reach: 42 },
+        { id: "form_area", label: "08. 申込フォーム", reach: 38 }
+      ],
+      daily: {
+        labels: ["10/01", "10/02", "10/03", "10/04", "10/05", "10/06", "10/07", "10/08", "10/09", "10/10", "10/11", "10/12"],
+        data: [65, 84, 110, 95, 128, 142, 160, 135, 155, 180, 205, 169]
+      },
+      contacts: [
+        {
+          date: "2026/10/12 14:20",
+          name: "佐藤 健太",
+          grade: "高校3年生",
+          subjects: "英語＋小論文",
+          frequency: "週2回",
+          email: "kenta.sato@example.com",
+          tel: "090-1234-5678",
+          message: "慶應SFC総合政策志望。英語の長文読解で時間が足りず、小論文の書き方がまだ定まっていません。",
+          status: "新規受付"
+        },
+        {
+          date: "2026/10/12 10:15",
+          name: "田中 美咲",
+          grade: "高校2年生",
+          subjects: "英語のみ",
+          frequency: "週1回",
+          email: "misaki.t@example.com",
+          tel: "080-9876-5432",
+          message: "ターゲット1900とポラリスを使用中。高2のうちに英検準1級とSFCレベルの基礎を固めたいです。",
+          status: "日程調整中"
+        },
+        {
+          date: "2026/10/11 18:45",
+          name: "高橋 翔太",
+          grade: "既卒・浪人生",
+          subjects: "英語＋小論文",
+          frequency: "週3回",
+          email: "shota.takahashi@example.com",
+          tel: "090-4455-6677",
+          message: "環境情報志望。他塾で伸び悩みを感じており、SFC現役合格者の直接指導を受けたいと考えています。",
+          status: "面談完了"
+        }
+      ]
+    };
+
+    // Initialize Dashboard
+    function initDashboard() {
+      // Check local cache if available
+      loadData();
+      setupEventListeners();
+    }
+
+    async function loadData() {
+      const sourceBadge = document.getElementById('sourceText');
+
+      if (currentEndpoint) {
+        sourceBadge.innerText = 'データソース: Googleスプレッドシート同期中';
+        try {
+          const res = await fetch(currentEndpoint);
+          const json = await res.json();
+          if (json.status === 'success' && json.data) {
+            renderDataFromApi(json.data);
+            return;
+          }
+        } catch (err) {
+          console.warn('API Fetch failed, fallback to local/mock:', err);
+          sourceBadge.innerText = 'データソース: API接続エラー (ローカル表示)';
+        }
+      } else {
+        sourceBadge.innerText = 'データソース: ローカル / デモ表示中';
+      }
+
+      // Check localStorage for contacts
+      const localContacts = JSON.parse(localStorage.getItem('sfc_local_contacts') || '[]');
+      const combinedContacts = [...localContacts, ...mockData.contacts];
+
+      renderDashboard({
+        ...mockData,
+        contacts: combinedContacts
+      });
+    }
+
+    function renderDataFromApi(apiData) {
+      const totalPv = apiData.summary.totalPv || 1;
+      const buckets = apiData.scrollBuckets || { "25": 0, "50": 0, "75": 0, "100": 0 };
+      const visits = apiData.sectionVisits || {};
+
+      const sections = [
+        { id: "hero", label: "01. ヒーロー (KV)", reach: Math.min(100, Math.round((visits.hero || totalPv) / totalPv * 100)) },
+        { id: "challenges", label: "02. 受験生の悩み", reach: Math.round((visits.challenges || 0) / totalPv * 100) },
+        { id: "features", label: "03. 塾の特徴", reach: Math.round((visits.features || 0) / totalPv * 100) },
+        { id: "mentor", label: "04. 講師紹介", reach: Math.round((visits.mentor || 0) / totalPv * 100) },
+        { id: "tuition", label: "05. 料金プラン表", reach: Math.round((visits.tuition || 0) / totalPv * 100) },
+        { id: "flow", label: "06. 受講の流れ", reach: Math.round((visits.flow || 0) / totalPv * 100) },
+        { id: "faq", label: "07. よくある質問", reach: Math.round((visits.faq || 0) / totalPv * 100) },
+        { id: "form_area", label: "08. 申込フォーム", reach: Math.round((visits.form_area || 0) / totalPv * 100) }
+      ];
+
+      const dailyLabels = Object.keys(apiData.dailyPv || {});
+      const dailyData = Object.values(apiData.dailyPv || {});
+
+      renderDashboard({
+        summary: apiData.summary,
+        scrollBuckets: buckets,
+        sections: sections,
+        daily: {
+          labels: dailyLabels.length ? dailyLabels : mockData.daily.labels,
+          data: dailyData.length ? dailyData : mockData.daily.data
+        },
+        contacts: apiData.recentContacts.length ? apiData.recentContacts : mockData.contacts
+      });
+    }
+
+    function renderDashboard(data) {
+      // 1. KPI Cards
+      document.getElementById('valTotalPv').innerText = Number(data.summary.totalPv).toLocaleString();
+      document.getElementById('valUniqueVisitors').innerText = Number(data.summary.uniqueVisitors).toLocaleString();
+      document.getElementById('valAvgScroll').innerText = data.summary.avgScrollDepth + '%';
+      document.getElementById('valTotalContacts').innerText = Number(data.summary.totalContacts).toLocaleString();
+
+      const cvRate = data.summary.uniqueVisitors > 0 
+        ? ((data.summary.totalContacts / data.summary.uniqueVisitors) * 100).toFixed(2) + '%'
+        : '0.00%';
+      document.getElementById('valCvRate').innerText = cvRate;
+
+      // 2. Scroll Funnel Chart
+      renderScrollChart(data.scrollBuckets, data.summary.uniqueVisitors || data.summary.totalPv);
+
+      // 3. Section Reach Breakdown
+      renderSectionReach(data.sections);
+
+      // 4. Daily Trend Chart
+      renderDailyChart(data.daily);
+
+      // 5. Inquiries Table
+      renderInquiriesTable(data.contacts);
+    }
+
+    function renderScrollChart(buckets, total) {
+      const base = total || 1;
+      const pct25 = Math.min(100, Math.round((buckets["25"] || 0) / base * 100));
+      const pct50 = Math.min(100, Math.round((buckets["50"] || 0) / base * 100));
+      const pct75 = Math.min(100, Math.round((buckets["75"] || 0) / base * 100));
+      const pct100 = Math.min(100, Math.round((buckets["100"] || 0) / base * 100));
+
+      const ctx = document.getElementById('scrollChart').getContext('2d');
+      if (scrollChartInst) scrollChartInst.destroy();
+
+      scrollChartInst = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['25% 到達 (概要)', '50% 到達 (指導・講師)', '75% 到達 (料金表)', '100% 到達 (完読)'],
+          datasets: [{
+            label: '到達率 (%)',
+            data: [pct25, pct50, pct75, pct100],
+            backgroundColor: ['#0a0a0c', '#27272a', '#52525b', '#F0E900'],
+            borderColor: '#0a0a0c',
+            borderWidth: 1,
+            borderRadius: 6
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `${ctx.raw}% の訪問者が到達`
+              }
+            }
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              max: 100,
+              ticks: { callback: v => v + '%' }
+            }
+          }
+        }
+      });
+    }
+
+    function renderSectionReach(sections) {
+      const container = document.getElementById('sectionReachList');
+      container.innerHTML = sections.map(sec => `
+        <div class="reach_item">
+          <div class="reach_name">${sec.label}</div>
+          <div class="reach_bar_bg">
+            <div class="reach_bar_fill ${sec.reach >= 70 ? 'accent' : ''}" style="width: ${sec.reach}%"></div>
+          </div>
+          <div class="reach_percent">${sec.reach}%</div>
+        </div>
+      `).join('');
+    }
+
+    function renderDailyChart(daily) {
+      const ctx = document.getElementById('dailyChart').getContext('2d');
+      if (dailyChartInst) dailyChartInst.destroy();
+
+      dailyChartInst = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: daily.labels,
+          datasets: [{
+            label: 'ページ閲覧数 (PV)',
+            data: daily.data,
+            borderColor: '#0a0a0c',
+            backgroundColor: 'rgba(240, 233, 0, 0.25)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.35,
+            pointBackgroundColor: '#0a0a0c',
+            pointRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
+
+    function renderInquiriesTable(contacts) {
+      const tbody = document.getElementById('inquiryTableBody');
+      if (!contacts || contacts.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="9" style="text-align: center; color: var(--color-text-muted);">まだ問い合わせはありません</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = contacts.map(c => `
+        <tr>
+          <td style="font-family: var(--font-mono); font-size: 0.78rem;">${c.date || '-'}</td>
+          <td><strong>${escapeHtml(c.name || '-')}</strong></td>
+          <td>${escapeHtml(c.grade || '-')}</td>
+          <td><span class="status_tag">${escapeHtml(c.subjects || '-')}</span></td>
+          <td>${escapeHtml(c.frequency || '-')}</td>
+          <td><a href="mailto:${escapeHtml(c.email)}" style="color: var(--color-black);">${escapeHtml(c.email || '-')}</a></td>
+          <td>${escapeHtml(c.tel || '-')}</td>
+          <td style="max-width: 280px; font-size: 0.8rem; color: var(--color-text-sub);">${escapeHtml(c.message || 'なし')}</td>
+          <td><span class="status_tag ${c.status === '新規受付' || c.status === '未対応' ? 'new' : ''}">${escapeHtml(c.status || '受付済')}</span></td>
+        </tr>
+      `).join('');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function setupEventListeners() {
+      // Refresh Button
+      document.getElementById('btnRefresh').addEventListener('click', () => {
+        loadData();
+      });
+
+      // Settings Modal
+      const modal = document.getElementById('settingsModal');
+      const inputEndpoint = document.getElementById('inputEndpoint');
+
+      document.getElementById('btnOpenSettings').addEventListener('click', () => {
+        inputEndpoint.value = currentEndpoint;
+        modal.classList.add('is_open');
+      });
+
+      document.getElementById('btnCloseModal').addEventListener('click', () => {
+        modal.classList.remove('is_open');
+      });
+
+      document.getElementById('btnSaveEndpoint').addEventListener('click', () => {
+        const val = inputEndpoint.value.trim();
+        localStorage.setItem(ENDPOINT_KEY, val);
+        currentEndpoint = val;
+        modal.classList.remove('is_open');
+        loadData();
+      });
+
+      document.getElementById('btnUseDemo').addEventListener('click', () => {
+        localStorage.removeItem(ENDPOINT_KEY);
+        currentEndpoint = '';
+        modal.classList.remove('is_open');
+        loadData();
+      });
+    }
+
+    // Run on load
+    document.addEventListener('DOMContentLoaded', initDashboard);
+  </script>
+</body>
+</html>
