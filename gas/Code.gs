@@ -125,6 +125,39 @@ function doPost(e) {
       return createJsonResponse({ status: "success", message: "Log recorded." });
     }
 
+    // 3. ダッシュボードからの返信メール送信
+    if (type === "reply") {
+      const to = data.to;
+      const subject = data.subject || "【SFC生の英語塾】無料学習相談の日程調整について";
+      const body = data.body || "";
+      const targetDate = data.targetDate || "";
+
+      if (!to || !body) {
+        return createJsonResponse({ status: "error", message: "Missing recipient or body." });
+      }
+
+      // メール送信
+      MailApp.sendEmail({
+        to: to,
+        subject: subject,
+        body: body
+      });
+
+      // スプレッドシートのステータス更新
+      if (targetDate) {
+        const contactSheet = ss.getSheetByName(CONFIG.SHEET_CONTACTS);
+        const rows = contactSheet.getDataRange().getValues();
+        for (let i = 1; i < rows.length; i++) {
+          if (String(rows[i][0]).indexOf(targetDate) !== -1 || String(rows[i][5]) === to) {
+            contactSheet.getRange(i + 1, 9).setValue("返信済");
+            break;
+          }
+        }
+      }
+
+      return createJsonResponse({ status: "success", message: "Reply email sent successfully." });
+    }
+
     return createJsonResponse({ status: "error", message: "Unknown request type." });
 
   } catch (error) {

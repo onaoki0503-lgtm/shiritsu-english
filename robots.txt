@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+
+Sitemap: https://onaoki0503-lgtm.github.io/shiritsu-english/sitemap.xml
