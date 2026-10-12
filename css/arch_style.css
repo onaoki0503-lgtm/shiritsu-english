@@ -1751,268 +1751,169 @@ header .inner {
   color: var(--color-text-sub);
 }
 
-/* Common Strip */
-.tuition_common_strip {
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px 24px;
-  margin-bottom: 32px;
-}
-
-.common_badge {
-  font-family: var(--font-en);
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  background: var(--color-black);
-  color: var(--color-white);
-  padding: 4px 10px;
-  border-radius: 4px;
-}
-
-.common_items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: var(--color-black);
-}
-
-/* Tabs Switcher */
-.tuition_switcher {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 32px;
-}
-
-.tuition_tabs {
-  display: inline-flex;
-  background: #e4e6eb;
-  padding: 5px;
-  border-radius: 12px;
-  gap: 4px;
-  max-width: 600px;
-  width: 100%;
-}
-
-.tuition_tab_btn {
-  flex: 1;
-  border: none;
-  background: transparent;
-  padding: 12px 16px;
-  border-radius: 9px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition-fast);
-  color: var(--color-text-sub);
-}
-
-.tuition_tab_btn .tab_main {
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-}
-
-.tuition_tab_btn .tab_sub {
-  font-size: 0.72rem;
-  margin-top: 2px;
-  opacity: 0.8;
-}
-
-.tuition_tab_btn:hover {
-  color: var(--color-black);
-}
-
-.tuition_tab_btn.is_active {
-  background: var(--color-white);
-  color: var(--color-black);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.tuition_tab_btn.is_active .tab_main {
-  color: var(--color-black);
-}
-
-/* Cards Grid */
-.tuition_panel {
-  display: none;
-}
-
-.tuition_panel.is_active {
-  display: block;
-}
-
-.tuition_cards_grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 36px;
-}
-
-.t_card {
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 32px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  transition: var(--transition-smooth);
-}
-
-.t_card:hover {
-  border-color: var(--color-black);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-.t_card.is_recommend {
-  border: 2px solid var(--color-black);
-  box-shadow: var(--shadow-featured);
-}
-
-.t_badge_rec {
-  position: absolute;
-  top: -13px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--color-accent);
-  color: var(--color-black);
-  font-family: var(--font-en);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  padding: 3px 14px;
-  border-radius: 9999px;
-  border: 1px solid var(--color-black);
-  white-space: nowrap;
-}
-
-.t_card_head {
-  margin-bottom: 24px;
-}
-
-.t_card_freq {
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  font-weight: 700;
-  color: var(--color-text-muted);
-  display: block;
-  margin-bottom: 6px;
-}
-
-.t_card_name {
-  font-size: 1.3rem;
-  font-weight: 900;
-  color: var(--color-black);
-  margin-bottom: 8px;
-}
-
-.t_card_desc {
-  font-size: 0.84rem;
-  line-height: 1.6;
-  color: var(--color-text-sub);
-}
-
-.t_card_price {
-  text-align: center;
-  padding-top: 18px;
-  border-top: 1px solid var(--color-border);
-}
-
-.t_card_price .price_num {
-  font-family: var(--font-en);
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--color-black);
-  letter-spacing: -0.02em;
-}
-
-.t_card_price .price_unit {
-  font-family: var(--font-ja);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--color-text-sub);
-  margin-left: 4px;
-}
-
-/* Comparison Matrix Table */
+/* Integrated Tuition Matrix Table */
 .tuition_matrix_wrapper {
   background: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  padding: 28px 32px;
-  margin-top: 16px;
-}
-
-.matrix_title {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--color-black);
-  margin-bottom: 16px;
-  text-align: center;
+  padding: 24px;
+  margin-top: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tuition_matrix_table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
+  min-width: 680px;
 }
 
 .tuition_matrix_table th,
 .tuition_matrix_table td {
-  padding: 14px 16px;
+  padding: 16px 14px;
   text-align: center;
-  border-bottom: 1px solid var(--color-border);
+  border: 1px solid var(--color-border);
+  vertical-align: middle;
 }
 
-.tuition_matrix_table th {
+.tuition_matrix_table thead th {
   background: var(--color-light-gray);
   font-weight: 800;
   color: var(--color-black);
-  font-size: 0.86rem;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
 }
 
-.tuition_matrix_table th.th_rec {
+.tuition_matrix_table thead th.th_category {
+  width: 26%;
+  background: #eaedf2;
+}
+
+.tuition_matrix_table thead th.th_plan {
+  width: 24.6%;
+  position: relative;
+}
+
+.tuition_matrix_table thead th.th_rec {
   background: #f1f5f9;
+  border-top: 3px solid var(--color-black);
   color: var(--color-black);
+}
+
+.th_rec_badge {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-black);
+  font-size: 0.68rem;
   font-weight: 900;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
 }
 
 .tuition_matrix_table td.td_plan_name {
   text-align: left;
-  font-weight: 700;
-  color: var(--color-black);
-  width: 28%;
+  background: #fafbfc;
+  padding: 18px 16px;
 }
 
-.tuition_matrix_table td.td_plan_name span {
+.plan_badge_mono {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.tuition_matrix_table td.td_plan_name strong {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 900;
+  color: var(--color-black);
+  margin-bottom: 4px;
+}
+
+.plan_target_summary {
   font-size: 0.74rem;
-  color: var(--color-text-muted);
-  font-weight: 500;
+  color: var(--color-text-sub);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.table_price_val {
+  font-family: var(--font-en);
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--color-black);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.table_price_val.highlight {
+  color: var(--color-black);
+  font-size: 1.9rem;
+}
+
+.table_price_unit {
+  font-size: 0.72rem;
+  color: var(--color-text-sub);
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+.table_plan_target {
+  font-size: 0.73rem;
+  color: var(--color-text-sub);
+  line-height: 1.4;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--color-border);
 }
 
 .tuition_matrix_table td.td_rec {
-  background: #f8fafc;
+  background: #fdfefe;
+  position: relative;
+  box-shadow: inset 0 0 0 1px #cbd5e1;
+}
+
+/* サポート内容 統合行 */
+.tr_support_header td {
+  background: #f1f5f9;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  color: var(--color-black);
+  border-top: 2px solid var(--color-border-dark);
+}
+
+.tr_support_row td {
+  padding: 14px 16px;
+  font-size: 0.84rem;
+}
+
+.td_support_label {
+  text-align: left !important;
   font-weight: 800;
   color: var(--color-black);
+  background: #fafbfc;
+  white-space: nowrap;
+}
+
+.td_support_detail {
+  text-align: left !important;
+  color: var(--color-text);
+  line-height: 1.6;
 }
 
 .matrix_note {
   font-size: 0.76rem;
   color: var(--color-text-muted);
-  margin-top: 12px;
+  margin-top: 14px;
   text-align: center;
 }
 
@@ -2488,7 +2389,6 @@ footer .inner {
   .features_grid_3 { grid-template-columns: 1fr; gap: 20px; }
   .steps_row_3 { grid-template-columns: 1fr; }
   .mentor_profile_card_arch { grid-template-columns: 1fr; }
-  .tuition_cards_grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
@@ -2533,28 +2433,31 @@ footer .inner {
   .sec_capacity { padding: 50px 0; }
   .sec_faq { padding: 50px 0; }
   
-  .capacity_arch_box { padding: 36px 20px; }
-  .tuition_common_strip { flex-direction: column; text-align: center; gap: 12px; }
-  .common_items { flex-direction: column; gap: 8px; font-size: 0.82rem; }
-  .tuition_tabs { flex-direction: column; width: 100%; }
-  .tuition_tab_btn { padding: 10px 14px; }
-  .tuition_tab_btn .tab_main { font-size: 0.95rem; }
-  .tuition_cards_grid { grid-template-columns: 1fr; gap: 18px; }
-  .t_card { padding: 26px 20px; }
+  .capacity_arch_box { padding: 36px 16px; }
   
-  /* マトリクス表のモバイル最適化 */
+  /* 統合料金表のモバイル最適化 */
   .tuition_matrix_wrapper {
-    padding: 20px 14px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    padding: 16px 12px;
+    margin-top: 18px;
+    border-radius: 8px;
   }
   .tuition_matrix_table {
-    min-width: 480px;
+    min-width: 620px;
     font-size: 0.82rem;
   }
   .tuition_matrix_table th,
   .tuition_matrix_table td {
-    padding: 10px 8px;
+    padding: 12px 10px;
+  }
+  .table_price_val {
+    font-size: 1.45rem;
+  }
+  .table_price_val.highlight {
+    font-size: 1.6rem;
+  }
+  .td_support_label {
+    white-space: normal;
+    min-width: 140px;
   }
 
   .mentor_achievements_grid { grid-template-columns: 1fr; }

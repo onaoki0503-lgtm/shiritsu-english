@@ -516,154 +516,99 @@
               </p>
             </div>
 
-            <!-- 全プラン共通帯 -->
-            <div class="tuition_common_strip">
-              <div class="common_badge">全プラン共通サポート</div>
-              <div class="common_items">
-                <span>✓ 毎回60分 マンツーマン面談</span>
-                <span>✓ 24時間 LINE質問対応（原則24h以内返信）</span>
-                <span>✓ 現在の教材に合わせた個別学習設計</span>
-              </div>
-            </div>
-
-            <!-- 1科目 / 2科目 タブ切替コントロール -->
-            <div class="tuition_switcher">
-              <div class="tuition_tabs" role="tablist">
-                <button type="button" class="tuition_tab_btn is_active" data-plan="single" role="tab" aria-selected="true">
-                  <span class="tab_main">1科目プラン</span>
-                  <span class="tab_sub">英語 または 小論文</span>
-                </button>
-                <button type="button" class="tuition_tab_btn" data-plan="double" role="tab" aria-selected="false">
-                  <span class="tab_main">2科目プラン</span>
-                  <span class="tab_sub">英語 ＋ 小論文</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- プランカードエリア -->
-            <div class="tuition_cards_container">
-              
-              <!-- 1科目カード群 -->
-              <div class="tuition_panel is_active" id="panel_single">
-                <div class="tuition_cards_grid">
-                  
-                  <div class="t_card">
-                    <div class="t_card_head">
-                      <span class="t_card_freq">週1回 ｜ 月4回</span>
-                      <h3 class="t_card_name">週1回プラン</h3>
-                      <p class="t_card_desc">自習のペースメーカーとして方針確認を行いたい方向け</p>
-                    </div>
-                    <div class="t_card_price">
-                      <span class="price_num">¥40,000</span>
-                      <span class="price_unit">/ 月（税込）</span>
-                    </div>
-                  </div>
-
-                  <div class="t_card is_recommend">
-                    <div class="t_badge_rec">おすすめ / 標準</div>
-                    <div class="t_card_head">
-                      <span class="t_card_freq">週2回 ｜ 月8回</span>
-                      <h3 class="t_card_name">週2回プラン</h3>
-                      <p class="t_card_desc">こまめに進捗を確認し、つまずきを素早く修正しながら進めたい方向け</p>
-                    </div>
-                    <div class="t_card_price">
-                      <span class="price_num">¥60,000</span>
-                      <span class="price_unit">/ 月（税込）</span>
-                    </div>
-                  </div>
-
-                  <div class="t_card">
-                    <div class="t_card_head">
-                      <span class="t_card_freq">週3回 ｜ 月12回</span>
-                      <h3 class="t_card_name">週3回プラン</h3>
-                      <p class="t_card_desc">短期間で集中的に勉強のやり方を軌道修正したい方向け</p>
-                    </div>
-                    <div class="t_card_price">
-                      <span class="price_num">¥80,000</span>
-                      <span class="price_unit">/ 月（税込）</span>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- 2科目カード群 -->
-              <div class="tuition_panel" id="panel_double">
-                <div class="tuition_cards_grid">
-                  
-                  <div class="t_card">
-                    <div class="t_card_head">
-                      <span class="t_card_freq">週1回 ｜ 月4回</span>
-                      <h3 class="t_card_name">2科目 週1回プラン</h3>
-                      <p class="t_card_desc">2科目のバランスを確認しつつ、自習計画を週単位で管理したい方向け</p>
-                    </div>
-                    <div class="t_card_price">
-                      <span class="price_num">¥50,000</span>
-                      <span class="price_unit">/ 月（税込）</span>
-                    </div>
-                  </div>
-
-                  <div class="t_card is_recommend">
-                    <div class="t_badge_rec">2科目おすすめ</div>
-                    <div class="t_card_head">
-                      <span class="t_card_freq">週2回 ｜ 月8回</span>
-                      <h3 class="t_card_name">2科目 週2回プラン</h3>
-                      <p class="t_card_desc">英語・小論文ともにこまめな確認と修正を行い、着実に力をつけたい方向け</p>
-                    </div>
-                    <div class="t_card_price">
-                      <span class="price_num">¥70,000</span>
-                      <span class="price_unit">/ 月（税込）</span>
-                    </div>
-                  </div>
-
-                  <div class="t_card">
-                    <div class="t_card_head">
-                      <span class="t_card_freq">週3回 ｜ 月12回</span>
-                      <h3 class="t_card_name">2科目 週3回プラン</h3>
-                      <p class="t_card_desc">英語と小論文の両方を手厚く受講し、合格圏を目指す方向け</p>
-                    </div>
-                    <div class="t_card_price">
-                      <span class="price_num">¥90,000</span>
-                      <span class="price_unit">/ 月（税込）</span>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-
-            <!-- 一目でわかる比較マトリクス表 -->
+            <!-- 一目でわかる受講料金・プラン比較表（1科目・2科目・サポート内容を統合） -->
             <div class="tuition_matrix_wrapper">
-              <h4 class="matrix_title">料金一覧・比較表</h4>
               <table class="tuition_matrix_table">
                 <thead>
                   <tr>
-                    <th>プラン</th>
-                    <th>週1回（月4回）</th>
-                    <th class="th_rec">週2回（月8回）おすすめ</th>
-                    <th>週3回（月12回）</th>
+                    <th class="th_category">プラン区分</th>
+                    <th class="th_plan">週1回 ｜ 月4回</th>
+                    <th class="th_plan th_rec">
+                      <span class="th_rec_badge">おすすめ / 標準</span>
+                      週2回 ｜ 月8回
+                    </th>
+                    <th class="th_plan">週3回 ｜ 月12回</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="td_plan_name"><strong>1科目</strong><br><span>英語 または 小論文</span></td>
-                    <td><strong>¥40,000</strong></td>
-                    <td class="td_rec"><strong>¥60,000</strong></td>
-                    <td><strong>¥80,000</strong></td>
+                  <!-- 1科目プラン -->
+                  <tr class="tr_plan_row">
+                    <td class="td_plan_name">
+                      <span class="plan_badge_mono">1科目</span>
+                      <strong>英語 または 小論文</strong>
+                      <p class="plan_target_summary">苦手科目の集中強化・分野特化対策</p>
+                    </td>
+                    <td>
+                      <div class="table_price_val">¥40,000</div>
+                      <div class="table_price_unit">/ 月（税込）</div>
+                      <p class="table_plan_target">自習のペースメーカーとして方針確認を行いたい方向け</p>
+                    </td>
+                    <td class="td_rec">
+                      <div class="table_price_val highlight">¥60,000</div>
+                      <div class="table_price_unit">/ 月（税込）</div>
+                      <p class="table_plan_target">こまめに進捗を確認し、つまずきを素早く修正したい方向け</p>
+                    </td>
+                    <td>
+                      <div class="table_price_val">¥80,000</div>
+                      <div class="table_price_unit">/ 月（税込）</div>
+                      <p class="table_plan_target">短期間で集中的に勉強のやり方を軌道修正したい方向け</p>
+                    </td>
                   </tr>
-                  <tr>
-                    <td class="td_plan_name"><strong>2科目</strong><br><span>英語 ＋ 小論文</span></td>
-                    <td><strong>¥50,000</strong></td>
-                    <td class="td_rec"><strong>¥70,000</strong></td>
-                    <td><strong>¥90,000</strong></td>
+
+                  <!-- 2科目プラン -->
+                  <tr class="tr_plan_row">
+                    <td class="td_plan_name">
+                      <span class="plan_badge_mono">2科目</span>
+                      <strong>英語 ＋ 小論文</strong>
+                      <p class="plan_target_summary">慶應SFC入試の全科目をトータル個別管理</p>
+                    </td>
+                    <td>
+                      <div class="table_price_val">¥50,000</div>
+                      <div class="table_price_unit">/ 月（税込）</div>
+                      <p class="table_plan_target">2科目のバランスを確認しつつ、週単位で管理したい方向け</p>
+                    </td>
+                    <td class="td_rec">
+                      <div class="table_price_val highlight">¥70,000</div>
+                      <div class="table_price_unit">/ 月（税込）</div>
+                      <p class="table_plan_target">英語・小論文ともにこまめに確認し、着実に力をつけたい方向け</p>
+                    </td>
+                    <td>
+                      <div class="table_price_val">¥90,000</div>
+                      <div class="table_price_unit">/ 月（税込）</div>
+                      <p class="table_plan_target">英語と小論文の両方を手厚く受講し、合格圏を目指す方向け</p>
+                    </td>
+                  </tr>
+
+                  <!-- 全プラン共通サポート内容（表内に直接組み込み） -->
+                  <tr class="tr_support_header">
+                    <td colspan="4">
+                      <strong>全プラン共通のサポート内容</strong>
+                    </td>
+                  </tr>
+                  <tr class="tr_support_row">
+                    <td class="td_support_label">毎回60分 マンツーマン面談</td>
+                    <td colspan="3" class="td_support_detail">
+                      進捗確認・つまずき分析・勉強法改善・次回自習タスク決定（受講頻度に応じて週1回〜週3回実施）
+                    </td>
+                  </tr>
+                  <tr class="tr_support_row">
+                    <td class="td_support_label">24時間 LINE質問対応</td>
+                    <td colspan="3" class="td_support_detail">
+                      自宅学習中の英語長文の構造や小論文のテーマ相談をいつでも質問可能（原則24時間以内に担当講師が直接回答）
+                    </td>
+                  </tr>
+                  <tr class="tr_support_row">
+                    <td class="td_support_label">教材に合わせた個別学習設計</td>
+                    <td colspan="3" class="td_support_detail">
+                      使い慣れた市販参考書や学校テキストを活かし、何を・どの順で進めるか日々の自習メニューを個別最適化
+                    </td>
                   </tr>
                 </tbody>
               </table>
-              <p class="matrix_note">※表示価格はすべて税込の月額料金です。入会金等の追加費用はございません。</p>
+              <p class="matrix_note">※スマートフォン等では左右にスクロールしてご確認いただけます。表示価格はすべて税込の月額料金です（入会金等の追加費用はありません）。</p>
             </div>
 
-            <div class="capacity_cta_area" style="margin-top: 40px;">
+            <div class="capacity_cta_area" style="margin-top: 36px;">
               <a href="#form_area" class="btn_mega_cta">
                 <span class="cta_en">FREE CONSULTATION</span>
                 <span class="cta_ja">無料学習相談に申し込む →</span>
