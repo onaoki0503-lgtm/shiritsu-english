@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>【SFC生の英語塾】問い合わせ通知＆返信システム初期設定手順書</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 18mm 16mm 18mm 16mm;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", "Meiryo", sans-serif;
+    color: #1e293b;
+    background: #ffffff;
+    line-height: 1.6;
+    font-size: 10.5pt;
+  }
+  .header {
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .header-left h1 {
+    font-size: 17pt;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .header-left .sub {
+    font-size: 9.5pt;
+    color: #64748b;
+  }
+  .header-right {
+    text-align: right;
+    font-size: 8.5pt;
+    color: #64748b;
+    line-height: 1.4;
+  }
+  .badge-summary {
+    background: #f1f5f9;
+    border-left: 4px solid #0f172a;
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 18px;
+    font-size: 9.5pt;
+  }
+  .badge-summary strong {
+    color: #0f172a;
+  }
+  .step-box {
+    margin-bottom: 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    page-break-inside: avoid;
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .step-num {
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 9pt;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .step-title {
+    font-size: 11pt;
+    font-weight: 800;
+    color: #0f172a;
+  }
+  .step-desc {
+    font-size: 9.5pt;
+    color: #334155;
+    margin-bottom: 8px;
+  }
+  .step-list {
+    font-size: 9.2pt;
+    color: #334155;
+    padding-left: 20px;
+    line-height: 1.55;
+  }
+  .step-list li {
+    margin-bottom: 4px;
+  }
+  .highlight-tag {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 8.5pt;
+  }
+  .key-value {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 6px;
+    font-size: 9pt;
+    font-family: Menlo, Monaco, Consolas, monospace;
+    color: #0f172a;
+  }
+  .callout-caution {
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    padding: 8px 12px;
+    font-size: 8.8pt;
+    color: #92400e;
+    margin-top: 6px;
+    border-radius: 0 4px 4px 0;
+  }
+  .footer-note {
+    margin-top: 14px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 10px;
+    font-size: 8.5pt;
+    color: #64748b;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <h1>【SFC生の英語塾】初期設定・連携手順書</h1>
+      <div class="sub">堀安泰世 先生 宛て ｜ 無料学習相談の通知受取 ＆ 返信システム連携</div>
+    </div>
+    <div class="header-right">
+      発行日: 2026年10月12日<br>
+      摂取資源株式会社 / 岡本直樹
+    </div>
+  </div>
+
+  <div class="badge-summary">
+    <strong>📌 目的と作業時間（約3〜5分）:</strong><br>
+    LPから生徒が「無料学習相談」を申し込んだ際に、<strong>堀安先生のGmail（<code>taiseihori18@gmail.com</code>）へ即座に通知を届け</strong>、ダッシュボードからワンクリックで<strong>堀安先生のアカウント名義で生徒へ返信メールを送信</strong>できるようにするための初回連携作業です。
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step-box">
+    <div class="step-header">
+      <span class="step-num">STEP 1</span>
+      <h2 class="step-title">Googleスプレッドシート（台帳）の新規作成</h2>
+    </div>
+    <div class="step-desc">堀安先生のGoogleアカウントで管理用シートを1つ作成します。</div>
+    <ol class="step-list">
+      <li>ブラウザで <strong><code>taiseihori18@gmail.com</code></strong> にログインします。</li>
+      <li>Googleドライブ（または <a href="https://sheets.new">https://sheets.new</a>）で新しいスプレッドシートを作成します。</li>
+      <li>ファイル名を <strong>「SFC生の英語塾_データ管理台帳」</strong> に変更します。</li>
+      <li>右上の「共有」から、岡本代表（<code>o.naoki0503@intakingresources.com</code>）を「編集者」として招待してください。</li>
+    </ol>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step-box">
+    <div class="step-header">
+      <span class="step-num">STEP 2</span>
+      <h2 class="step-title">Apps Script を開き、コードを貼り付け</h2>
+    </div>
+    <div class="step-desc">自動化プログラム（GAS）をスプレッドシートに配置します。</div>
+    <ol class="step-list">
+      <li>スプレッドシート上部メニューの <strong>[拡張機能]</strong> → <strong>[Apps Script]</strong> をクリックします。</li>
+      <li>エディタ内に最初から書かれている数行のコードをすべて削除して空にします。</li>
+      <li>共有フォルダ内（または別途添付）の <strong><code>gas/Code.gs</code></strong> のコード全文を丸ごとコピー＆ペーストします。</li>
+      <li>エディタ上部の <strong>フロッピーディスク（保存）アイコン</strong> をクリックして保存します。</li>
+    </ol>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step-box">
+    <div class="step-header">
+      <span class="step-num">STEP 3</span>
+      <h2 class="step-title">ウェブアプリとしてデプロイ（最重要ステップ）</h2>
+    </div>
+    <div class="step-desc">外部LPおよびダッシュボードと通信するためのURLを発行します。</div>
+    <ol class="step-list">
+      <li>エディタ右上の青い <strong>[デプロイ]</strong> ボタン → <strong>[新しいデプロイ]</strong> をクリックします。</li>
+      <li>左側の歯車マーク（種類の選択）をクリックし、<strong>[ウェブアプリ]</strong> を選択します。</li>
+      <li>以下の通り2項目を正確に選択します：
+        <div class="key-value">
+          ・次のユーザーとして実行: <strong>自分（taiseihori18@gmail.com）</strong><br>
+          ・アクセスできるユーザー: <strong>全員</strong> <span class="highlight-tag">必須</span>
+        </div>
+      </li>
+      <li>右下の <strong>[デプロイ]</strong> を押します。初回のみ「アクセスを承認」が出るので、ご自身のアカウントを選択して許可します。</li>
+    </ol>
+    <div class="callout-caution">
+      ※「Googleはこのアプリを検証していません」と警告が出た場合は、左下の「詳細を表示」→「無題のプロジェクト（安全ではないページ）に移動」をクリックして許可を完了してください。
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step-box">
+    <div class="step-header">
+      <span class="step-num">STEP 4</span>
+      <h2 class="step-title">発行されたURLを岡本代表へ共有</h2>
+    </div>
+    <div class="step-desc">最後の仕上げです。</div>
+    <ol class="step-list">
+      <li>デプロイ完了画面に表示される <strong>「ウェブアプリのURL」</strong>（<code>https://script.google.com/macros/s/AKfycb.../exec</code>）をコピーします。</li>
+      <li>そのURLを <strong>岡本代表宛てにLINEまたはメールでご送付ください</strong>。</li>
+      <li>代表側でダッシュボードおよびLPへURLを接続し、テスト送信を行って設定完了となります！</li>
+    </ol>
+  </div>
+
+  <div class="footer-note">
+    <span>ご不明な点やお困りの際はお気軽に岡本代表までご連絡ください。</span>
+    <span>SFC生の英語塾 運用チーム</span>
+  </div>
+
+</body>
+</html>
