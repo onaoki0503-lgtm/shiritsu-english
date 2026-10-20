@@ -12,9 +12,9 @@
 (function () {
   'use strict';
 
-  // GASエンドポイントURL（未設定の場合はローカルストレージに蓄積してダッシュボードで確認可能）
-  const STORAGE_ENDPOINT_KEY = 'sfc_analytics_endpoint';
-  const DEFAULT_ENDPOINT = localStorage.getItem(STORAGE_ENDPOINT_KEY) || '';
+  // 公開受付専用URL（site-config.jsで設定）
+  const DEFAULT_ENDPOINT = window.SFC_CONFIG?.publicEndpoint || '';
+  const pageViewId = crypto.randomUUID();
 
   // セッションID生成・取得
   let sessionId = sessionStorage.getItem('sfc_session_id');
@@ -89,16 +89,17 @@
     });
   }
 
-  // 3. データ送信処理 (GAS Webhook or ローカルキャッシュ)
+  // 3. ページ閲覧IDごとに最大到達点を更新する
   function sendTrackingData() {
     if (isSent) return;
     checkScrollDepth();
 
     const duration = Math.round((Date.now() - startTime) / 1000);
-    const endpoint = localStorage.getItem(STORAGE_ENDPOINT_KEY) || DEFAULT_ENDPOINT;
+    const endpoint = DEFAULT_ENDPOINT;
 
     const payload = {
       type: 'tracking',
+      pageViewId: pageViewId,
       sessionId: sessionId,
       device: getDeviceType(),
       scrollDepth: maxScrollDepth,
@@ -109,30 +110,20 @@
       timestamp: new Date().toISOString()
     };
 
-    // ローカルストレージにも最新ログをキャッシュ（ダッシュボードでの即時可視化用）
-    try {
-      const localLogs = JSON.parse(localStorage.getItem('sfc_local_tracking_logs') || '[]');
-      localLogs.push(payload);
-      if (localLogs.length > 50) localLogs.shift();
-      localStorage.setItem('sfc_local_tracking_logs', JSON.stringify(localLogs));
-    } catch (e) {
-      console.warn('Local storage write error:', e);
-    }
-
     // エンドポイントが設定されている場合は実際にPOST送信
-    if (endpoint) {
+    if (/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(endpoint)) {
       isSent = true;
       const jsonStr = JSON.stringify(payload);
       if (navigator.sendBeacon) {
         const blob = new Blob([jsonStr], { type: 'text/plain;charset=UTF-8' });
-        navigator.sendBeacon(endpoint, blob);
+        if (!navigator.sendBeacon(endpoint, blob)) isSent = false;
       } else {
         fetch(endpoint, {
           method: 'POST',
           mode: 'no-cors',
           body: jsonStr,
           headers: { 'Content-Type': 'text/plain;charset=UTF-8' }
-        }).catch(() => {});
+        }).catch(() => { isSent = false; });
       }
     }
   }
@@ -166,9 +157,6 @@
         reachedSections: Array.from(reachedSections),
         duration: Math.round((Date.now() - startTime) / 1000)
       };
-    },
-    setEndpoint: function (url) {
-      localStorage.setItem(STORAGE_ENDPOINT_KEY, url);
     }
   };
 

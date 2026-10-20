@@ -119,26 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Scroll Reveal Animation Engine (IntersectionObserver)
-  const revealElements = document.querySelectorAll('[data-reveal]');
-  if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is_revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0.15,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-  } else {
-    revealElements.forEach(el => el.classList.add('is_revealed'));
-  }
+  // 4. Scroll reveal is managed by liquid.js.
 
   // 5. Intelligent Numbers CountUp Engine
   const counterElements = document.querySelectorAll('.metric_num[data-count]');
@@ -214,93 +195,57 @@ document.addEventListener('DOMContentLoaded', () => {
           item.classList.remove('is_open');
           a.style.maxHeight = null;
         }
+        faqItems.forEach(other => other.querySelector('.faq_q_arch')?.setAttribute('aria-expanded', String(other.classList.contains('is_open'))));
       });
     }
   });
 
-  // 7. Mobile Sticky CTA Hide when Form Area is in view
-  const stickyCta = document.getElementById('mobileStickyCta');
-  const formArea = document.getElementById('form_area');
-  if (stickyCta && formArea && 'IntersectionObserver' in window) {
-    const formObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          stickyCta.style.display = 'none';
-        } else {
-          stickyCta.style.display = '';
-        }
-      });
-    }, { threshold: 0.1 });
-    formObserver.observe(formArea);
-  }
+  // 7. The single mobile CTA and its form state are managed by liquid.js.
 
-  // 8. Form Submission UX & GAS Notification
+  // 8. 受付IDを再利用し、保存の確認後にのみ完了を表示する。
   const form = document.getElementById('archContactForm');
+  try { localStorage.removeItem('sfc_local_contacts'); } catch (_) {} // 旧版の個人情報キャッシュを消去
   if (form) {
+    const status = document.createElement('p');
+    status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite');
+    form.append(status);
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const submitText = submitBtn.querySelector('.btn_submit_text') || submitBtn;
-      const originalText = submitText.innerText;
-
-      submitText.innerText = '送信中...';
-      submitBtn.disabled = true;
-
-      // フォームデータの収集
-      const formData = new FormData(form);
-      const payload = {
-        type: 'contact',
-        name: formData.get('name') || '',
-        grade: formData.get('grade') || '',
-        subjects: formData.get('subjects') || '',
-        frequency: formData.get('frequency') || '',
-        email: formData.get('email') || '',
-        tel: formData.get('tel') || '',
-        message: formData.get('message') || '',
-        timestamp: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })
-      };
-
-      // ローカルキャッシュ（ダッシュボード確認用）
+      const endpoint = window.SFC_CONFIG?.publicEndpoint || '';
+      if (!/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(endpoint)) {
+        status.textContent = 'メール申込の準備中です。講師へ直接お問い合わせください。'; return;
+      }
+      const button = form.querySelector('button[type="submit"]');
+      if (button.disabled) return;
+      const label = button.querySelector('.btn_submit_text') || button, original = label.textContent;
+      button.disabled = true; label.textContent = '送信中…'; status.textContent = '';
+      let timer;
       try {
-        const localContacts = JSON.parse(localStorage.getItem('sfc_local_contacts') || '[]');
-        localContacts.unshift({
-          date: payload.timestamp,
-          name: payload.name,
-          grade: payload.grade,
-          subjects: payload.subjects,
-          frequency: payload.frequency,
-          email: payload.email,
-          tel: payload.tel,
-          message: payload.message,
-          status: '受付済'
-        });
-        localStorage.setItem('sfc_local_contacts', JSON.stringify(localContacts.slice(0, 50)));
-      } catch (err) {
-        console.warn('Local storage error:', err);
-      }
-
-      // GASエンドポイントへの非同期送信
-      const endpoint = localStorage.getItem('sfc_analytics_endpoint') || '';
-      if (endpoint) {
-        try {
-          await fetch(endpoint, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-            body: JSON.stringify(payload)
-          });
-        } catch (fetchErr) {
-          console.error('GAS dispatch error:', fetchErr);
+        const fields = new FormData(form);
+        const payload = {type:'contact'};
+        ['name','grade','subjects','frequency','email','tel','message'].forEach(k => payload[k] = String(fields.get(k) || '').trim());
+        const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(payload)));
+        const fingerprint = Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2,'0')).join('');
+        let pending = JSON.parse(sessionStorage.getItem('sfc_pending_request') || 'null');
+        if (!pending || pending.fingerprint !== fingerprint) {
+          pending = {fingerprint, id: crypto.randomUUID()};
+          // 保存できなければ送信しない。PIIの代わりにハッシュとIDのみ保存する。
+          sessionStorage.setItem('sfc_pending_request', JSON.stringify(pending));
         }
+        payload.requestId = pending.id;
+        const controller = new AbortController();
+        timer = setTimeout(() => controller.abort(), 30000);
+        const response = await fetch(endpoint, {method:'POST', headers:{'Content-Type':'text/plain;charset=UTF-8'},
+          body:JSON.stringify(payload), signal:controller.signal, redirect:'follow'});
+        const result = await response.json();
+        if (!response.ok || result.status !== 'success' || result.saved !== true || result.requestId !== pending.id) throw new Error('Not confirmed');
+        status.textContent = 'お申し込みを受け付けました。原則24時間以内に担当講師よりご連絡します。';
+        sessionStorage.removeItem('sfc_pending_request'); form.reset();
+      } catch (err) {
+        status.textContent = '受付完了を確認できませんでした。入力を変えずに、もう一度送信してください。同じ受付IDで確認し、申込の重複を防ぎます。';
+      } finally {
+        clearTimeout(timer); label.textContent = original; button.disabled = false;
       }
-
-      // 送信完了フィードバック
-      setTimeout(() => {
-        alert('【無料学習相談のお申し込みを受け付けました】\n\nご登録いただいたメールアドレスへ、原則24時間以内に担当講師より日程調整のご案内をお送りいたします。\n現在の学力や教材、学習状況に合わせた最適なアドバイスをお伝えします。');
-        submitText.innerText = originalText;
-        submitBtn.disabled = false;
-        form.reset();
-      }, 500);
     });
   }
 
@@ -312,7 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
-          const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - 70;
+          const headerOffset = (document.getElementById('siteHeader')?.getBoundingClientRect().bottom || 70) + 18;
+          const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
           window.scrollTo({
             top: offsetTop,
             behavior: 'smooth'

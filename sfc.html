@@ -37,34 +37,50 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/arch_style.css?v=20261012c">
+  <link rel="stylesheet" href="css/arch_style.css?v=20261020-glass-cta1">
+  <link rel="stylesheet" href="css/liquid.css?v=20261020-glass-cta1">
+  <script>
+    document.documentElement.classList.add('is-loading');
+    // 独立したフェイルセーフ。後続JSや画像が失敗しても操作をロックしない。
+    window.sfcLoadingFallback = setTimeout(function () {
+      document.documentElement.classList.remove('is-loading');
+      document.documentElement.classList.add('is-ready');
+      var content = document.getElementById('container');
+      if (content) { content.inert = false; content.removeAttribute('aria-busy'); }
+      var skeleton = document.getElementById('siteSkeleton');
+      if (skeleton) skeleton.hidden = true;
+    }, 6000);
+  </script>
 </head>
 <body>
 
   <!-- Top Scroll Progress Bar -->
   <div class="scroll_progress_bar" id="scrollProgressBar"></div>
 
-  <!-- Canvas Background -->
-  <div class="bg_canvas_box" id="matrix_canvas_wrapper">
-    <canvas class="bg_canvas" id="matrix_canvas"></canvas>
+  <!-- Real layout-shaped placeholders; no fabricated progress percentage. -->
+  <div class="site_skeleton" id="siteSkeleton" role="status" aria-label="ページを読み込んでいます">
+    <div class="skeleton_header"><i class="sk sk_brand"></i><i class="sk sk_nav"></i></div>
+    <div class="skeleton_hero">
+      <div class="skeleton_copy"><i class="sk sk_pill"></i><i class="sk sk_heading"></i><i class="sk sk_heading short"></i><i class="sk sk_line"></i><i class="sk sk_line short"></i><i class="sk sk_button"></i></div>
+      <div class="sk sk_picture"></div>
+    </div>
+    <div class="skeleton_cards"><i class="sk"></i><i class="sk"></i><i class="sk"></i></div>
+    <span class="sr_only">ページを読み込んでいます</span>
   </div>
 
   <div id="container">
 
     <!-- Header -->
-    <header>
+    <header class="liquid_header" id="siteHeader">
       <div class="inner">
         <div class="header_logo">
-          <a href="#">
+          <a href="#top" aria-label="SFC生の英語塾 トップへ">
             <span class="logo_main">SFC生の英語塾</span>
             <span class="logo_edition">ENGLISH & ESSAY</span>
           </a>
         </div>
 
-        <nav class="nav_global">
+        <nav class="nav_global" aria-label="メインナビゲーション">
           <ul>
             <li><a href="#challenges">お悩み</a></li>
             <li><a href="#features">塾の特徴</a></li>
@@ -78,39 +94,16 @@
 
         <div class="header_cv_group">
           <a href="#form_area" class="btn_cv btn_contact">無料学習相談</a>
+          <button class="menu_toggle" id="menuToggle" type="button" aria-label="メニューを開く" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span></button>
         </div>
       </div>
+      <nav class="mobile_menu" id="mobileMenu" aria-label="スマートフォン用ナビゲーション" hidden>
+        <a href="#features">塾の特徴<span>01</span></a><a href="#system">指導システム<span>02</span></a><a href="#mentor">講師紹介<span>03</span></a><a href="#tuition">料金プラン<span>04</span></a><a href="#faq">よくある質問<span>05</span></a>
+      </nav>
     </header>
 
-    <!-- Fixed Header -->
-    <div class="header_fixed" id="fixed_header">
-      <div class="inner">
-        <div class="header_logo">
-          <a href="#">
-            <span class="logo_main">SFC生の英語塾</span>
-          </a>
-        </div>
-
-        <nav class="nav_global">
-          <ul>
-            <li><a href="#challenges">お悩み</a></li>
-            <li><a href="#features">塾の特徴</a></li>
-            <li><a href="#system">指導システム</a></li>
-            <li><a href="#mentor">講師紹介</a></li>
-            <li><a href="#tuition">料金プラン</a></li>
-            <li><a href="#flow">受講の流れ</a></li>
-            <li><a href="#faq">よくある質問</a></li>
-          </ul>
-        </nav>
-
-        <div class="header_cv_group">
-          <a href="#form_area" class="btn_cv btn_contact">無料学習相談に申し込む</a>
-        </div>
-      </div>
-    </div>
-
     <!-- 1st View / Key Visual Hero -->
-    <section class="top_view">
+    <section class="top_view" id="top">
       <div class="kv_inner">
         
         <div class="kv_text_area">
@@ -119,7 +112,7 @@
           </div>
 
           <h1 class="copy_kv reveal_fade" style="animation-delay: 0.1s;">
-            <span class="highlight_text">慶應SFCに受かる塾</span>
+            <span class="highlight_text"><span>慶應SFCに</span><span>受かる塾</span></span>
             <span class="sub_block">英検一級、英語満点の現役SFC生のみが教える塾</span>
           </h1>
 
@@ -128,26 +121,16 @@
           </p>
 
           <div class="kv_action_group reveal_fade" style="animation-delay: 0.3s;">
-            <a href="#form_area" class="btn_circle_wrap">
-              <div class="btn_circle_svg">
-                <svg viewBox="0 0 80 80">
-                  <circle cx="40" cy="40" r="38" class="circle_bg"></circle>
-                  <circle cx="40" cy="40" r="38" class="circle_meter"></circle>
-                </svg>
-                <svg class="circle_icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </div>
-              <div class="btn_circle_label">
-                <span class="en">FREE CONSULTATION</span>
-                <span class="jp">無料学習相談に申し込む</span>
-              </div>
-            </a>
+            <a href="#form_area" class="hero_cta liquid_button"><span>無料学習相談に申し込む</span><span class="button_arrow" aria-hidden="true">↗</span></a>
+            <a href="#features" class="hero_secondary">塾の特徴を見る <span aria-hidden="true">↓</span></a>
           </div>
 
         </div>
-
+        <div class="hero_visual" aria-hidden="true">
+          <img class="hero_scene" src="assets/hero_sky_bg.jpg" alt="" width="1200" height="1200" fetchpriority="high">
+          <div class="glass_lens lens_one"></div><div class="glass_lens lens_two"></div>
+          <div class="hero_visual_caption"><span class="caption_mark"></span>自分の勉強に、確かな手応えを。</div>
+        </div>
       </div>
 
       <div class="scroll_indicator">
@@ -163,6 +146,7 @@
           <span>STUDENT VOICES ｜ 合格実績・受講生の声</span>
         </div>
         <p class="marquee_lead">勉強の迷いをなくし、合格へ集中できた受講生の声</p>
+        <button type="button" class="voices_toggle" id="voicesToggle" aria-pressed="false">動きを止める <span aria-hidden="true">Ⅱ</span></button>
       </div>
 
       <div class="marquee_track_wrap">
@@ -286,9 +270,9 @@
             </p>
           </div>
 
-          <div class="challenges_balloon_grid" data-reveal>
+          <div class="challenges_balloon_grid">
             
-            <div class="challenge_balloon_item">
+            <div class="challenge_balloon_item" data-reveal>
               <div class="c_balloon_box">
                 <p class="c_balloon_txt">
                   <span class="u_phrase">調べて勉強しているのに、</span><br>
@@ -306,7 +290,7 @@
               </div>
             </div>
 
-            <div class="challenge_balloon_item">
+            <div class="challenge_balloon_item" data-reveal>
               <div class="c_balloon_box">
                 <p class="c_balloon_txt">
                   <span class="u_phrase">正しい方法だと思っているけれど、</span><br>
@@ -324,7 +308,7 @@
               </div>
             </div>
 
-            <div class="challenge_balloon_item">
+            <div class="challenge_balloon_item" data-reveal>
               <div class="c_balloon_box">
                 <p class="c_balloon_txt">
                   <span class="u_phrase">新しい情報を見るたびに、</span><br>
@@ -342,7 +326,7 @@
               </div>
             </div>
 
-            <div class="challenge_balloon_item">
+            <div class="challenge_balloon_item" data-reveal>
               <div class="c_balloon_box">
                 <p class="c_balloon_txt">
                   <span class="u_phrase">一人で勉強していると、</span><br>
@@ -380,9 +364,9 @@
             </p>
           </div>
 
-          <div class="features_grid_3" data-reveal>
+          <div class="features_grid_3">
             
-            <div class="feature_card_arch">
+            <div class="feature_card_arch" data-reveal>
               <div class="feature_card_top">
                 <span class="feature_num">01</span>
                 <span class="feature_badge">学習設計</span>
@@ -393,7 +377,7 @@
               </p>
             </div>
 
-            <div class="feature_card_arch">
+            <div class="feature_card_arch" data-reveal>
               <div class="feature_card_top">
                 <span class="feature_num">02</span>
                 <span class="feature_badge">英語指導</span>
@@ -404,7 +388,7 @@
               </p>
             </div>
 
-            <div class="feature_card_arch">
+            <div class="feature_card_arch" data-reveal>
               <div class="feature_card_top">
                 <span class="feature_num">03</span>
                 <span class="feature_badge">小論文指導</span>
@@ -443,19 +427,19 @@
             </div>
 
             <div class="steps_row_3">
-              <div class="step_block">
+              <div class="step_block" data-reveal>
                 <div class="step_num_arch">STEP 01</div>
                 <h4 class="step_name">進捗確認・つまずき分析</h4>
                 <p class="step_text">前回からの進み具合と手が止まった箇所を把握。小論文答案の課題も洗い出します。</p>
               </div>
 
-              <div class="step_block">
+              <div class="step_block" data-reveal>
                 <div class="step_num_arch">STEP 02</div>
                 <h4 class="step_name">勉強法・解き方の修正</h4>
                 <p class="step_text">なぜ間違えたかを掘り下げ、暗記手順や長文の読み方、小論文の構成を改善します。</p>
               </div>
 
-              <div class="step_block">
+              <div class="step_block" data-reveal>
                 <div class="step_num_arch">STEP 03</div>
                 <h4 class="step_name">次回までの自習タスク決定</h4>
                 <p class="step_text">次の面談までに進める範囲と具体的な手順を確定し、迷いなく机に向かえる状態にします。</p>
@@ -554,12 +538,12 @@
                 <thead>
                   <tr>
                     <th class="th_category">プラン区分</th>
-                    <th class="th_plan">週1回 ｜ 月4回</th>
+                    <th class="th_plan">週1回<span class="plan_sessions">月4回</span></th>
                     <th class="th_plan th_rec">
-                      <span class="th_rec_badge">おすすめ / 標準</span>
-                      週2回 ｜ 月8回
+                      <span class="th_rec_badge">標準プラン</span>
+                      週2回<span class="plan_sessions">月8回</span>
                     </th>
-                    <th class="th_plan">週3回 ｜ 月12回</th>
+                    <th class="th_plan">週3回<span class="plan_sessions">月12回</span></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -571,17 +555,17 @@
                       <p class="plan_target_summary">苦手科目の集中強化・分野特化対策</p>
                     </td>
                     <td>
-                      <div class="table_price_val">¥40,000</div>
+                      <div class="table_price_val"><span class="price_full">¥40,000</span><span class="price_compact">4万円</span></div>
                       <div class="table_price_unit">（1科目あたり）/ 月（税込）</div>
                       <p class="table_plan_target">自習のペースメーカーとして方針確認を行いたい方向け</p>
                     </td>
                     <td class="td_rec">
-                      <div class="table_price_val highlight">¥60,000</div>
+                      <div class="table_price_val highlight"><span class="price_full">¥60,000</span><span class="price_compact">6万円</span></div>
                       <div class="table_price_unit">（1科目あたり）/ 月（税込）</div>
                       <p class="table_plan_target">こまめに進捗を確認し、つまずきを素早く修正したい方向け</p>
                     </td>
                     <td>
-                      <div class="table_price_val">¥80,000</div>
+                      <div class="table_price_val"><span class="price_full">¥80,000</span><span class="price_compact">8万円</span></div>
                       <div class="table_price_unit">（1科目あたり）/ 月（税込）</div>
                       <p class="table_plan_target">短期間で集中的に勉強のやり方を軌道修正したい方向け</p>
                     </td>
@@ -595,17 +579,17 @@
                       <p class="plan_target_summary">慶應SFC入試の全科目をトータル個別管理</p>
                     </td>
                     <td>
-                      <div class="table_price_val">¥50,000</div>
+                      <div class="table_price_val"><span class="price_full">¥50,000</span><span class="price_compact">5万円</span></div>
                       <div class="table_price_unit">（2科目あたり）/ 月（税込）</div>
                       <p class="table_plan_target">2科目のバランスを確認しつつ、週単位で管理したい方向け</p>
                     </td>
                     <td class="td_rec">
-                      <div class="table_price_val highlight">¥70,000</div>
+                      <div class="table_price_val highlight"><span class="price_full">¥70,000</span><span class="price_compact">7万円</span></div>
                       <div class="table_price_unit">（2科目あたり）/ 月（税込）</div>
                       <p class="table_plan_target">英語・小論文ともにこまめに確認し、着実に力をつけたい方向け</p>
                     </td>
                     <td>
-                      <div class="table_price_val">¥90,000</div>
+                      <div class="table_price_val"><span class="price_full">¥90,000</span><span class="price_compact">9万円</span></div>
                       <div class="table_price_unit">（2科目あたり）/ 月（税込）</div>
                       <p class="table_plan_target">英語と小論文の両方を手厚く受講し、合格圏を目指す方向け</p>
                     </td>
@@ -637,7 +621,8 @@
                   </tr>
                 </tbody>
               </table>
-              <p class="matrix_note">※スマートフォン等では左右にスクロールしてご確認いただけます。表示価格はすべて税込の月額料金です（入会金等の追加費用はありません）。</p>
+              <p class="matrix_note">表示価格はすべて税込の月額料金です。入会金等の追加費用はありません。</p>
+              <details class="tuition_details"><summary>面談頻度の選び方を見る<span aria-hidden="true">＋</span></summary><div><p><strong>週1回</strong> 自習の方針を確認し、週単位でペースを整えたい方へ。</p><p><strong>週2回</strong> 進捗をこまめに確認し、つまずきを早めに修正したい方へ。</p><p><strong>週3回</strong> 短期間で集中的に取り組み、手厚い指導を受けたい方へ。</p></div></details>
             </div>
 
             <div class="capacity_cta_area" style="margin-top: 36px;">
@@ -666,9 +651,9 @@
             </p>
           </div>
 
-          <div class="flow_steps_vertical" data-reveal>
+          <div class="flow_steps_vertical">
             
-            <div class="v_step_item">
+            <div class="v_step_item" data-reveal>
               <div class="v_step_badge">01</div>
               <div class="v_step_content">
                 <h4 class="v_step_title">Webフォームからお申し込み</h4>
@@ -676,7 +661,7 @@
               </div>
             </div>
 
-            <div class="v_step_item">
+            <div class="v_step_item" data-reveal>
               <div class="v_step_badge">02</div>
               <div class="v_step_content">
                 <h4 class="v_step_title">オンライン無料学習相談（Zoom等）</h4>
@@ -684,7 +669,7 @@
               </div>
             </div>
 
-            <div class="v_step_item">
+            <div class="v_step_item" data-reveal>
               <div class="v_step_badge">03</div>
               <div class="v_step_content">
                 <h4 class="v_step_title">改善方針・最適プランの提示</h4>
@@ -692,7 +677,7 @@
               </div>
             </div>
 
-            <div class="v_step_item is_goal">
+            <div class="v_step_item is_goal" data-reveal>
               <div class="v_step_badge">04</div>
               <div class="v_step_content">
                 <h4 class="v_step_title">受講スタート</h4>
@@ -720,13 +705,13 @@
           <div class="faq_list_arch" data-reveal>
             
             <div class="faq_item_arch">
-              <div class="faq_q_arch">
+              <button type="button" class="faq_q_arch" aria-expanded="false">
                 <span class="faq_q_badge">Q1</span>
                 <span class="faq_q_text">英語か小論文のどちらか1科目だけでも受講できますか？</span>
                 <span class="faq_icon_arch">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 </span>
-              </div>
+              </button>
               <div class="faq_a_arch">
                 <div class="faq_a_inner">
                   はい、可能です。英語の長文速読のみ、あるいは小論文の答案添削のみなど、苦手科目や強化したい分野に合わせて1科目から受講いただけます。
@@ -735,13 +720,13 @@
             </div>
 
             <div class="faq_item_arch">
-              <div class="faq_q_arch">
+              <button type="button" class="faq_q_arch" aria-expanded="false">
                 <span class="faq_q_badge">Q2</span>
                 <span class="faq_q_text">今使っている参考書をそのまま使えますか？</span>
                 <span class="faq_icon_arch">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 </span>
-              </div>
+              </button>
               <div class="faq_a_arch">
                 <div class="faq_a_inner">
                   はい、使えます。使い慣れた教材が現在の学力に合っていれば無理に変える必要はありません。その教材をどう使いこなすかから設計します。
@@ -750,13 +735,13 @@
             </div>
 
             <div class="faq_item_arch">
-              <div class="faq_q_arch">
+              <button type="button" class="faq_q_arch" aria-expanded="false">
                 <span class="faq_q_badge">Q3</span>
                 <span class="faq_q_text">面談の頻度はどのように選べばいいですか？</span>
                 <span class="faq_icon_arch">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 </span>
-              </div>
+              </button>
               <div class="faq_a_arch">
                 <div class="faq_a_inner">
                   自習のペースメーカーとして方針を確認したい方は週1回、こまめにつまずきを修正したい方は週2回（標準）、短期集中で学習量を増やしたい方は週3回が適しています。無料相談時にご相談の上決定いただけます。
@@ -765,13 +750,13 @@
             </div>
 
             <div class="faq_item_arch">
-              <div class="faq_q_arch">
+              <button type="button" class="faq_q_arch" aria-expanded="false">
                 <span class="faq_q_badge">Q4</span>
                 <span class="faq_q_text">無料学習相談で無理な勧誘はありますか？</span>
                 <span class="faq_icon_arch">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 </span>
-              </div>
+              </button>
               <div class="faq_a_arch">
                 <div class="faq_a_inner">
                   一切ございません。相談では現状の課題とやるべきことを客観的にお伝えし、内容に納得された場合のみご受講いただきます。
@@ -790,7 +775,7 @@
           <div class="cmn_contact_flex" data-reveal>
             <div class="head_item">
               <div class="contact_meta_tag">START YOUR JOURNEY</div>
-              <h2 class="contact_headline">慶應SFC合格への第一歩を、ここから。</h2>
+              <h2 class="contact_headline">慶應SFC合格への<br class="sp_only">第一歩を、ここから。</h2>
               <p class="cmn_contact_lead">
                 現状の学力や使っている教材をお聞かせください。<br>
                 一人ひとりに合わせた学習ステップと改善点をお伝えします。
@@ -798,39 +783,18 @@
             </div>
           </div>
 
-          <!-- Contact Channels (LINE vs Web Form) -->
-          <div class="contact_channels_box" data-reveal>
-            <div class="c_channel_card channel_line">
-              <div class="c_channel_badge">QUICK CONTACT</div>
-              <div class="c_channel_icon">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="#06C755"><path d="M12 2C6.48 2 2 5.92 2 10.75c0 3.14 1.9 5.89 4.75 7.42-.21.78-.77 2.82-.88 3.25-.14.54.2.53.42.38.17-.12 2.37-1.6 3.32-2.25.77.16 1.57.25 2.39.25 5.52 0 10-3.92 10-8.75S17.52 2 12 2z"/></svg>
-              </div>
-              <h4 class="c_channel_title">公式LINEで気軽に相談</h4>
-              <p class="c_channel_desc">
-                「今の学力で間に合うか知りたい」「教材の相談だけしたい」など、公式LINEからチャットでいつでも直接ご相談いただけます。
-              </p>
-              <a href="https://line.me/R/ti/p/@example" target="_blank" rel="noopener noreferrer" class="btn_channel_line" id="lineConsultBtn">
-                <span>LINEで相談する（無料） →</span>
-              </a>
-            </div>
-
-            <div class="c_channel_card channel_form">
-              <div class="c_channel_badge mono">EMAIL FORM</div>
-              <div class="c_channel_icon">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
-              <h4 class="c_channel_title">Webフォームから申し込む</h4>
-              <p class="c_channel_desc">
-                志望状況や使用教材をフォームにご記入ください。原則24時間以内に担当講師よりメールにて日程調整をご連絡いたします。
-              </p>
-              <a href="#archContactForm" class="btn_channel_form">
-                <span>フォーム入力に進む ↓</span>
-              </a>
-            </div>
+          <div class="email_contact_fallback" id="emailContactFallback" data-reveal>
+            <span class="form_step_badge">FREE CONSULTATION</span>
+            <h3 class="form_main_title">メールで無料学習相談</h3>
+            <p>お名前・学年・希望科目・相談したい内容を、講師の堀安泰世へメールでお送りください。</p>
+            <p class="contact_email_address">taiseihori18@gmail.com</p>
+            <a class="email_contact_button liquid_button" href="mailto:taiseihori18@gmail.com?subject=%E3%80%90SFC%E7%94%9F%E3%81%AE%E8%8B%B1%E8%AA%9E%E5%A1%BE%E3%80%91%E7%84%A1%E6%96%99%E5%AD%A6%E7%BF%92%E7%9B%B8%E8%AB%87%E3%81%AE%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF">無料学習相談のメールを作成する <span aria-hidden="true">↗</span></a>
+            <p class="mobile_email_hint">画面下のボタンからメールを作成できます。</p>
+            <p class="email_contact_note">メールアプリが開きます。内容をご確認のうえ送信してください。</p>
           </div>
 
           <!-- Contact Form Card -->
-          <div class="contact_form_arch" data-reveal>
+          <div class="contact_form_arch web_form_card" id="webFormCard" data-reveal hidden>
             <div class="form_header_box">
               <span class="form_step_badge">FREE CONSULTATION</span>
               <h3 class="form_main_title">無料学習相談 申込フォーム</h3>
@@ -842,12 +806,12 @@
             <form id="archContactForm">
               <div class="form_grid_2">
                 <div class="form_group_arch">
-                  <label class="form_label_arch">お名前 <span class="req">*</span></label>
-                  <input type="text" name="name" class="form_input_arch" placeholder="慶應 太郎" required>
+                  <label class="form_label_arch" for="contact-name">お名前 <span class="req">*</span></label>
+                  <input type="text" id="contact-name" name="name" class="form_input_arch" placeholder="慶應 太郎" required>
                 </div>
                 <div class="form_group_arch">
-                  <label class="form_label_arch">学年 / ご身分 <span class="req">*</span></label>
-                  <select name="grade" class="form_input_arch" required>
+                  <label class="form_label_arch" for="contact-grade">学年 / ご身分 <span class="req">*</span></label>
+                  <select id="contact-grade" name="grade" class="form_input_arch" required>
                     <option value="" disabled selected>学年を選択してください</option>
                     <option value="高校3年生">高校3年生</option>
                     <option value="既卒・浪人生">既卒・浪人生</option>
@@ -860,8 +824,8 @@
 
               <div class="form_grid_2">
                 <div class="form_group_arch">
-                  <label class="form_label_arch">受講希望科目 <span class="req">*</span></label>
-                  <select name="subjects" class="form_input_arch" required>
+                  <label class="form_label_arch" for="contact-subjects">受講希望科目 <span class="req">*</span></label>
+                  <select id="contact-subjects" name="subjects" class="form_input_arch" required>
                     <option value="" disabled selected>希望科目を選択してください</option>
                     <option value="英語のみ">英語のみ ｜ 1科目</option>
                     <option value="小論文のみ">小論文のみ ｜ 1科目</option>
@@ -870,8 +834,8 @@
                   </select>
                 </div>
                 <div class="form_group_arch">
-                  <label class="form_label_arch">希望面談頻度 ｜ 目安</label>
-                  <select name="frequency" class="form_input_arch">
+                  <label class="form_label_arch" for="contact-frequency">希望面談頻度 ｜ 目安</label>
+                  <select id="contact-frequency" name="frequency" class="form_input_arch">
                     <option value="相談して決めたい" selected>相談して決めたい</option>
                     <option value="週1回">週1回</option>
                     <option value="週2回">週2回</option>
@@ -882,18 +846,18 @@
 
               <div class="form_grid_2">
                 <div class="form_group_arch">
-                  <label class="form_label_arch">メールアドレス <span class="req">*</span></label>
-                  <input type="email" name="email" class="form_input_arch" placeholder="example@gmail.com" required>
+                  <label class="form_label_arch" for="contact-email">メールアドレス <span class="req">*</span></label>
+                  <input type="email" id="contact-email" name="email" class="form_input_arch" placeholder="example@gmail.com" required>
                 </div>
                 <div class="form_group_arch">
-                  <label class="form_label_arch">電話番号 ｜ 任意</label>
-                  <input type="tel" name="tel" class="form_input_arch" placeholder="090-0000-0000">
+                  <label class="form_label_arch" for="contact-tel">電話番号 ｜ 任意</label>
+                  <input type="tel" id="contact-tel" name="tel" class="form_input_arch" placeholder="090-0000-0000">
                 </div>
               </div>
 
               <div class="form_group_arch">
-                <label class="form_label_arch">現在使っている教材・勉強の悩み ｜ 任意</label>
-                <textarea name="message" class="form_input_arch" rows="3" placeholder="例：ターゲット1900とポラリスを使用。長文で時間が足りない、小論文の書き方が分からない等"></textarea>
+                <label class="form_label_arch" for="contact-message">現在使っている教材・勉強の悩み ｜ 任意</label>
+                <textarea id="contact-message" name="message" class="form_input_arch" rows="3" placeholder="例：ターゲット1900とポラリスを使用。長文で時間が足りない、小論文の書き方が分からない等"></textarea>
               </div>
 
               <button type="submit" class="btn_submit_arch">
@@ -934,15 +898,17 @@
 
     <!-- Mobile Sticky Floating CTA Bar (スマホ常時追従バー) -->
     <div class="mobile_sticky_cta" id="mobileStickyCta">
-      <a href="#form_area" class="btn_sticky_cta">
+      <a href="mailto:taiseihori18@gmail.com?subject=%E3%80%90SFC%E7%94%9F%E3%81%AE%E8%8B%B1%E8%AA%9E%E5%A1%BE%E3%80%91%E7%84%A1%E6%96%99%E5%AD%A6%E7%BF%92%E7%9B%B8%E8%AB%87%E3%81%AE%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF" class="btn_sticky_cta" id="mobileConsultationButton">
         <span class="sticky_cta_main">無料学習相談に申し込む</span>
-        <span class="sticky_cta_sub">完全無料・オンライン相談 →</span>
+        <span class="sticky_cta_sub">完全無料・メールで相談 →</span>
       </a>
     </div>
 
   </div>
 
-  <script src="js/arch.js?v=20261012b"></script>
-  <script src="js/tracker.js?v=20261012b"></script>
+  <script src="js/site-config.js?v=20261020"></script>
+  <script src="js/arch.js?v=20261020-glass-cta1"></script>
+  <script src="js/liquid.js?v=20261020-glass-cta1"></script>
+  <script src="js/tracker.js?v=20261020"></script>
 </body>
 </html>

@@ -1,30 +1,52 @@
-# SFC生の英語塾 LPリポジトリ（私立英語塾/lp/）
+# SFC生の英語塾 LP・管理画面
 
-> **最終更新日**: 2026-10-12  
-> **管理者**: 岡本直樹（代表）  
-> **公開URL**: [https://onaoki0503-lgtm.github.io/shiritsu-english/](https://onaoki0503-lgtm.github.io/shiritsu-english/)  
-
----
+> **最終更新日**: 2026-10-20
+> **更新者**: AI (Codex)
+> **リリース**: `20261020-glass-cta1`
 
 ## 概要
 
-慶應SFC特化・完全個別学習伴走レーベル「SFC生の英語塾」のWeb公開用ランディングページリポジトリです。  
-一人ひとりの勉強の質を高め、英語・小論文の合格力をマンツーマンで引き上げる伴走型指導を提供します。
+慶應SFC向けの個別学習伴走塾のLP。白基調Liquid Glass UI、深い青のボタン、全画面スケルトンとアニメーションに刷新し、スマホの文字重なりを修正した。スマホの無料相談導線は下部固定ボタン1つに集約する。
 
----
+## 公開構成
 
-## ページ構成・URL一覧
+- 判定：既存案件。GitHub Pages＋Google Apps Script＋Google Sheetsを継続し、基盤を移行しない。
+- 判定理由：既存静的LPを改修し、一般向け受付と管理者専用機能は別GASで扱う構成を維持する。
+- ソース管理：https://github.com/onaoki0503-lgtm/shiritsu-english （既存の公開範囲を維持）
+- 公開基盤：GitHub Pages。`main`ブランチのルートから公開（legacy build）。
+- サイト：https://onaoki0503-lgtm.github.io/shiritsu-english/
+- 管理入口：https://onaoki0503-lgtm.github.io/shiritsu-english/dashboard.html
+- 管理用GASの実プロジェクト・デプロイURLは未共有。入口から個人情報を取得・返信送信しない。
+- DB・認証：先生側のGoogle Sheets台帳と、本人限定・サーバー側で権限照合する管理用GAS。
+- 外部接続：公開受付URL・管理URLは `js/site-config.js` に設定する。現在は未設定。
+- 現在の相談受付：講師 `taiseihori18@gmail.com` へのメール作成。未接続フォームと仮LINEリンクは表示しない。GAS接続後は自動でフォーム表示に切り替える。
+- 公開状態：2026-10-20、代表の明示指示を受け公開作業中。本番の検証結果は作業完了後に記録する。
 
-| ページ名 | 対象 | 特徴・仕様 | ファイル名 | 公開パス |
-|:---|:---|:---|:---|:---|
-| **SFC特化LP（本番）** | 慶應総合政策・環境情報 | 個別学習設計、英語・小論文指導、週1〜3回面談、新料金体系 | `index.html` / `sfc.html` | `/` / `/sfc.html` |
-| **他大学LP** | 各大学特化（アーカイブ） | 将来の拡張用ファイル群 | `keio.html`, `meiji.html`, etc. | - |
+## フォルダ構成
 
----
+- `index.html` / `sfc.html` — 同一内容の本番SFC向けLP
+- `dashboard.html` — 管理専用GASへのログイン入口。個人情報・返信機能なし
+- `css/` — 基礎スタイル、Liquid Glass UI、案内README
+- `js/` — 表示・申込・計測・接続設定、モバイルCTA、演出とブラウザテスト
+- `gas/` — 公開用Code.gs、管理用Admin.gs / Admin.html、Common.gs、設定手順とテスト
+- `assets/` — 既存の講師写真・背景・イラスト
+- `aoyama.html` / `chuo.html` / `hosei.html` / `keio.html` / `march.html` / `meiji.html` / `rikkyo.html` — 他大学向けアーカイブ
+- `hub_campuses_backup.html` — 既存バックアップ
+- `SEO_SEARCH_CONSOLE_GUIDE.md` — 検索登録手順
+- `robots.txt` / `sitemap.xml` — 検索エンジン向け設定
+- `堀安先生_システム初期設定手順書.html` / `.pdf` — 2026-10-20新版設定手順
+- `README.md` — 本案内
 
-## アセット構成
+## モバイルの相談導線
 
-- `css/arch_style.css` — Awwwards水準スイススタイル・フルードタイポグラフィ・アニメーション
-- `js/arch.js` — スクロール進行度バー・カウントアップ・IntersectionObserverリヴィール・Canvas
-- `assets/hero_sky_bg.jpg` — 澄み渡る青空と制服生徒のキービジュアル背景
-- `assets/instructor_horiyasu.jpg` — 代表講師 堀安泰世 プロフィール写真
+768px以下では、ヘッダー・ヒーロー・料金欄・メール案内内の相談ボタンとフォーム内送信ボタンを表示せず、下部固定ボタンだけを使う。
+
+現状はそのボタンから先生へのメールを作成する。公開用GAS URL設定後はフォームへの移動に変わり、フォームが見えている間は同じ固定ボタンが「入力内容を送信する」に変わる。入力検証・二重送信防止・保存確認を経て完了表示する。PCの相談CTAとフォーム送信操作は維持する。
+
+## デザインと検証
+
+白い半透明パネル、ぼかし、光沢、レンズ浮遊、カードの段階表示、ボタン波紋、メニュー・FAQ開閉を実装。深い青 `#000066` はみずほの公式ブランド説明を参考にしたUIトークンで、公式HEX仕様の断定ではない。外部フォント依存を除去し、動き低減・背景ぼかし非対応・画像／演出JS読込失敗にも対応する。
+
+ローカル確認：320／360／375／390／430／768／1024／1440pxを含む表示・操作22項目、申込・管理画面のブラウザ回帰11項目、GASサービスモック17件が合格。ID・ラベル・素材・LP正本一致・JS構文・diff空白を確認した。
+
+実GASでのGoogle認証・実メール送信テストは先生側設定後に行う。[GAS設定手順](gas/README.md)を参照。Safari・Android実機の確認は未実施。
