@@ -37,8 +37,8 @@
   }
   </script>
 
-  <link rel="stylesheet" href="css/arch_style.css?v=20261020-glass-cta1">
-  <link rel="stylesheet" href="css/liquid.css?v=20261020-glass-cta1">
+  <link rel="stylesheet" href="css/arch_style.css?v=20261020-site-form1">
+  <link rel="stylesheet" href="css/liquid.css?v=20261020-site-form1">
   <script>
     document.documentElement.classList.add('is-loading');
     // 独立したフェイルセーフ。後続JSや画像が失敗しても操作をロックしない。
@@ -783,18 +783,8 @@
             </div>
           </div>
 
-          <div class="email_contact_fallback" id="emailContactFallback" data-reveal>
-            <span class="form_step_badge">FREE CONSULTATION</span>
-            <h3 class="form_main_title">メールで無料学習相談</h3>
-            <p>お名前・学年・希望科目・相談したい内容を、講師の堀安泰世へメールでお送りください。</p>
-            <p class="contact_email_address">taiseihori18@gmail.com</p>
-            <a class="email_contact_button liquid_button" href="mailto:taiseihori18@gmail.com?subject=%E3%80%90SFC%E7%94%9F%E3%81%AE%E8%8B%B1%E8%AA%9E%E5%A1%BE%E3%80%91%E7%84%A1%E6%96%99%E5%AD%A6%E7%BF%92%E7%9B%B8%E8%AB%87%E3%81%AE%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF">無料学習相談のメールを作成する <span aria-hidden="true">↗</span></a>
-            <p class="mobile_email_hint">画面下のボタンからメールを作成できます。</p>
-            <p class="email_contact_note">メールアプリが開きます。内容をご確認のうえ送信してください。</p>
-          </div>
-
           <!-- Contact Form Card -->
-          <div class="contact_form_arch web_form_card" id="webFormCard" data-reveal hidden>
+          <div class="contact_form_arch web_form_card" id="webFormCard" data-reveal>
             <div class="form_header_box">
               <span class="form_step_badge">FREE CONSULTATION</span>
               <h3 class="form_main_title">無料学習相談 申込フォーム</h3>
@@ -803,11 +793,12 @@
               </p>
             </div>
 
-            <form id="archContactForm">
+            <noscript><p class="form_privacy_note">お申し込みには、ブラウザのJavaScriptを有効にしてください。</p><style>#archContactForm{display:none}</style></noscript>
+            <form id="archContactForm" method="post" action="#archContactForm">
               <div class="form_grid_2">
                 <div class="form_group_arch">
                   <label class="form_label_arch" for="contact-name">お名前 <span class="req">*</span></label>
-                  <input type="text" id="contact-name" name="name" class="form_input_arch" placeholder="慶應 太郎" required>
+                  <input type="text" id="contact-name" name="name" autocomplete="name" maxlength="100" class="form_input_arch" placeholder="慶應 太郎" required>
                 </div>
                 <div class="form_group_arch">
                   <label class="form_label_arch" for="contact-grade">学年 / ご身分 <span class="req">*</span></label>
@@ -847,19 +838,24 @@
               <div class="form_grid_2">
                 <div class="form_group_arch">
                   <label class="form_label_arch" for="contact-email">メールアドレス <span class="req">*</span></label>
-                  <input type="email" id="contact-email" name="email" class="form_input_arch" placeholder="example@gmail.com" required>
+                  <input type="email" id="contact-email" name="email" autocomplete="email" maxlength="254" class="form_input_arch" placeholder="example@gmail.com" required>
                 </div>
                 <div class="form_group_arch">
                   <label class="form_label_arch" for="contact-tel">電話番号 ｜ 任意</label>
-                  <input type="tel" id="contact-tel" name="tel" class="form_input_arch" placeholder="090-0000-0000">
+                  <input type="tel" id="contact-tel" name="tel" autocomplete="tel" maxlength="50" class="form_input_arch" placeholder="090-0000-0000">
                 </div>
               </div>
 
               <div class="form_group_arch">
-                <label class="form_label_arch" for="contact-message">現在使っている教材・勉強の悩み ｜ 任意</label>
-                <textarea id="contact-message" name="message" class="form_input_arch" rows="3" placeholder="例：ターゲット1900とポラリスを使用。長文で時間が足りない、小論文の書き方が分からない等"></textarea>
+                <label class="form_label_arch" for="contact-message">相談したい内容・現在のお悩み <span class="req">*</span></label>
+                <textarea id="contact-message" name="message" class="form_input_arch" rows="5" maxlength="3500" required placeholder="例：ターゲット1900とポラリスを使用。長文で時間が足りない、小論文の書き方が分からない等"></textarea>
               </div>
 
+              <div class="form_group_arch">
+                <label class="form_label_arch" for="contact-schedule">相談希望日時 ｜ 任意</label>
+                <input type="text" id="contact-schedule" name="schedule" maxlength="500" class="form_input_arch" placeholder="例：平日19時以降、土曜の午後">
+              </div>
+              <p class="form_privacy_note">入力内容は、講師による学習相談への対応と日程調整のために利用します。</p>
               <button type="submit" class="btn_submit_arch">
                 <span class="btn_submit_text">無料学習相談に申し込む</span>
               </button>
@@ -898,17 +894,17 @@
 
     <!-- Mobile Sticky Floating CTA Bar (スマホ常時追従バー) -->
     <div class="mobile_sticky_cta" id="mobileStickyCta">
-      <a href="mailto:taiseihori18@gmail.com?subject=%E3%80%90SFC%E7%94%9F%E3%81%AE%E8%8B%B1%E8%AA%9E%E5%A1%BE%E3%80%91%E7%84%A1%E6%96%99%E5%AD%A6%E7%BF%92%E7%9B%B8%E8%AB%87%E3%81%AE%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF" class="btn_sticky_cta" id="mobileConsultationButton">
+      <a href="#archContactForm" class="btn_sticky_cta" id="mobileConsultationButton">
         <span class="sticky_cta_main">無料学習相談に申し込む</span>
-        <span class="sticky_cta_sub">完全無料・メールで相談 →</span>
+        <span class="sticky_cta_sub">完全無料・オンライン相談 →</span>
       </a>
     </div>
 
   </div>
 
-  <script src="js/site-config.js?v=20261020"></script>
-  <script src="js/arch.js?v=20261020-glass-cta1"></script>
-  <script src="js/liquid.js?v=20261020-glass-cta1"></script>
+  <script src="js/site-config.js?v=20261020-site-form1"></script>
+  <script src="js/arch.js?v=20261020-site-form1"></script>
+  <script src="js/liquid.js?v=20261020-site-form1"></script>
   <script src="js/tracker.js?v=20261020"></script>
 </body>
 </html>

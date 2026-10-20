@@ -105,27 +105,25 @@
       button.append(ripple); setTimeout(() => ripple.remove(), 700);
     });
   });
-  // The current public site uses a verified email contact until the teacher's GAS URL is supplied.
-  // A configured endpoint reveals the protected receipt form without adding a second mobile action.
+  // Every consultation entry stays on the page. Mobile keeps a single fixed action.
   const endpoint = window.SFC_CONFIG?.publicEndpoint || '';
   const configured = /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(endpoint);
   const formCard = document.getElementById('webFormCard');
-  const fallback = document.getElementById('emailContactFallback');
   const mobileAction = document.getElementById('mobileConsultationButton');
   const contactForm = document.getElementById('archContactForm');
   const submitButton = contactForm?.querySelector('button[type=submit]');
   const phone = matchMedia('(max-width: 768px)');
   let formVisible = false;
   function updateMobileAction() {
-    if (!mobileAction || !configured) return;
-    const sending = Boolean(submitButton?.disabled);
+    if (!mobileAction) return;
+    const sending = Boolean(submitButton?.disabled) && configured;
     mobileAction.querySelector('.sticky_cta_main').textContent = sending ? '送信中…' : formVisible ? '入力内容を送信する' : '無料学習相談に申し込む';
     mobileAction.querySelector('.sticky_cta_sub').textContent = formVisible ? '無料学習相談のお申し込み' : '完全無料・オンライン相談 →';
     mobileAction.setAttribute('aria-disabled', String(sending));
     mobileAction.href = '#archContactForm';
   }
-  if (configured && formCard && fallback && mobileAction && contactForm) {
-    formCard.hidden = false; fallback.hidden = true;
+  if (formCard && mobileAction && contactForm) {
+    formCard.hidden = false;
     const updateFormVisibility = () => {
       const box = contactForm.getBoundingClientRect();
       formVisible = box.top < innerHeight - 130 && box.bottom > 100;

@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const endpoint = window.SFC_CONFIG?.publicEndpoint || '';
       if (!/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(endpoint)) {
-        status.textContent = 'メール申込の準備中です。講師へ直接お問い合わせください。'; return;
+        status.textContent = '現在、送信をご利用いただけません。時間をおいてもう一度お試しください。入力内容はそのまま残っています。'; return;
       }
       const button = form.querySelector('button[type="submit"]');
       if (button.disabled) return;
@@ -224,6 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const fields = new FormData(form);
         const payload = {type:'contact'};
         ['name','grade','subjects','frequency','email','tel','message'].forEach(k => payload[k] = String(fields.get(k) || '').trim());
+        const schedule = String(fields.get('schedule') || '').trim();
+        if (schedule) payload.message += '\n\n【相談希望日時】\n' + schedule;
         const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(payload)));
         const fingerprint = Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2,'0')).join('');
         let pending = JSON.parse(sessionStorage.getItem('sfc_pending_request') || 'null');
@@ -239,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
           body:JSON.stringify(payload), signal:controller.signal, redirect:'follow'});
         const result = await response.json();
         if (!response.ok || result.status !== 'success' || result.saved !== true || result.requestId !== pending.id) throw new Error('Not confirmed');
-        status.textContent = 'お申し込みを受け付けました。原則24時間以内に担当講師よりご連絡します。';
+        status.textContent = 'お申し込みを受け付けました。受付番号：' + pending.id + '。原則24時間以内に担当講師よりご連絡します。';
         sessionStorage.removeItem('sfc_pending_request'); form.reset();
       } catch (err) {
         status.textContent = '受付完了を確認できませんでした。入力を変えずに、もう一度送信してください。同じ受付IDで確認し、申込の重複を防ぎます。';

@@ -8,7 +8,8 @@ const common=fs.readFileSync(__dirname+'/Common.gs','utf8');
 const publicCode=fs.readFileSync(__dirname+'/Code.gs','utf8');
 const adminCode=fs.readFileSync(__dirname+'/Admin.gs','utf8');
 function env(kind='public'){
-  const state={active:'taiseihori18@gmail.com',effective:'taiseihori18@gmail.com',sent:[],failMail:false,failFinal:false,reads:0,locks:0,flushes:0};
+  const owner=kind==='intake'?'o.naoki0503@intakingresources.com':'taiseihori18@gmail.com';
+  const state={active:owner,effective:owner,sent:[],failMail:false,failFinal:false,reads:0,locks:0,flushes:0};
   const props=new Map([['SPREADSHEET_ID','test-sheet']]);
   class Sheet{
     constructor(){this.rows=[];}
@@ -34,7 +35,7 @@ function env(kind='public'){
     ContentService:{MimeType:{JSON:'json'},createTextOutput:body=>({body,setMimeType(){return this;}})},
     HtmlService:{createHtmlOutputFromFile:()=>({setTitle(){return this;},addMetaTag(){return this;}}),createHtmlOutput:body=>({body})}
   };
-  vm.createContext(context);vm.runInContext(common+'\n'+publicCode,context);context.initSheets();
+  vm.createContext(context);vm.runInContext(kind==='intake'?fs.readFileSync(__dirname+'/Intake.gs','utf8'):common+'\n'+publicCode,context);context.initSheets();
   if(kind==='admin')vm.runInContext(adminCode,context);
   state.reads=0;
   return {context,state,props,sheets,post:data=>JSON.parse(context.doPost({postData:{contents:JSON.stringify(data)}}).body)};
@@ -59,3 +60,7 @@ test('送信中の通知は管理側から再送しない',()=>{const e=createAd
 test('同じページ閲覧IDの計測更新は1PV。最大深度を維持',()=>{const e=env();const log={type:'tracking',pageViewId:'view_01234567890123456789',sessionId:'session_123',device:'Desktop',scrollDepth:75,reachedSections:['hero','mentor'],duration:30};e.post(log);e.post({...log,scrollDepth:25,reachedSections:['faq'],duration:60});const rows=e.sheets.get('アクセスログ').rows;assert.equal(rows.length,2);assert.equal(rows[1][3],75);assert.equal(rows[1][5],60);assert.equal(rows[1][4],'hero, mentor, faq');vm.runInContext(adminCode,e.context);assert.equal(e.context.getDashboard().summary.pv,1);});
 test('通知上限に達しても、既存受付IDの再確認は成功する',()=>{const e=env();e.post(payload());e.props.set('CONTACT_RATE',JSON.stringify({hour:'2026102018',count:30}));assert.equal(e.post({...payload(),requestId:'another_0123456789abcdefghij'}).code,'RATE_LIMIT');assert.equal(e.post(payload()).duplicate,true);});
 test('既存9列の台帳は受付IDなしでも管理画面で返信できる',()=>{const e=env('admin');const rows=contact(e);rows.push(['2026/10/10','旧生徒','高3','英語','週1回','legacy@example.com','','相談','未対応']);const c=e.context.getDashboard().contacts[0];assert.match(c.id,/^legacy-/);assert.equal(e.context.sendReply({id:c.id,subject:'返信',body:'本文'}).status,'sent');assert.equal(e.state.sent[0].to,'legacy@example.com');});
+test('岡本管理の受付も公開GET・管理POST・管理RPCを拒否する',()=>{const e=env('intake');assert.equal(JSON.parse(e.context.doGet().body).code,'ADMIN_UNAVAILABLE');assert.equal(e.post({type:'reply'}).code,'FORBIDDEN');assert.equal(e.state.reads,0);for(const n of ['getDashboard','sendReply','retryNotification'])assert.equal(typeof e.context[n],'undefined');});
+test('岡本受付は台帳保存後に先生へ1通知し、学生を返信先にする',()=>{const e=env('intake');const p={...payload(),message:'長文を相談\n\n【相談希望日時】\n平日19時以降'};assert.equal(e.post(p).saved,true);assert.equal(e.post(p).duplicate,true);assert.equal(contact(e).length,2);assert.equal(e.state.sent.length,1);assert.equal(e.state.sent[0].to,'taiseihori18@gmail.com');assert.equal(e.state.sent[0].replyTo,'student@example.com');assert.match(e.state.sent[0].body,/平日19時以降/);});
+test('岡本受付の通知失敗でも保存成功を返し、再送で申込を増やさない',()=>{const e=env('intake');e.state.failMail=true;assert.equal(e.post(payload()).notification,'unknown');assert.equal(e.post(payload()).duplicate,true);assert.equal(contact(e).length,2);});
+test('岡本受付の初期化は岡本本人だけに許可',()=>{const e=env('intake');for(const account of ['','taiseihori18@gmail.com','other@example.com']){e.state.active=account;assert.throws(()=>e.context.initSheets(),/管理者権限/);}assert.equal(e.state.reads,0);});

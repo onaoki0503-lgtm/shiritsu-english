@@ -153,3 +153,5 @@ footer{background:#fff;border-top:1px solid var(--ui-border);color:var(--ui-sub)
   .email_contact_fallback{padding:30px 24px;border-radius:25px}.email_contact_fallback p{font-size:.81rem;line-height:2}
   .email_contact_fallback .contact_email_address{font-size:.9rem}.mobile_email_hint{display:block}.email_contact_fallback .email_contact_note{font-size:.67rem}
 }
+
+.form_privacy_note{font-size:.72rem;color:var(--ui-sub);line-height:1.9;margin:0 0 22px}.form_input_arch[aria-invalid=true]{border-color:#b92332}.form_input_arch:required:invalid:not(:placeholder-shown){outline:none}
