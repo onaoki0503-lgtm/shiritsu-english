@@ -40,4 +40,4 @@ https://developers.google.com/apps-script/guides/html/restrictions
 
 ## 現時点
 
-CSSとローカルAdmin.htmlの読込行を準備済み。先生側の本番への1行組込・共有権限の承認は未完了。CSS配信だけで本番組込済みとは扱わない。
+CSSをGitHub Pagesへ公開し、ローカルAdmin.htmlの読込行を準備済み。2026-10-22 15:26、先生側AIへの差分依頼をメール送信済み。先生側の本番への1行組込・共有権限の承認は未完了。CSS配信だけで本番組込済みとは扱わない。
