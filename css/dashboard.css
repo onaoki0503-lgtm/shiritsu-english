@@ -1,0 +1,18 @@
+/* SFC dashboard theme · 2026-10-22 · presentation only; no student data or credentials. */
+:root{color-scheme:light;--admin-blue:#000066;--admin-text:#18253d;--admin-muted:#65738a;--admin-border:rgba(128,151,190,.22)}
+body{background:radial-gradient(ellipse at 10% 0,#eaf0ff,transparent 55%),#f5f7fc;color:var(--admin-text);font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif}
+header{position:sticky;top:0;z-index:3;gap:16px;padding:20px 5%;background:rgba(255,255,255,.88);border-bottom:1px solid var(--admin-border);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+h1{font-size:clamp(18px,2vw,23px);letter-spacing:.02em}h2{font-size:18px;line-height:1.6}
+main{max-width:1440px;padding:26px;margin:auto}.card{border:1px solid var(--admin-border);border-radius:20px;background:rgba(255,255,255,.94);box-shadow:0 10px 32px #1c326008;padding:24px;min-width:0}
+.kpis,.charts{gap:18px}.value{font-size:clamp(27px,3vw,36px);color:var(--admin-blue);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+button{border:1px solid var(--admin-border);border-radius:12px;padding:11px 16px;min-height:44px;background:#fff;color:var(--admin-blue);font-weight:600;transition:box-shadow .18s,background .18s,transform .18s}
+button:hover:not(:disabled){background:#f0f3ff;box-shadow:0 4px 14px #00006610;transform:translateY(-1px)}button.primary{background:var(--admin-blue);color:#fff;border-color:var(--admin-blue)}button.primary:hover:not(:disabled){background:#12127b}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #6b90dc;outline-offset:3px}button:disabled{cursor:default;opacity:.5;transform:none}small,.muted{color:var(--admin-muted)}
+#notice{white-space:pre-wrap;overflow-wrap:anywhere;padding:8px 0;line-height:1.8}.error{color:#a82236}
+.table-wrap{border:1px solid var(--admin-border);border-radius:12px}th{background:#f6f8fd;font-size:12px;color:var(--admin-muted)}td,th{padding:16px 14px;border-color:var(--admin-border)}td p{line-height:1.8}td button{display:block;margin:0 0 10px;white-space:nowrap}
+.bar{grid-template-columns:minmax(100px,150px) minmax(24px,1fr) 60px}.track{border-radius:20px;background:#edf1fa;overflow:hidden}.fill{background:var(--admin-blue);border-radius:20px}
+dialog{border:1px solid var(--admin-border);border-radius:22px;padding:28px;box-shadow:0 24px 100px #14234d33;color:var(--admin-text);background:#fff}dialog::backdrop{background:#1d2b4b66;backdrop-filter:blur(4px)}
+input,textarea{border:1px solid #c9d3e4;border-radius:10px;padding:12px;color:var(--admin-text);font-size:16px;line-height:1.7}input[readonly]{background:#f4f6fb}label{font-weight:600}.actions{gap:12px}
+@media(max-width:760px){header{padding:16px 18px}main{padding:14px}.card{padding:18px;border-radius:16px}.kpis,.charts{gap:12px}.bar{grid-template-columns:100px minmax(24px,1fr) 52px;font-size:13px}dialog{padding:20px}.value{font-size:29px}}
+@media(prefers-reduced-motion:reduce){button{transition:none}button:hover:not(:disabled){transform:none}}
+@supports not (backdrop-filter:blur(18px)){header{background:#fff}}

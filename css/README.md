@@ -1,6 +1,6 @@
 # LP CSS
 
-> **最終更新日**: 2026-10-20
+> **最終更新日**: 2026-10-22
 > **更新者**: AI (Codex)
 
 ## 概要
@@ -11,6 +11,7 @@ LPの基礎スタイル、現行の白基調Liquid Glass UI、およびアーカ
 
 - `arch_style.css` — SFC LPの既存構造・基礎スタイル。重複していた外部フォントimportを除去
 - `liquid.css` — 白い半透明パネル、深い青のボタン、8幅対応、料金表、スケルトン、モーションと低減設定
+- `dashboard.css` — 共同保守用の管理画面テーマ。GASのAdmin.htmlに1回だけHTTPS linkを追加して利用
 - `common.css` — アーカイブページ用の共通スタイル
 - `themes.css` — アーカイブページ用のテーマ
 - `README.md` — 本案内

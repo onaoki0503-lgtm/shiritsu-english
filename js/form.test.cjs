@@ -10,12 +10,12 @@ function setup(endpoint='https://script.google.com/macros/s/test/exec') {
   const label={textContent:'無料学習相談に申し込む'};
   const button={disabled:false,querySelector:()=>label};
   const form={append:s=>status=s,addEventListener:(name,fn)=>{if(name==='submit')submit=fn;},querySelector:()=>button,reset:()=>resets++};
-  const context={console,window:{SFC_CONFIG:{publicEndpoint:endpoint}},document:{
+  const context={console:{...console,warn(){}},window:{SFC_CONFIG:{publicEndpoint:endpoint}},document:{
     addEventListener:(name,fn)=>fn(),getElementById:id=>id==='archContactForm'?form:null,
     querySelectorAll:()=>[],createElement:()=>({setAttribute(){},textContent:''})},
     localStorage:{removeItem(){}},sessionStorage:{getItem:k=>stored.get(k)||null,setItem:(k,v)=>stored.set(k,v),removeItem:k=>stored.delete(k)},
     FormData:class {get(k){return fields[k];}},crypto:webcrypto,TextEncoder,AbortController,setTimeout,clearTimeout,
-    fetch:async(url,options)=>{const p=JSON.parse(options.body);calls.push(p);if(mode==='network')throw Error('offline');return {ok:true,json:async()=>mode==='mismatch'?{status:'success',saved:true,requestId:'other'}:{status:'success',saved:true,requestId:p.requestId,notification:'unknown'}};}
+    fetch:async(url,options)=>{const p=JSON.parse(options.body);calls.push(p);if(mode==='network')throw Error('offline');return {ok:true,status:200,json:async()=>mode==='mismatch'?{status:'success',saved:true,requestId:'other'}:{status:'success',saved:true,requestId:p.requestId,notification:'unknown'}};}
   };
   vm.runInNewContext(fs.readFileSync(__dirname+'/arch.js','utf8'),context);
   return {calls,fields,stored,button,status,get resets(){return resets;},set mode(v){mode=v;},send:()=>submit({preventDefault(){}})};

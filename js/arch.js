@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (button.disabled) return;
       const label = button.querySelector('.btn_submit_text') || button, original = label.textContent;
       button.disabled = true; label.textContent = '送信中…'; status.textContent = '';
-      let timer;
+      let timer, requestId = '';
       try {
         const fields = new FormData(form);
         const payload = {type:'contact'};
@@ -235,16 +235,21 @@ document.addEventListener('DOMContentLoaded', () => {
           sessionStorage.setItem('sfc_pending_request', JSON.stringify(pending));
         }
         payload.requestId = pending.id;
+        requestId = pending.id;
         const controller = new AbortController();
         timer = setTimeout(() => controller.abort(), 30000);
         const response = await fetch(endpoint, {method:'POST', headers:{'Content-Type':'text/plain;charset=UTF-8'},
           body:JSON.stringify(payload), signal:controller.signal, redirect:'follow'});
         const result = await response.json();
-        if (!response.ok || result.status !== 'success' || result.saved !== true || result.requestId !== pending.id) throw new Error('Not confirmed');
+        if (!response.ok || result.status !== 'success' || result.saved !== true || result.requestId !== pending.id) {
+          console.warn('Consultation not confirmed', {http:response.status,status:result.status,code:result.code,saved:result.saved});
+          throw new Error('Not confirmed');
+        }
         status.textContent = 'お申し込みを受け付けました。受付番号：' + pending.id + '。原則24時間以内に担当講師よりご連絡します。';
         sessionStorage.removeItem('sfc_pending_request'); form.reset();
       } catch (err) {
-        status.textContent = '受付完了を確認できませんでした。入力を変えずに、もう一度送信してください。同じ受付IDで確認し、申込の重複を防ぎます。';
+        console.warn('Consultation request failed', err.name);
+        status.textContent = '受付完了を確認できませんでした。入力を変えずに、もう一度送信してください。同じ受付IDで確認し、申込の重複を防ぎます。' + (requestId ? ' 確認番号：' + requestId : '');
       } finally {
         clearTimeout(timer); label.textContent = original; button.disabled = false;
       }
