@@ -6,7 +6,7 @@ const fs=require('node:fs');
 const crypto=require('node:crypto');
 const common=fs.readFileSync(__dirname+'/Common.gs','utf8');
 const publicCode=fs.readFileSync(__dirname+'/Code.gs','utf8');
-const adminCode=fs.readFileSync(__dirname+'/Admin.gs','utf8');
+const adminCode=fs.readFileSync(__dirname+'/AdminServer.gs','utf8');
 function env(kind='public'){
   const owner=kind==='intake'?'o.naoki0503@intakingresources.com':'taiseihori18@gmail.com';
   const state={active:owner,effective:owner,sent:[],failMail:false,failFinal:false,reads:0,locks:0,flushes:0};

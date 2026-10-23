@@ -6,7 +6,7 @@ const CONFIG = {
   SHEET_CONTACTS: '問い合わせ一覧', SHEET_LOGS: 'アクセスログ'
 };
 const CONTACT_HEADERS = ['受信日時','お名前','学年','希望科目','希望頻度','メールアドレス','電話番号','相談・教材内容','対応ステータス','受付ID','内容ハッシュ','通知状態','通知更新日時','返信状態','返信更新日時'];
-const LOG_HEADERS = ['アクセス日時','セッションID','デバイス','最大スクロール深度(%)','到達セクション','滞在秒数','リファラー','ページ閲覧ID'];
+const LOG_HEADERS = ['アクセス日時','セッションID','デバイス','最大スクロール深度','到達セクション','滞在秒数','リファラー','ページ閲覧ID'];
 function props_() { return PropertiesService.getScriptProperties(); }
 function book_() {
   const id = props_().getProperty('SPREADSHEET_ID');
