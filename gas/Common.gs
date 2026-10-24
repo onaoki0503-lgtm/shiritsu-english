@@ -1,7 +1,7 @@
 /** 共通ファイル。公開用・管理用の別々のGASプロジェクトへ追加する。全補助関数はRPC非公開。 */
 const CONFIG = {
   NOTIFICATION_EMAIL: 'taiseihori18@gmail.com',
-  SENDER_NAME: 'SFC生の英語塾 堀安泰世',
+  SENDER_NAME: 'トモ二塾 堀安泰世',
   REPLY_TO_EMAIL: 'taiseihori18@gmail.com',
   SHEET_CONTACTS: '問い合わせ一覧', SHEET_LOGS: 'アクセスログ'
 };
@@ -45,7 +45,7 @@ function assertOwner_() {
 }
 function notify_(row) {
   MailApp.sendEmail({to: CONFIG.NOTIFICATION_EMAIL, name: CONFIG.SENDER_NAME,
-    subject: '【SFC生の英語塾】無料学習相談の申込',
+    subject: '【トモ二塾】無料学習相談の申込',
     body: ['新しい申込を保存しました。', '受信日時: '+row[0], '受付ID: '+rowId_(row),
       'お名前: '+row[1], '学年: '+row[2], '科目: '+row[3], '頻度: '+row[4],
       'メール: '+row[5], '電話: '+row[6], '相談内容:', row[7]].join('\n')});

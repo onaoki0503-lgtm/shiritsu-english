@@ -2,7 +2,7 @@
 function doGet() {
   try {
     assertOwner_();
-    return HtmlService.createHtmlOutputFromFile('Admin').setTitle('SFC生の英語塾 管理画面')
+    return HtmlService.createHtmlOutputFromFile('Admin').setTitle('トモ二塾 管理画面')
       .addMetaTag('viewport','width=device-width, initial-scale=1');
   } catch (err) { return HtmlService.createHtmlOutput('管理者のGoogleアカウントでログインしてください。'); }
 }
