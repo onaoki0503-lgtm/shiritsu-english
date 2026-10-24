@@ -1,6 +1,6 @@
 # SFC生の英語塾 LP・管理画面
 
-> **最終更新日**: 2026-10-23
+> **最終更新日**: 2026-10-24
 > **更新者**: AI (Codex)
 > **リリース**: `20261020-glass-cta1`
 
@@ -14,14 +14,20 @@
 
 受領した稼働ソースと正本を同期：LOG_HEADERSの列名は「最大スクロール深度」、管理サーバーはAdminServer.gs。認証・受付・返信処理の新たな変更はない。同期後のモック21件・送信ロジック3件が合格。機能変更は先生に差分共有後、表示調整は共通CSSで行う。管理運用は先生本人限定を維持。実機スマホの送信試験は未実施。
 
+## 2026-10-24 無料URLへの変更（作業中）
+
+代表が「tomoni-juku.jp」を希望したが未取得のため、費用をかけずに進める指示を受領。無料の `https://tomoni-juku.web.app/` を採用し、塾専用Firebaseプロジェクト `tomoni-juku`（908264124711）とHostingサイト `tomoni-juku` を作成済み。既存会社のプロジェクトとは分ける。ソースは既存GitHub、申込・管理・台帳は先生側GAS/Sheetsを継続し、HPと管理入口の公開先だけをFirebase Hostingへ変更する。独自ドメインの購入・有料プランへの変更は行わない。移行前のGitHub Pagesリンクは新URL公開確認後に転送する。先生の管理画面が読む旧CSS URLは維持する。
+
+`node build-hosting.cjs` は公開ページ・表示用CSS/JS・画像だけを `dist/` へ集める。GAS・保守資料・テスト・設定ファイルはFirebaseへ配信しない。公開コマンドは `firebase deploy --only hosting:school --project tomoni-juku`。新URLの公開・フォームのブラウザ確認は作業中。
+
 ## 公開構成
 
-- 判定：既存案件。GitHub Pages＋Google Apps Script＋Google Sheetsを継続し、基盤を移行しない。
-- 判定理由：既存静的LPを改修し、一般向け受付と管理者専用機能は別GASで扱う構成を維持する。
+- 判定：2026-10-24、無料で顧客向けURLを変更する代表指示に従い、HP公開をFirebase Hostingへ移行。受付・管理用GASとSheetsは継続。
+- 判定理由：未取得の.jpには費用が必要なため、無料のweb.appを利用。既存の申込・管理権限とデータ保存先は維持する。
 - ソース管理：https://github.com/onaoki0503-lgtm/shiritsu-english （既存の公開範囲を維持）
-- 公開基盤：GitHub Pages。`main`ブランチのルートから公開（legacy build）。
-- サイト：https://onaoki0503-lgtm.github.io/shiritsu-english/
-- 管理入口：https://onaoki0503-lgtm.github.io/shiritsu-english/dashboard.html
+- 公開基盤：Firebase Hosting、プロジェクト／サイト `tomoni-juku`。旧GitHub Pagesは転送と管理CSS配信用に維持。
+- サイト（移行先・公開作業中）：https://tomoni-juku.web.app/
+- 管理入口（移行先・公開作業中）：https://tomoni-juku.web.app/dashboard.html
 - 管理用デプロイURLは受領済み。入口は先生本人用のGoogle認証画面へリンクし、個人情報を取得・返信送信しない。
 - DB・認証：先生側のGoogle Sheets台帳と、本人限定・サーバー側で権限照合する管理用GAS。
 - 外部接続：2026-10-22に先生から受領した公開受付URL・管理URLを `js/site-config.js` に設定。
@@ -41,6 +47,10 @@
 - `SEO_SEARCH_CONSOLE_GUIDE.md` — 検索登録手順
 - `robots.txt` / `sitemap.xml` — 検索エンジン向け設定
 - `堀安先生_システム初期設定手順書.html` / `.pdf` — 2026-10-20新版設定手順
+- `build-hosting.cjs` — 公開ファイルだけを集めるビルド
+- `firebase.json` / `.firebaserc` — 塾専用Hosting対象と配信設定
+- `.gitignore` — 生成物・Firebaseログの除外
+- `dist/` — ビルド生成物（Git管理外、資料・GASを含めない）
 - `README.md` — 本案内
 
 ## モバイルの相談導線

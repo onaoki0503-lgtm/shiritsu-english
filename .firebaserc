@@ -1,0 +1,6 @@
+{
+  "projects": { "default": "tomoni-juku" },
+  "targets": {
+    "tomoni-juku": { "hosting": { "school": ["tomoni-juku"] } }
+  }
+}
