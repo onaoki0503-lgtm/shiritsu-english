@@ -14,11 +14,13 @@
 
 受領した稼働ソースと正本を同期：LOG_HEADERSの列名は「最大スクロール深度」、管理サーバーはAdminServer.gs。認証・受付・返信処理の新たな変更はない。同期後のモック21件・送信ロジック3件が合格。機能変更は先生に差分共有後、表示調整は共通CSSで行う。管理運用は先生本人限定を維持。実機スマホの送信試験は未実施。
 
-## 2026-10-24 無料URLへの変更（作業中）
+## 2026-10-24 無料URLへの変更（公開済み）
 
-代表が「tomoni-juku.jp」を希望したが未取得のため、費用をかけずに進める指示を受領。無料の `https://tomoni-juku.web.app/` を採用し、塾専用Firebaseプロジェクト `tomoni-juku`（908264124711）とHostingサイト `tomoni-juku` を作成済み。既存会社のプロジェクトとは分ける。ソースは既存GitHub、申込・管理・台帳は先生側GAS/Sheetsを継続し、HPと管理入口の公開先だけをFirebase Hostingへ変更する。独自ドメインの購入・有料プランへの変更は行わない。移行前のGitHub Pagesリンクは新URL公開確認後に転送する。先生の管理画面が読む旧CSS URLは維持する。
+代表が「tomoni-juku.jp」を希望したが未取得のため、費用をかけずに進める指示を受領。無料の `https://tomoni-juku.web.app/` を採用し、塾専用Firebaseプロジェクト `tomoni-juku`（908264124711）とHostingサイト `tomoni-juku` を作成済み。既存会社のプロジェクトとは分ける。ソースは既存GitHub、申込・管理・台帳は先生側GAS/Sheetsを継続し、HPと管理入口の公開先だけをFirebase Hostingへ変更する。独自ドメインの購入・有料プランへの変更は行わない。新URLの公開確認後、移行前のGitHub Pagesリンクも転送する変更をmainへ反映済み。先生の管理画面が読む旧CSS URLは維持する。
 
-`node build-hosting.cjs` は公開ページ・表示用CSS/JS・画像だけを `dist/` へ集める。GAS・保守資料・テスト・設定ファイルはFirebaseへ配信しない。公開コマンドは `firebase deploy --only hosting:school --project tomoni-juku`。新URLの公開・フォームのブラウザ確認は作業中。
+`node build-hosting.cjs` は公開ページ・表示用CSS/JS・画像だけを `dist/` へ集める。GAS・保守資料・テスト・設定ファイルはFirebaseへ配信しない。公開コマンドは `firebase deploy --only hosting:school --project tomoni-juku`。公開ソース `89a2326999ded2c7f55212137ee578455e2fff76`、Firebase version `f3dd309f6ea35049`。公開32ファイルのHTTP 200・SHA256一致、資料/GAS等6パスの404を確認。課金無効・請求先未接続（billingEnabled=false）。390px／1440pxで横はみ出しなし、スマホCTA1つ・フォーム移動と必須入力検証、管理入口の従来GASへの接続を確認。既存24テスト・転送7ケース等を確認。旧HP（クエリ・#form_area付き）／旧管理入口のブラウザ転送、旧管理CSSのHTTP 200・SHA256一致、Pages builtを確認した。新URLからの実申込保存・通知送信・先生本人の管理操作・スマホ実機は今回未試験。Search Consoleの新プロパティ登録も未実施。先生へ19:27:51 JSTにURL変更を連絡済み（Gmail `1a16d73db3099941`、SENT・差出人・宛先・本文確認）。
+
+無料枠はHostingストレージ10GB・転送10GB/月（2026-10-24の公式仕様）。上限到達時は公開や配信が制限される。有料へ自動変更せず、課金未接続を維持する。ソースはGitHubのmainとFirebaseの両方へ反映する。管理画面の旧CSSはGitHub Pagesで配信を続けるため、Pagesを停止しない。
 
 ## 公開構成
 
@@ -26,8 +28,8 @@
 - 判定理由：未取得の.jpには費用が必要なため、無料のweb.appを利用。既存の申込・管理権限とデータ保存先は維持する。
 - ソース管理：https://github.com/onaoki0503-lgtm/shiritsu-english （既存の公開範囲を維持）
 - 公開基盤：Firebase Hosting、プロジェクト／サイト `tomoni-juku`。旧GitHub Pagesは転送と管理CSS配信用に維持。
-- サイト（移行先・公開作業中）：https://tomoni-juku.web.app/
-- 管理入口（移行先・公開作業中）：https://tomoni-juku.web.app/dashboard.html
+- サイト：https://tomoni-juku.web.app/
+- 管理入口：https://tomoni-juku.web.app/dashboard.html
 - 管理用デプロイURLは受領済み。入口は先生本人用のGoogle認証画面へリンクし、個人情報を取得・返信送信しない。
 - DB・認証：先生側のGoogle Sheets台帳と、本人限定・サーバー側で権限照合する管理用GAS。
 - 外部接続：2026-10-22に先生から受領した公開受付URL・管理URLを `js/site-config.js` に設定。
