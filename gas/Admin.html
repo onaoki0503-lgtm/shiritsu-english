@@ -4,7 +4,7 @@
 *{box-sizing:border-box}body{margin:0;background:#f6f6f4;color:#181818;font:15px/1.6 system-ui,sans-serif}header{padding:24px 5%;background:white;border-bottom:1px solid #ddd;display:flex;gap:20px;align-items:center;justify-content:space-between}h1{font-size:20px;margin:0}h2{font-size:18px;margin:0 0 18px}main{max-width:1400px;margin:auto;padding:24px}button{font:inherit;border:1px solid #ccc;border-radius:5px;padding:9px 14px;background:white;cursor:pointer}button:disabled{opacity:.5;cursor:wait}.primary{background:#151515;color:white}.kpis,.charts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.charts{grid-template-columns:1fr 1fr;margin:20px 0}.card{background:white;padding:22px;border:1px solid #ddd;border-radius:8px}.value{font-size:32px;font-weight:700}small,.muted{color:#666}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px}td,th{text-align:left;padding:12px;border-bottom:1px solid #ddd;vertical-align:top}th{white-space:nowrap}td p{margin:0;white-space:pre-wrap;min-width:180px;max-width:340px;overflow-wrap:anywhere}.bar{display:grid;grid-template-columns:150px 1fr 75px;gap:8px;align-items:center;margin:12px 0}.track{height:8px;background:#eee}.fill{height:100%;background:#2b55ae}dialog{border:1px solid #ccc;border-radius:8px;width:min(680px,94vw);max-height:90vh;overflow:auto;padding:24px}dialog::backdrop{background:#0006}label{display:block;margin:12px 0 4px}input,textarea{width:100%;padding:10px;font:inherit;border:1px solid #aaa;border-radius:4px}textarea{min-height:260px}.actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}#notice{min-height:28px;white-space:pre-wrap}.error{color:#a21c1c}@media(max-width:760px){main{padding:14px}.kpis{grid-template-columns:1fr 1fr}.charts{grid-template-columns:1fr}header{align-items:flex-start}.bar{grid-template-columns:110px 1fr 60px}.card{padding:16px}}
 </style><link rel="stylesheet" href="https://onaoki0503-lgtm.github.io/shiritsu-english/css/dashboard.css">
 </head><body>
-<header><div><h1>トモ二塾</h1><small>管理者専用 · 堀安泰世</small></div><button id="refresh">更新</button></header>
+<header><div><h1>トモ二塾</h1><small id="adminIdentity">アカウントを確認しています</small></div><button id="refresh">更新</button></header>
 <main><p id="notice" role="status">読み込み中…</p>
 <div class="kpis"><div class="card">閲覧数<div class="value" id="pv">—</div></div><div class="card">訪問セッション<div class="value" id="visitors">—</div></div><div class="card">平均スクロール<div class="value" id="scroll">—</div></div><div class="card">相談申込<div class="value" id="contacts">—</div></div></div>
 <div class="charts"><section class="card"><h2>スクロール到達率</h2><div id="buckets"></div></section><section class="card"><h2>セクション到達率</h2><div id="sections"></div></section></div>
@@ -13,7 +13,7 @@
 </main>
 <dialog id="reply"><h2>返信内容を確認</h2><p class="muted">堀安先生のGoogleアカウントから送信します。日程は先生が確認して入力してください。</p><label for="to">宛先</label><input id="to" readonly><label for="subject">件名</label><input id="subject" maxlength="200"><label for="body">本文</label><textarea id="body" maxlength="10000"></textarea><p id="replyNotice" role="status"></p><div class="actions"><button id="close">閉じる</button><button class="primary" id="send">この内容で送信</button></div></dialog>
 <script>
-let records = [], selected = null, sending = false;
+let records = [], selected = null, sending = false, canReply = false;
 const el = id => document.getElementById(id);
 const rpc = (method, ...args) => new Promise((resolve,reject) => google.script.run.withSuccessHandler(resolve).withFailureHandler(reject)[method](...args));
 function notice(message,error=false){el('notice').textContent=message;el('notice').className=error?'error':'';}
@@ -31,7 +31,7 @@ function cell(row,value){const td=document.createElement('td'),p=document.create
 async function load(){
   el('refresh').disabled=true;notice('読み込み中…');
   try{
-    const d=await rpc('getDashboard');records=d.contacts;
+    const d=await rpc('getDashboard');records=d.contacts;canReply=d.access?.canReply===true;el('adminIdentity').textContent=d.access?.label||'閲覧専用';
     ['pv','visitors','contacts'].forEach(k=>el(k).textContent=d.summary[k].toLocaleString());el('scroll').textContent=d.summary.scroll+'%';
     bars('buckets',Object.entries(d.buckets).map(([k,v])=>[k+'%まで',v]),d.summary.pv);
     const names={hero:'トップ',challenges:'お悩み',features:'塾の特徴',mentor:'講師紹介',tuition:'料金',flow:'受講の流れ',faq:'よくある質問',form_area:'申込フォーム'};
@@ -41,7 +41,7 @@ async function load(){
     records.forEach(c=>{
       const tr=document.createElement('tr');cell(tr,c.date+'\n'+c.id);cell(tr,c.name+'\n'+c.grade+' / '+c.subjects+' / '+c.frequency);cell(tr,c.email+'\n'+c.tel);cell(tr,c.message);
       cell(tr,c.status+'\n通知: '+c.notification+'\n返信: '+(c.reply||'未送信'));
-      const td=document.createElement('td'),b=document.createElement('button');b.textContent='返信を作成';b.disabled=Boolean(c.reply)||c.status==='返信済';b.addEventListener('click',()=>openReply(c));td.append(b);
+      const td=document.createElement('td');if(!canReply){td.textContent='閲覧専用';tr.append(td);el('rows').append(tr);return;}const b=document.createElement('button');b.textContent='返信を作成';b.disabled=Boolean(c.reply)||c.status==='返信済';b.addEventListener('click',()=>openReply(c));td.append(b);
       if(c.notification!=='sent'&&c.notification!=='sending'){
         const retry=document.createElement('button');retry.textContent='講師宛通知を再送';retry.addEventListener('click',()=>retryNotice(c,retry));td.append(retry);
       }tr.append(td);el('rows').append(tr);
@@ -51,13 +51,13 @@ async function load(){
   finally{el('refresh').disabled=false;}
 }
 function openReply(c){
-  if(sending)return;selected=c;el('send').disabled=false;el('to').value=c.email;el('subject').value='【トモ二塾】無料学習相談について';
+  if(!canReply||sending)return;selected=c;el('send').disabled=false;el('to').value=c.email;el('subject').value='【トモ二塾】無料学習相談について';
   el('body').value=c.name+' 様\n\n無料学習相談へのお申し込み、ありがとうございます。\nトモ二塾の堀安泰世です。\n\n'+
     'ご希望の科目や学習状況について、相談の中で詳しく伺えればと思います。\nご都合のよい日時をいくつかお知らせいただけますでしょうか。\n\nどうぞよろしくお願いいたします。\nトモ二塾 堀安泰世';
   el('replyNotice').textContent='';el('reply').showModal();
 }
 el('send').addEventListener('click',async()=>{
-  if(!selected||sending)return;
+  if(!canReply||!selected||sending)return;
   if(!el('subject').value.trim()||!el('body').value.trim()){el('replyNotice').textContent='件名と本文を入力してください。';return;}
   if(!confirm(selected.email+' 宛てに、この内容で送信しますか？'))return;
   sending=true;el('send').disabled=true;el('close').disabled=true;
@@ -69,6 +69,7 @@ el('send').addEventListener('click',async()=>{
 el('close').addEventListener('click',()=>{if(!sending)el('reply').close();});
 el('reply').addEventListener('cancel',e=>{if(sending)e.preventDefault();});
 async function retryNotice(c,button){
+  if(!canReply)return;
   if(!confirm('Gmailで通知が未受信であることを確認しましたか？ 結果不明の通知は重複する可能性があります。申込は追加せず、講師宛通知だけ再送します。'))return;
   button.disabled=true;try{await rpc('retryNotification',{id:c.id,confirmed:true});await load();}catch(e){notice(e.message||'通知結果をGmailで確認してください。',true);button.disabled=false;}
 }

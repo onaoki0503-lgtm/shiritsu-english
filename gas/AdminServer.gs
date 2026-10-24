@@ -1,14 +1,14 @@
 /** 別の管理専用GASプロジェクトへ配置。公開用Code.gsと同居させない。 */
 function doGet() {
   try {
-    assertOwner_();
+    dashboardAccess_();
     return HtmlService.createHtmlOutputFromFile('Admin').setTitle('トモ二塾 管理画面')
       .addMetaTag('viewport','width=device-width, initial-scale=1');
   } catch (err) { return HtmlService.createHtmlOutput('管理者のGoogleアカウントでログインしてください。'); }
 }
 function doPost() { return json_({status:'error',code:'FORBIDDEN'}); }
 function getDashboard() {
-  assertOwner_();
+  const access = dashboardAccess_();
   const ss = book_();
   const rows = ss.getSheetByName(CONFIG.SHEET_CONTACTS).getDataRange().getValues().slice(1);
   const contacts = rows.slice(-100).reverse().map(r => ({id:rowId_(r),date:r[0] instanceof Date ? Utilities.formatDate(r[0],'Asia/Tokyo','yyyy/MM/dd HH:mm:ss') : String(r[0]),name:String(r[1]),grade:String(r[2]),
@@ -24,7 +24,7 @@ function getDashboard() {
     daily[day] = (daily[day]||0)+1;
     String(r[4]).split(', ').filter(Boolean).forEach(k=>{sections[k]=(sections[k]||0)+1;});
   });
-  return {summary:{pv:logs.length,visitors:sessions.size,contacts:rows.length,scroll:logs.length?Math.round(depth/logs.length):0},
+  return {access:access, summary:{pv:logs.length,visitors:sessions.size,contacts:rows.length,scroll:logs.length?Math.round(depth/logs.length):0},
     buckets:buckets,daily:daily,sections:sections,contacts:contacts};
 }
 function sendReply(data) {

@@ -10,7 +10,7 @@ const adminCode=fs.readFileSync(__dirname+'/AdminServer.gs','utf8');
 function env(kind='public'){
   const owner=kind==='intake'?'o.naoki0503@intakingresources.com':'taiseihori18@gmail.com';
   const state={active:owner,effective:owner,sent:[],failMail:false,failFinal:false,reads:0,locks:0,flushes:0};
-  const props=new Map([['SPREADSHEET_ID','test-sheet']]);
+  const props=new Map([['SPREADSHEET_ID','test-sheet'],['DASHBOARD_VIEWER_EMAIL','viewer@example.com']]);
   class Sheet{
     constructor(){this.rows=[];}
     appendRow(row){assert.ok(state.locks>0||this.rows.length===0);this.rows.push([...row]);}
@@ -50,7 +50,7 @@ test('保存後の通知失敗でもsaved=true。再送は台帳・通知を増�
 test('正常受付の二重送信は1行・1通知。同じIDで内容変更は拒否',()=>{const e=env();assert.equal(e.post(payload()).saved,true);assert.equal(e.post(payload()).duplicate,true);assert.equal(e.state.sent.length,1);assert.equal(e.post({...payload(),name:'別名'}).code,'ID_CONFLICT');assert.equal(contact(e).length,2);});
 test('不正メール・必須項目・長すぎる入力・不正IDを保存しない',()=>{for(const change of [{email:'a@example.com,b@example.com'},{name:''},{message:'x'.repeat(5001)},{requestId:'bad'},{grade:[]},{email:'a@example.com\nBcc:x@y.com'}]){const e=env();assert.equal(e.post({...payload(),...change}).saved,false);assert.equal(contact(e).length,1);assert.equal(e.state.sent.length,0);}});
 test('シート数式を文字列として保存',()=>{const e=env();e.post({...payload(),name:'=IMPORTXML("bad")',message:'+cmd'});assert.equal(contact(e)[1][1],"'=IMPORTXML(\"bad\")");assert.equal(contact(e)[1][7],"'+cmd");});
-test('全管理RPCは匿名・別アカウント・別実行者を拒否し、台帳に触れない',()=>{for(const [active,effective] of [['',''],['other@gmail.com','other@gmail.com'],['taiseihori18@gmail.com','other@gmail.com']]){const e=env('admin');e.state.active=active;e.state.effective=effective;for(const [name,args] of [['getDashboard',undefined],['sendReply',{id:'x',subject:'s',body:'b'}],['retryNotification',{id:'x',confirmed:true}]])assert.throws(()=>e.context[name](args),/管理者権限/);assert.equal(e.state.reads,0);assert.match(e.context.doGet().body,/ログイン/);}});
+test('全管理RPCは匿名・別アカウント・別実行者を拒否し、台帳に触れない',()=>{for(const [active,effective] of [['',''],['other@gmail.com','other@gmail.com'],['taiseihori18@gmail.com','other@gmail.com'],['','taiseihori18@gmail.com'],['viewer@example.com','taiseihori18@gmail.com'],['taiseihori18@gmail.com','viewer@example.com']]){const e=env('admin');e.state.active=active;e.state.effective=effective;for(const [name,args] of [['getDashboard',undefined],['sendReply',{id:'x',subject:'s',body:'b'}],['retryNotification',{id:'x',confirmed:true}]])assert.throws(()=>e.context[name](args),/管理者権限/);assert.equal(e.state.reads,0);assert.match(e.context.doGet().body,/ログイン/);}});
 test('返信は保存済み申込の宛先に限定し、再クリックで送信しない',()=>{const e=createAdminContact();const d={id:e.id,to:'attacker@example.com',subject:'テスト返信',body:'本文'};assert.equal(e.context.sendReply(d).status,'sent');assert.equal(e.state.sent.at(-1).to,'student@example.com');assert.equal(e.context.sendReply(d).status,'already_sent');assert.equal(e.state.sent.length,2);assert.equal(contact(e)[1][8],'返信済');});
 test('不明な受付ID・件名改行では送信しない',()=>{const e=createAdminContact();assert.throws(()=>e.context.sendReply({id:'missing',subject:'s',body:'b'}));assert.throws(()=>e.context.sendReply({id:e.id,subject:'s\nBcc:other@example.com',body:'b'}));assert.equal(e.state.sent.length,1);});
 test('返信メール失敗後はunknownになり、自動再送を禁止',()=>{const e=createAdminContact();e.state.failMail=true;const d={id:e.id,subject:'s',body:'b'};assert.throws(()=>e.context.sendReply(d),/不明/);e.state.failMail=false;assert.throws(()=>e.context.sendReply(d),/確認/);assert.equal(contact(e)[1][13],'unknown');assert.equal(e.state.sent.length,1);});
@@ -64,3 +64,23 @@ test('岡本管理の受付も公開GET・管理POST・管理RPCを拒否する'
 test('岡本受付は台帳保存後に先生へ1通知し、学生を返信先にする',()=>{const e=env('intake');const p={...payload(),message:'長文を相談\n\n【相談希望日時】\n平日19時以降'};assert.equal(e.post(p).saved,true);assert.equal(e.post(p).duplicate,true);assert.equal(contact(e).length,2);assert.equal(e.state.sent.length,1);assert.equal(e.state.sent[0].to,'taiseihori18@gmail.com');assert.equal(e.state.sent[0].replyTo,'student@example.com');assert.match(e.state.sent[0].body,/平日19時以降/);});
 test('岡本受付の通知失敗でも保存成功を返し、再送で申込を増やさない',()=>{const e=env('intake');e.state.failMail=true;assert.equal(e.post(payload()).notification,'unknown');assert.equal(e.post(payload()).duplicate,true);assert.equal(contact(e).length,2);});
 test('岡本受付の初期化は岡本本人だけに許可',()=>{const e=env('intake');for(const account of ['','taiseihori18@gmail.com','other@example.com']){e.state.active=account;assert.throws(()=>e.context.initSheets(),/管理者権限/);}assert.equal(e.state.reads,0);});
+
+test('岡本本人は申込と集計を閲覧でき、返信・通知再送はサーバー側で拒否する',()=>{
+  const e=createAdminContact();e.state.active=e.state.effective='viewer@example.com';
+  const before=JSON.stringify(contact(e)),sent=e.state.sent.length;
+  const d=e.context.getDashboard();assert.equal(d.contacts.length,1);assert.equal(d.access.canReply,false);assert.match(d.access.label,/岡本直樹/);
+  assert.ok(!e.context.doGet().body);
+  e.state.reads=0;
+  for(const [method,data] of [['sendReply',{id:e.id,subject:'s',body:'b'}],['retryNotification',{id:e.id,confirmed:true}]]) assert.throws(()=>e.context[method](data),/管理者権限/);
+  assert.equal(e.state.reads,0);assert.equal(e.state.sent.length,sent);assert.equal(JSON.stringify(contact(e)),before);
+});
+test('先生の管理権限と返信操作は維持する',()=>{
+ const e=createAdminContact();assert.equal(e.context.getDashboard().access.canReply,true);
+ assert.equal(e.context.sendReply({id:e.id,subject:'s',body:'b'}).status,'sent');
+ assert.equal(e.state.sent.at(-1).name,'トモ二塾 堀安泰世');
+});
+
+test('閲覧者設定が空欄なら追加アカウントを許可しない',()=>{
+ const e=env('admin');e.props.delete('DASHBOARD_VIEWER_EMAIL');e.state.active=e.state.effective='viewer@example.com';
+ assert.throws(()=>e.context.getDashboard(),/管理者権限/);assert.equal(e.state.reads,0);
+});

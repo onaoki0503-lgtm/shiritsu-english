@@ -43,6 +43,15 @@ function assertOwner_() {
   const effective = Session.getEffectiveUser().getEmail().toLowerCase();
   if (active !== CONFIG.NOTIFICATION_EMAIL || effective !== CONFIG.NOTIFICATION_EMAIL) throw new Error('管理者権限が必要です。');
 }
+function dashboardAccess_() {
+  const active = String(Session.getActiveUser().getEmail() || '').trim().toLowerCase();
+  const effective = String(Session.getEffectiveUser().getEmail() || '').trim().toLowerCase();
+  // 管理用は「アクセスしているユーザー」で実行する。空欄・実行者不一致は拒否する。
+  if (!active || active !== effective) throw new Error('管理者権限が必要です。');
+  if (active === CONFIG.NOTIFICATION_EMAIL) return {canReply:true, label:'堀安泰世 · 運営管理'};
+  if (active === String(props_().getProperty('DASHBOARD_VIEWER_EMAIL') || '').trim().toLowerCase()) return {canReply:false, label:'岡本直樹 · 閲覧・保守'};
+  throw new Error('管理者権限が必要です。');
+}
 function notify_(row) {
   MailApp.sendEmail({to: CONFIG.NOTIFICATION_EMAIL, name: CONFIG.SENDER_NAME,
     subject: '【トモ二塾】無料学習相談の申込',
