@@ -1,13 +1,13 @@
 # Google Search Console 登録手順
 
-> **最終更新日**: 2026-10-24
+> **最終更新日**: 2026-10-26
 > **更新者**: AI (Codex)
 
 ## 対象と現在の状態
 
 本番URLは `https://tomoni-juku.web.app/`。canonical、OGP、構造化データ、robots.txt、sitemap.xmlを新URLへ更新して公開済み。旧GitHub PagesのLPはJavaScriptで新URLへ転送する。
 
-新URLのSearch Consoleプロパティ追加・所有権確認・サイトマップ送信は今回行っていない。検索結果への掲載時期・順位は保証されない。
+運用担当からプロパティ追加と確認タグ発行の報告を受領。既存タグを残して追加した。所有権の確認・サイトマップ送信と処理結果は担当側の確認待ち。検索結果への掲載時期・順位は保証されない。
 
 ## 登録する手順
 
