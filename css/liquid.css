@@ -173,13 +173,11 @@ footer{background:#fff;border-top:1px solid var(--ui-border);color:var(--ui-sub)
 @supports not (backdrop-filter:blur(1px)){.hero_backdrop::after{background:rgba(255,255,255,.88)}}
 
 
-/* Shared support uses the same frequency columns as the tuition comparison. */
-.tuition_matrix_table .tr_support_row .td_support_label{background:transparent;text-align:left;font-size:.78rem;line-height:1.8;font-weight:500;width:auto}
-.tuition_matrix_table .tr_support_row .support_included{text-align:center;vertical-align:middle;font-size:1.5rem;line-height:1;color:var(--ui-blue);font-weight:500}
-.support_note{font-size:.72rem;line-height:1.9;color:var(--ui-sub);margin:16px 4px 0}
-.support_sr_only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
-@media(max-width:768px){
- .tuition_matrix_table .tr_support_row .td_support_label{font-size:.66rem;padding:14px 7px;letter-spacing:0}
- .tuition_matrix_table .tr_support_row .support_included{font-size:1.25rem;padding:14px 5px}
- .support_note{font-size:.65rem;margin:14px 4px 0;line-height:1.9}
-}
+/* One clear message for support included in every plan. */
+.all_support{text-align:center;margin-top:24px;padding:34px 24px;background:linear-gradient(135deg,#f2f4fb,#fff);border:1px solid var(--ui-border);border-radius:20px}
+.all_support_eyebrow{font-size:.75rem;color:var(--ui-sub);letter-spacing:.12em;margin:0 0 10px}
+.all_support h3{font-size:clamp(1.7rem,4.8vw,2.6rem);font-weight:700;line-height:1.5;letter-spacing:-.04em;color:var(--ui-blue);margin:0 0 24px}
+.all_support_items{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.all_support_items li{font-size:.79rem;line-height:1.8;padding:8px 14px;background:#fff;border:1px solid var(--ui-border);border-radius:10px;color:var(--ui-ink)}
+.support_note{font-size:.72rem;line-height:1.9;color:var(--ui-sub);margin:22px 0 0;text-align:left}
+@media(max-width:768px){.all_support{padding:26px 16px;margin-top:20px}.all_support_eyebrow{font-size:.65rem}.all_support h3{margin-bottom:20px}.all_support_items{gap:8px}.all_support_items li{font-size:.7rem;padding:7px 9px}.support_note{font-size:.65rem;line-height:1.9;margin-top:18px}}
