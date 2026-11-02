@@ -40,7 +40,7 @@
   </script>
 
   <link rel="stylesheet" href="css/arch_style.css?v=20261022-connected1">
-  <link rel="stylesheet" href="css/liquid.css?v=20261022-connected1">
+  <link rel="stylesheet" href="css/liquid.css?v=20261102-background1">
   <script>
     document.documentElement.classList.add('is-loading');
     // 独立したフェイルセーフ。後続JSや画像が失敗しても操作をロックしない。
@@ -106,6 +106,9 @@
 
     <!-- 1st View / Key Visual Hero -->
     <section class="top_view" id="top">
+      <div class="hero_backdrop" aria-hidden="true">
+        <img class="hero_scene" src="assets/hero_sky_bg.jpg" alt="" width="1200" height="1200" fetchpriority="high">
+      </div>
       <div class="kv_inner">
         
         <div class="kv_text_area">
@@ -128,129 +131,12 @@
           </div>
 
         </div>
-        <div class="hero_visual" aria-hidden="true">
-          <img class="hero_scene" src="assets/hero_sky_bg.jpg" alt="" width="1200" height="1200" fetchpriority="high">
-          <div class="glass_lens lens_one"></div><div class="glass_lens lens_two"></div>
-          <div class="hero_visual_caption"><span class="caption_mark"></span>自分の勉強に、確かな手応えを。</div>
-        </div>
+
       </div>
 
       <div class="scroll_indicator">
         <span class="scroll_text">SCROLL</span>
         <div class="scroll_line"></div>
-      </div>
-    </section>
-
-    <!-- Student Voices Infinite Marquee -->
-    <section class="sec_voices_marquee" id="voices">
-      <div class="marquee_header">
-        <div class="marquee_pill">
-          <span>STUDENT VOICES ｜ 合格実績・受講生の声</span>
-        </div>
-        <p class="marquee_lead">勉強の迷いをなくし、合格へ集中できた受講生の声</p>
-        <button type="button" class="voices_toggle" id="voicesToggle" aria-pressed="false">動きを止める <span aria-hidden="true">Ⅱ</span></button>
-      </div>
-
-      <div class="marquee_track_wrap">
-        
-        <div class="marquee_track">
-          
-          <div class="voice_card_marquee">
-            <div class="v_card_top">
-              <span class="v_student_tag pass_tag">慶應SFC 総合政策 合格</span>
-              <span class="v_student_meta">高3 ｜ 英語＋小論文</span>
-            </div>
-            <h4 class="v_card_heading">手元の単語帳とポラリスを使い倒して合格</h4>
-            <p class="v_card_text">
-              毎日の復習手順を明確にしてもらい、迷わず机に向かえるように。面談内で小論文を直接添削してもらえたのが決め手でした。
-            </p>
-            <div class="v_card_foot">
-              <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">総合政策学部 合格生</span>
-            </div>
-          </div>
-
-          <div class="voice_card_marquee">
-            <div class="v_card_top">
-              <span class="v_student_tag pass_tag">慶應SFC 環境情報 合格</span>
-              <span class="v_student_meta">既卒 ｜ 英語</span>
-            </div>
-            <h4 class="v_card_heading">長文で時間切れだったのが、本番15分余りで完答</h4>
-            <p class="v_card_text">
-              1,000語超の長文で返り読みをなくす練習を徹底。試験本番では15分の見直し時間を残して8割以上を確保できました。
-            </p>
-            <div class="v_card_foot">
-              <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">環境情報学部 合格生</span>
-            </div>
-          </div>
-
-          <div class="voice_card_marquee">
-            <div class="v_card_top">
-              <span class="v_student_tag active_tag">慶應SFC 総合政策 志望</span>
-              <span class="v_student_meta">高3 ｜ 小論文</span>
-            </div>
-            <h4 class="v_card_heading">面談内で対話しながら答案を改善。課題が明確に</h4>
-            <p class="v_card_text">
-              赤字返却だけでなく、なぜその論理展開にしたかを60分対話で深掘り。次の面談までにやるべきことがはっきりしています。
-            </p>
-            <div class="v_card_foot">
-              <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">高3受講生</span>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="marquee_track" aria-hidden="true">
-          
-          <div class="voice_card_marquee">
-            <div class="v_card_top">
-              <span class="v_student_tag pass_tag">慶應SFC 総合政策 合格</span>
-              <span class="v_student_meta">高3 ｜ 英語＋小論文</span>
-            </div>
-            <h4 class="v_card_heading">手元の単語帳とポラリスを使い倒して合格</h4>
-            <p class="v_card_text">
-              毎日の復習手順を明確にしてもらい、迷わず机に向かえるように。面談内で小論文を直接添削してもらえたのが決め手でした。
-            </p>
-            <div class="v_card_foot">
-              <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">総合政策学部 合格生</span>
-            </div>
-          </div>
-
-          <div class="voice_card_marquee">
-            <div class="v_card_top">
-              <span class="v_student_tag pass_tag">慶應SFC 環境情報 合格</span>
-              <span class="v_student_meta">既卒 ｜ 英語</span>
-            </div>
-            <h4 class="v_card_heading">長文で時間切れだったのが、本番15分余りで完答</h4>
-            <p class="v_card_text">
-              1,000語超の長文で返り読みをなくす練習を徹底。試験本番では15分の見直し時間を残して8割以上を確保できました。
-            </p>
-            <div class="v_card_foot">
-              <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">環境情報学部 合格生</span>
-            </div>
-          </div>
-
-          <div class="voice_card_marquee">
-            <div class="v_card_top">
-              <span class="v_student_tag active_tag">慶應SFC 総合政策 志望</span>
-              <span class="v_student_meta">高3 ｜ 小論文</span>
-            </div>
-            <h4 class="v_card_heading">面談内で対話しながら答案を改善。課題が明確に</h4>
-            <p class="v_card_text">
-              赤字返却だけでなく、なぜその論理展開にしたかを60分対話で深掘り。次の面談までにやるべきことがはっきりしています。
-            </p>
-            <div class="v_card_foot">
-              <span class="v_stars">★★★★★</span>
-              <span class="v_student_id">高3受講生</span>
-            </div>
-          </div>
-
-        </div>
-
       </div>
     </section>
 
@@ -371,11 +257,11 @@
             <div class="feature_card_arch" data-reveal>
               <div class="feature_card_top">
                 <span class="feature_num">01</span>
-                <span class="feature_badge">学習設計</span>
+                <span class="feature_badge">学ぶ姿勢</span>
               </div>
-              <h3 class="feature_title">手元の教材を活かした個別設計</h3>
+              <h3 class="feature_title">まず、本気の生徒しか受け入れません。</h3>
               <p class="feature_desc">
-                使い慣れた参考書を無理に変えさせることはしません。現在の学力に合わせて何を・どの順で進めるか整理し、毎日の自習メニューを具体化します。
+                目標に向けて本気で学び、日々の課題に取り組む生徒を受け入れます。一人ひとりの意欲に向き合い、毎日の学習を支えます。
               </p>
             </div>
 
@@ -384,7 +270,7 @@
                 <span class="feature_num">02</span>
                 <span class="feature_badge">英語指導</span>
               </div>
-              <h3 class="feature_title">慶應SFC特化の超長文速読指導</h3>
+              <h3 class="feature_title">長文を読めるようにする「速読法」</h3>
               <p class="feature_desc">
                 1題1,000語超の長文を制限時間内に読み解く力を養成。返り読みをなくす読解法と、過去問演習の設問処理・時間配分戦略を伝授します。
               </p>
@@ -395,9 +281,9 @@
                 <span class="feature_num">03</span>
                 <span class="feature_badge">小論文指導</span>
               </div>
-              <h3 class="feature_title">対話形式の小論文答案改善</h3>
+              <h3 class="feature_title">小論文の「型」を徹底指導</h3>
               <p class="feature_desc">
-                単なる赤字返却ではなく、60分面談の中で答案の論理展開を対話しながら深掘り。SFCが求める問題解決思考を実践的に鍛えます。
+                問題提起から根拠、解決策、結論へとつなげる小論文の「型」を徹底指導。答案の構成を身につけ、添削と対話で自分の考えを伝える力を磨きます。
               </p>
             </div>
 
